@@ -28,6 +28,7 @@ input[type='search']:focus {
 	border-color: #855414;
 	box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075),
 				0 0 8px rgba(176, 109, 29, .6);
+	font-size: 16px;
 }
 
 hr {
@@ -116,16 +117,35 @@ dd {
 @media (max-width: 480px) {
 	h1 {
 		font-size: 70px;
+		padding: 0;
+	}
+
+	h2 {
+		font-size: 13px;
+		line-height: 1.2;
+	}
+
+	.header {
+		margin-top: 10px;
 	}
 
 	.header a {
 		padding: 8px;
 	}
 
+	.logo {
+		width: 150px;
+	}
+
 	.table {
 		width: auto;
 		margin-left: -20px;
 		margin-right: -20px;
+	}
+
+	.table th:first-child,
+	.table td:first-child {
+		padding-left: 10px;
 	}
 
 	.table th[data-sort='modified'],
