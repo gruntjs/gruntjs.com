@@ -83,8 +83,9 @@
 				<% _.each( modules, function( el ) { %>
 					<tr>
 						<% var name = el.name.replace('grunt-', ''); %>
+						<% var keywords = _.last( _.values( el.versions ) ).keywords %>
 						<td class="name"><a href="https://npmjs.org/package/<%- el.name %>"><%- name %></a></td>
-						<td class="desc"><%- el.description %></td>
+						<td class="desc"><%- el.description %><div class="hidden"><%- keywords %></div></td>
 						<% if ( el.author ) { %>
 							<% if ( el.author.url ) { %>
 								<td class="author"><a href="<%- el.author.url %>"><%- el.author.name %></a></td>
