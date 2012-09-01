@@ -88,11 +88,7 @@ jQuery(function( $ ) {
 
 		$('#loading').remove();
 		$('#plugins-latest').append( latestTpl );
-		$('#plugins-all').append( allTpl ).find('.search').show().keyup(function( e ) {
-			if ( e.which === 13 ) {
-				$( this ).val('');
-			}
-		});
+		$('#plugins-all').append( allTpl ).find('.search').show();
 
 		new List('plugins-all', {
 			valueNames: [

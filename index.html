@@ -31,8 +31,7 @@
 				<div class="span5">
 					<h4>Getting started</h4>
 					<p>Be sure to read the <a href="https://github.com/cowboy/grunt/blob/master/docs/getting_started.md">getting started guide</a>, which is a complete guide to configuring grunt for your project. In addition, check out the <a href="https://github.com/cowboy/grunt/blob/master/docs/example_gruntfiles.md">example gruntfiles</a> which highlight a number of fairly common configurations.</p>
-					<p><a href="https://github.com/cowboy/grunt#installing-grunt">Install</a> using <code>npm install -g grunt</code></p>
-					<p>Then <code>grunt --help</code> to see available commands</p>
+					<p class="install"><a href="https://github.com/cowboy/grunt#installing-grunt">Install</a> using <code>npm install -g grunt</code></p>
 				</div>
 				<div class="span7">
 					<div id="plugins-latest"></div>
@@ -41,15 +40,15 @@
 			<hr>
 			<section class="main">
 				<div id="loading">
-					<p>Loading...</p>
+					<p>Loading plugins...</p>
 					<p><small>Might take some time on first load</small></p>
 				</div>
 				<div id="plugins-all"></div>
 				<p><small><i>Plugins must be published on NPM with the `gruntplugin` keyword.</i></small></p>
 			</section>
-			<footer class="credit">
-				<p><a href="http://benalman.com">Grunt by <img src="http://gravatar.com/avatar/978a1a2a80394217a0e39c84f07a7c16?s=50" width="25" height="25" alt="Ben Alman">Ben Alman</a></p>
-				<p><a href="http://sindresorhus.com">Site by <img src="http://gravatar.com/avatar/d36a92237c75c5337c17b60d90686bf9.png?s=50" width="25" height="25" alt="Sindre Sorhus">Sindre Sorhus</a></p>
+			<footer class="credit row">
+				<div class="span6"><a href="http://benalman.com">Grunt by <img src="http://gravatar.com/avatar/978a1a2a80394217a0e39c84f07a7c16?s=50" width="25" height="25" alt="Ben Alman">Ben Alman</a></div>
+				<div class="span6"><a href="http://sindresorhus.com">Site by <img src="http://gravatar.com/avatar/d36a92237c75c5337c17b60d90686bf9.png?s=50" width="25" height="25" alt="Sindre Sorhus">Sindre Sorhus</a></div>
 			</footer>
 		</div>
 	</body>
@@ -57,11 +56,8 @@
 		<h4>Latest plugins</h4>
 		<dl class="dl-horizontal">
 			<% _.each( modules, function( el ) { %>
-				<dt>
-					<% var name = el.name.replace('grunt-', ''); %>
-					<a href="https://npmjs.org/package/<%- el.name %>"><%- name %></a>
-
-				</dt>
+				<% var name = el.name.replace('grunt-', ''); %>
+				<dt><a href="https://npmjs.org/package/<%- el.name %>"><%- name %></a></dt>
 				<dd><%- el.description %></dd>
 			<% }); %>
 		</dl>
@@ -81,9 +77,9 @@
 			</thead>
 			<tbody class="list">
 				<% _.each( modules, function( el ) { %>
+					<% var name = el.name.replace('grunt-', ''); %>
+					<% var keywords = _.last( _.values( el.versions ) ).keywords %>
 					<tr>
-						<% var name = el.name.replace('grunt-', ''); %>
-						<% var keywords = _.last( _.values( el.versions ) ).keywords %>
 						<td class="name"><a href="https://npmjs.org/package/<%- el.name %>"><%- name %></a></td>
 						<td class="desc"><%- el.description %><div class="hidden"><%- keywords %></div></td>
 						<% if ( el.author ) { %>

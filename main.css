@@ -1,8 +1,8 @@
 body {
 	background: #f2f2f2 url(bg.png);
 	color: #58370E;
+	font-family: Lato, 'Helvetica Neue';
 	-webkit-font-smoothing: antialiased;
-	font-family: Lato;
 }
 
 a {
@@ -35,6 +35,14 @@ hr {
 	border-bottom: 1px dashed white;
 }
 
+code {
+	color: #DD8D03;
+}
+
+dd {
+	margin-bottom: 8px;
+}
+
 .row {
 	margin-top: 30px;
 	margin-bottom: 30px;
@@ -54,7 +62,21 @@ hr {
 }
 
 #plugins-latest h4 {
-	text-align: center;
+	margin-left: 130px;
+}
+
+.install {
+	margin-top: 25px;
+}
+
+.install code {
+	font-size: 16px;
+	margin-left: 5px;
+	white-space: pre;
+}
+
+.table caption {
+	margin-bottom: 15px;
 }
 
 .table th {
@@ -75,17 +97,48 @@ hr {
 	font-size: 16px;
 }
 
-.table th[data-sort="modified"],
+.table th[data-sort='modified'],
 .table td.modified {
 	white-space: pre;
 }
 
 .credit {
 	text-align: center;
-	margin-top: 40px;
+	margin-top: 60px;
 }
 
 .credit img {
 	margin-right: 3px;
 	border-radius: 25px;
+}
+
+
+@media (max-width: 480px) {
+	h1 {
+		font-size: 70px;
+	}
+
+	.header a {
+		padding: 8px;
+	}
+
+	.table th[data-sort='modified'],
+	.table td.modified {
+		display: none;
+	}
+}
+
+@media (max-width: 767px) {
+	.intro .span7 {
+		margin-top: 40px;
+	}
+
+	#plugins-latest h4 {
+		margin: 0;
+	}
+
+	.table th[data-sort='author'],
+	.table td.author {
+		display: none;
+	}
 }
