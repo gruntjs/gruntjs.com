@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="description" content="Grunt is a task-based command line build tool for JavaScript projects">
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<title>grunt</title>
+		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:400,700,900">
+		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.0/css/bootstrap-combined.min.css">
+		<link rel="stylesheet" href="main.css">
+		<!--[if lt IE 9]>
+		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+	</head>
+	<body>
+		<div class="container">
+			<header class="header row">
+				<div class="span5">
+					<img class="grunt-logo" src="logo.png" width="350" height="350">
+				</div>
+				<div class="span7">
+					<h1>grunt</h1>
+					<h2>Grunt is a task-based command line build tool for JavaScript projects</h2>
+					<a class="btn btn-large" href="https://github.com/cowboy/grunt">View on GitHub</a>
+					<a class="btn btn-large" href="https://github.com/cowboy/grunt/blob/master/docs/toc.md">Documentation</a>
+				</div>
+			</header>
+			<hr>
+			<section class="intro row">
+				<div class="span5">
+					<h4>Getting started</h4>
+					<p>Be sure to read the <a href="https://github.com/cowboy/grunt/blob/master/docs/getting_started.md">getting started guide</a>, which is a complete guide to configuring grunt for your project. In addition, check out the <a href="https://github.com/cowboy/grunt/blob/master/docs/example_gruntfiles.md">example gruntfiles</a> which highlight a number of fairly common configurations.</p>
+					<p><a href="https://github.com/cowboy/grunt#installing-grunt">Install</a> using <code>npm install -g grunt</code></p>
+					<p>Then <code>grunt --help</code> to see available commands</p>
+				</div>
+				<div class="span7">
+					<div id="plugins-latest"></div>
+				</div>
+			</section>
+			<hr>
+			<section class="main">
+				<div id="loading">
+					<p>Loading...</p>
+					<p><small>Might take some time on first load</small></p>
+				</div>
+				<div id="plugins-all"></div>
+				<p><small><i>Plugins must be published on NPM with the `gruntplugin` keyword.</i></small></p>
+			</section>
+			<footer class="credit">
+				<p><a href="http://benalman.com">Grunt by <img src="http://gravatar.com/avatar/978a1a2a80394217a0e39c84f07a7c16?s=50" width="25" height="25" alt="Ben Alman">Ben Alman</a></p>
+				<p><a href="http://sindresorhus.com">Site by <img src="http://gravatar.com/avatar/d36a92237c75c5337c17b60d90686bf9.png?s=50" width="25" height="25" alt="Sindre Sorhus">Sindre Sorhus</a></p>
+			</footer>
+		</div>
+	</body>
+	<script type="text/template" id="plugins-latest-template">
+		<h4>Latest plugins</h4>
+		<dl class="dl-horizontal">
+			<% _.each( modules, function( el ) { %>
+				<dt>
+					<% var name = el.name.replace('grunt-', ''); %>
+					<a href="https://npmjs.org/package/<%- el.name %>"><%- name %></a>
+
+				</dt>
+				<dd><%- el.description %></dd>
+			<% }); %>
+		</dl>
+	</script>​
+	<script type="text/template" id="plugins-all-template">
+		<table class="table">
+			<caption>
+				<input style="display:none" class="search input-medium search-query" type="search" placeholder="Search in <%= modules.length %> plugins..." autofocus>
+			</caption>
+			<thead>
+				<tr>
+					<th class="sort" data-sort="name">Name</th>
+					<th class="sort" data-sort="desc">Description</th>
+					<th class="sort" data-sort="author">Author</th>
+					<th class="sort" data-sort="modified">Last modified</th>
+				</tr>
+			</thead>
+			<tbody class="list">
+				<% _.each( modules, function( el ) { %>
+					<tr>
+						<% var name = el.name.replace('grunt-', ''); %>
+						<td class="name"><a href="https://npmjs.org/package/<%- el.name %>"><%- name %></a></td>
+						<td class="desc"><%- el.description %></td>
+						<% if ( el.author ) { %>
+							<% if ( el.author.url ) { %>
+								<td class="author"><a href="<%- el.author.url %>"><%- el.author.name %></a></td>
+							<% } else { %>
+								<td class="author"><%- el.author.name %></td>
+							<% } %>
+						<% } else { %>
+								<td class="author"></td>
+						<% } %>
+						<td class="modified"><time datetime="<%- el.time.modified %>"><%- el.time.modified %></time></td>
+					</tr>
+				<% }); %>
+			</tbody>
+		</table>
+	</script>​
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+	<script src="https://github.com/paulirish/jquery-ajax-localstorage-cache/raw/b430f590d9dc98f436bcc8d80ee84b6ef9fa2841/jquery-ajax-localstorage-cache.js"></script>
+	<script src="https://raw.github.com/bestiejs/lodash/v0.6.1/lodash.min.js"></script>
+	<script src="https://github.com/javve/list/raw/master/list.min.js"></script>
+	<script src="https://raw.github.com/rmm5t/jquery-timeago/v0.11.4/jquery.timeago.js"></script>
+	<script src="main.js"></script>
+	<script>var _gaq=[['_setAccount','UA-25562592-2'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
+</html>
