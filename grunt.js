@@ -6,11 +6,11 @@ module.exports = function(grunt) {
     concat: {
       dist: {
         src: [
-        'js/lib/jquery-1.8.1.js',
-        'js/lib/jquery-ajax-localstorage-cache.js',
-        'js/lib/lodash-0.6.1.js',
-        'js/lib/jquery.timeago.js',
-        'js/lib/list.min.js',
+        'js/vendor/jquery-1.8.1.js',
+        'js/vendor/jquery-ajax-localstorage-cache.js',
+        'js/vendor/lodash-0.6.1.js',
+        'js/vendor/jquery.timeago.js',
+        'js/vendor/list.min.js',
         'js/main.js'
         ],
         dest: 'dist/gruntjs.js'
