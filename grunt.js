@@ -1,6 +1,6 @@
 module.exports = function(grunt) {
+	'use strict';
 
-  // Project configuration.
   grunt.initConfig({
     concat: {
       'dist/main.js' : [
@@ -13,19 +13,14 @@ module.exports = function(grunt) {
       ]
     },
     min: {
-      'dist/main.min.js' : ['dist/main.js']
+      'dist/main.js' : ['dist/main.js']
     },
-
     lint: {
       files: ['js/*.js']
     }
-    
   });
 
-  // Load local tasks.
   grunt.loadTasks('tasks');
 
-  // Default task.
   grunt.registerTask('default', 'lint concat min');
-
 };
