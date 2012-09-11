@@ -1,19 +1,20 @@
-/*global $, _ */
-
-// Required by jquery-ajax-localstorage-cache
-var Modernizr = {};
-Modernizr['localstorage'] = function() {
-	try {
-		localStorage.setItem(mod, mod);
-		localStorage.removeItem(mod);
-		return true;
-	} catch(e) {
-		return false;
-	}
-};
-
-jQuery(function( $ ) {
+/*global localStorage, _, List */
+(function( win, $ ) {
 	'use strict';
+
+	// Required by jquery-ajax-localstorage-cache
+	win.Modernizr = {};
+	/*jshint sub:true */
+	win.Modernizr['localstorage'] = function() {
+		var mod = 'mod';
+		try {
+			localStorage.setItem(mod, mod);
+			localStorage.removeItem(mod);
+			return true;
+		} catch(e) {
+			return false;
+		}
+	};
 
 	$.ajaxSetup({
 		type: 'GET',
@@ -68,37 +69,40 @@ jQuery(function( $ ) {
 		});
 	}
 
-	fetchModuleList( 'gruntplugin', function( modules ) {
-		var latestModules = _.sortBy( modules, function( el ) {
-			return -Date.parse( el.time.created );
-		}).splice(0, 5);
+	$(function() {
 
-		var allModules = _.sortBy( modules, function( el ) {
-			// Remove the prefix, since not all plugins has it
-			return el.name.replace('grunt-', '');
+		fetchModuleList( 'gruntplugin', function( modules ) {
+			var latestModules = _.sortBy( modules, function( el ) {
+				return -Date.parse( el.time.created );
+			}).splice(0, 5);
+
+			var allModules = _.sortBy( modules, function( el ) {
+				// Remove the prefix, since not all plugins has it
+				return el.name.replace('grunt-', '');
+			});
+
+			var latestTpl = _.template( $('#plugins-latest-template').html(), {
+				modules: latestModules
+			});
+
+			var allTpl = _.template( $('#plugins-all-template').html(), {
+				modules: allModules
+			});
+
+			$('#loading').remove();
+			$('#plugins-latest').append( latestTpl );
+			$('#plugins-all').append( allTpl ).find('.search').show();
+
+			new List('plugins-all', {
+				valueNames: [
+					'name',
+					'desc',
+					'author',
+					'modified'
+				]
+			});
+
+			$('.modified time').timeago();
 		});
-
-		var latestTpl = _.template( $('#plugins-latest-template').html(), {
-			modules: latestModules
-		});
-
-		var allTpl = _.template( $('#plugins-all-template').html(), {
-			modules: allModules
-		});
-
-		$('#loading').remove();
-		$('#plugins-latest').append( latestTpl );
-		$('#plugins-all').append( allTpl ).find('.search').show();
-
-		new List('plugins-all', {
-			valueNames: [
-				'name',
-				'desc',
-				'author',
-				'modified'
-			]
-		});
-
-		$('.modified time').timeago();
 	});
-});
+})( window, jQuery );
