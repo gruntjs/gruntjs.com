@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = function(grunt) {
-  // grunt.loadNpmTasks('grunt-contrib/node_modules/grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-contrib-clean');
 
   // Project configuration.
   grunt.initConfig({
@@ -20,19 +20,17 @@ module.exports = function(grunt) {
         boss: true,
         eqnull: true,
         node: true,
-        es5: true,
+        es5: true
       }
     },
+    clean: {
+      build: ['build/']
+    }
   });
 
   // Default task.
   grunt.registerTask('default', ['jshint', 'clean', 'docs']);
   grunt.registerTask('docs', ['docs-contrib', 'docs-api']);
-
-  grunt.registerTask('clean', 'Clean build directory.', function() {
-    // todo: use clean task
-    if (grunt.file.exists('build')) { grunt.file.delete('build'); }
-  });
 
   grunt.registerTask('docs-contrib', 'Generate contrib plugin docs.', function() {
     var sections = [];
