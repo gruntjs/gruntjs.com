@@ -8,6 +8,7 @@
   "dependencies": {
     "grunt": "0.4.0a",
     "grunt-contrib": "*",
-    "grunt-contrib-clean": "https://github.com/vladikoff/grunt-contrib-clean/tarball/dev-0.4.0"
+    "grunt-contrib-clean": "https://github.com/vladikoff/grunt-contrib-clean/tarball/dev-0.4.0",
+    "marked": "https://github.com/vladikoff/marked/tarball/master"
   }
 }
