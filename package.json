@@ -1,0 +1,24 @@
+{
+  "name": "gruntjs.com",
+  "description": "Grunt is a task-based command line build tool for JavaScript projects.",
+  "version": "0.1.0",
+  "author": "\"Cowboy\" Ben Alman (http://benalman.com/)",
+  "homepage": "http://gruntjs.com/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gruntjs/gruntjs.com.git"
+  },
+  "bugs": {
+    "url" : "http://github.com/gruntjs/gruntjs.com/issues"
+  },
+  "private": true,
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://github.com/gruntjs/gruntjs.com/blob/master/LICENSE-MIT"
+    }
+  ],
+  "devDependencies": {
+    "grunt": "~0.3.15"
+  }
+}
