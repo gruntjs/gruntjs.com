@@ -6,6 +6,9 @@
     <title>Grunt Documentation</title>
 </head>
 <body>
+    <% if (typeof(sidebar) != "undefined") { %>
+        <%= sidebar %>
+    <% } %>
     <%= content %>
 </body>
 </html>
