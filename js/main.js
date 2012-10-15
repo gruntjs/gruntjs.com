@@ -72,6 +72,11 @@
 	$(function() {
 
 		fetchModuleList( 'gruntplugin', function( modules ) {
+			// Only show plugins created after the specified date
+			modules = _.filter( modules, function( el ) {
+				return Date.parse( el.time.created ) > new Date('1800-01-01');
+			});
+
 			var latestModules = _.sortBy( modules, function( el ) {
 				return -Date.parse( el.time.created );
 			}).splice(0, 5);
