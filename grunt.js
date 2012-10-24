@@ -4,9 +4,9 @@ module.exports = function(grunt) {
   grunt.initConfig({
     concat: {
       'dist/main.js' : [
-        'js/vendor/jquery-1.8.1.js',
+        'js/vendor/jquery.js',
         'js/vendor/jquery-ajax-localstorage-cache.js',
-        'js/vendor/lodash-0.6.1.js',
+        'js/vendor/lodash.js',
         'js/vendor/jquery.timeago.js',
         'js/vendor/list.min.js',
         'js/main.js'
