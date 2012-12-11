@@ -23,7 +23,7 @@ module.exports = function(grunt) {
     uglify: {
       main: {
         dest: 'dist/main.js',
-        src: '<%= concat.main.dest %>'
+        src: 'dist/main.js'
       }
     },
   });
