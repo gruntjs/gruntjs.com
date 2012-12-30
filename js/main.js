@@ -16,18 +16,13 @@
 		}
 	};
 
-	$.ajaxSetup({
-		type: 'GET',
-		// Caches everything in localStorage ftw!
-		localCache: true,
-		cacheTTL: 24 * 7
-	});
 
 	function fetchModuleList(cb ) {
 		var url = 'http://grunt-plugin-list.herokuapp.com/';
 
 		$.ajax({
 			url: url,
+			dataType: 'json',
 			cacheTTL: 24,
 			success: function( data ) {
 				cb(data);

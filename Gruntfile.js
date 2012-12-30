@@ -12,7 +12,6 @@ module.exports = function(grunt) {
         dest: 'dist/main.js',
         src: [
           'js/vendor/jquery.js',
-          'js/vendor/jquery-ajax-localstorage-cache.js',
           'js/vendor/lodash.js',
           'js/vendor/jquery.timeago.js',
           'js/vendor/list.min.js',
