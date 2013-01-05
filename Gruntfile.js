@@ -2,9 +2,10 @@
 
 module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-contrib-jshint');
 
   // Load local tasks
-  grunt.loadTasks('tasks');
+  grunt.loadTasks('tasks'); // getWiki, docs tasks
 
   // Project configuration.
   grunt.initConfig({
@@ -27,13 +28,15 @@ module.exports = function(grunt) {
       }
     },
     clean: {
-      build: ['build/']
+      build: ['build/'],
+      tmp: ['tmp/']
     }
   });
 
 
   // Default task.
   grunt.registerTask('default', ['jshint', 'clean', 'docs']);
+  grunt.registerTask('server', ['serve']);
   //grunt.registerTask('docs', ['docs-contrib', 'docs-api', 'docs-index']);
 
 

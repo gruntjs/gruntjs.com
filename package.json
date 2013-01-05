@@ -6,9 +6,11 @@
   },
   "private": true,
   "dependencies": {
-    "grunt": "0.4.0a",
-    "grunt-contrib": "*",
-    "grunt-contrib-clean": "https://github.com/vladikoff/grunt-contrib-clean/tarball/dev-0.4.0",
-    "marked": "https://github.com/vladikoff/marked/tarball/master"
+    "grunt": "0.4.0rc4",
+    "express": "3.0.5",
+    "grunt-contrib": "0.3.0",
+    "grunt-contrib-clean": "0.4.0a",
+    "grunt-contrib-jshint": "0.1.0",
+    "marked": "https://github.com/chjj/marked/tarball/master"
   }
 }
