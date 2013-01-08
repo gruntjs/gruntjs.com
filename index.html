@@ -79,7 +79,7 @@
 			<tbody class="list">
 				<% _.each( modules, function( el ) { %>
 					<% var name = el.name.replace('grunt-', ''); %>
-					<% var keywords = _.last( _.values( el.versions ) ).keywords %>
+					<% var keywords = el.keywords %>
 					<tr>
 						<td class="name"><a href="https://npmjs.org/package/<%- el.name %>"><%- name %></a></td>
 						<td class="desc"><%- el.description %><div class="hidden"><%- keywords %></div></td>
