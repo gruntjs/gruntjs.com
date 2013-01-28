@@ -2,14 +2,14 @@
  * grunt api docs
  * http://gruntjs.com/
  *
- * Copyright (c) 2012 grunt contributors
+ * Copyright (c) 2013 grunt contributors
  * Licensed under the MIT license.
  */
 
-var sys = require('sys');
-var Path = require('path');
-var fs = require('fs');
-var exec = require('child_process').exec;
+var sys = require('sys'),
+    Path = require('path'),
+    fs = require('fs'),
+    exec = require('child_process').exec;
 
 module.exports = function (grunt) {
   'use strict';
@@ -69,11 +69,11 @@ module.exports = function (grunt) {
       generateAPI();
 
       // Create contrib index
-      grunt.file.copy('tmpl/contrib-index.md', 'build/contrib/index.html', {
+      grunt.file.copy('src/tmpl/contrib-index.md', 'build/contrib/index.html', {
         process:function (src) {
-          var layout = grunt.file.read('tmpl/layout.tmpl');
+          var layout = grunt.file.read('src/tmpl/layout.tmpl');
 
-          var processed = marked(grunt.template.process(src, {data:{sections:sections}}));
+          var processed = marked(grunt.template.process(src, {data:{sections: {}}}));
 
           return grunt.template.process(layout, {data:{content:processed}});
         }
@@ -115,7 +115,8 @@ module.exports = function (grunt) {
 
           grunt.file.copy(src, dest, {
             process:function (src) {
-              return marked(wikiAnchors(src));
+              //return marked(wikiAnchors(src));
+              return marked(src);
             }
           });
         });
@@ -147,7 +148,8 @@ module.exports = function (grunt) {
 
           grunt.file.copy(src, dest, {
             process:function (src) {
-              return marked(wikiAnchors(src));
+              //return marked(wikiAnchors(src));
+              return marked(src);
             }
           });
         });

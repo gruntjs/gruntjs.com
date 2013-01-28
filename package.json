@@ -6,11 +6,14 @@
   },
   "private": true,
   "dependencies": {
-    "grunt": "0.4.0rc4",
+    "grunt": "0.4.0rc7",
     "express": "3.0.5",
     "grunt-contrib": "0.3.0",
-    "grunt-contrib-clean": "0.4.0a",
+    "grunt-contrib-clean": "0.4.0rc6",
     "grunt-contrib-jshint": "0.1.0",
+    "grunt-contrib-less": "https://github.com/gruntjs/grunt-contrib-less/tarball/master",
+    "grunt-contrib-watch": "https://github.com/gruntjs/grunt-contrib-watch/tarball/master",
+    "grunt-contrib-copy": "https://github.com/gruntjs/grunt-contrib-copy/tarball/master",
     "marked": "https://github.com/chjj/marked/tarball/master"
   }
 }

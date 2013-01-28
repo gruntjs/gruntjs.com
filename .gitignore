@@ -1,4 +1,4 @@
 node_modules
-/build
-/tmp
+build
+tmp
 .idea
