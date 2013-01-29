@@ -6,10 +6,10 @@
  * Licensed under the MIT license.
  */
 
-var sys = require('sys'),
-    Path = require('path'),
-    fs = require('fs'),
-    exec = require('child_process').exec;
+var Path = require('path'),
+  fs = require('fs'),
+  exec = require('child_process').exec,
+  jade = require('jade');
 
 module.exports = function (grunt) {
   'use strict';
@@ -29,6 +29,7 @@ module.exports = function (grunt) {
         grunt.log.warn('Warning: Could not clone the wiki!');
       }
 
+      // check if grunt md exists
       fs.exists('tmp/wiki/grunt.md', function (exists) {
         if (exists) {
           // confirm the wiki exists, if so generate the docs
@@ -63,22 +64,13 @@ module.exports = function (grunt) {
 
       // grunt guides - wiki articles that are not part of the grunt api
       generateGuides();
+
       // docs for core grunt contrib plugins
-      generateContrib();
+      //generateContrib(); // TODO: Coming soon..
+
       // grunt api docs - wiki articles that start with 'grunt.*'
       generateAPI();
-
-      // Create contrib index
-      grunt.file.copy('src/tmpl/contrib-index.md', 'build/contrib/index.html', {
-        process:function (src) {
-          var layout = grunt.file.read('src/tmpl/layout.tmpl');
-
-          var processed = marked(grunt.template.process(src, {data:{sections: {}}}));
-
-          return grunt.template.process(layout, {data:{content:processed}});
-        }
-      });
-      grunt.log.ok('Created ' + names.length + ' files.');
+      grunt.log.ok('Created files.');
       done(true);
 
 
@@ -95,28 +87,41 @@ module.exports = function (grunt) {
         grunt.log.ok('Generating Guides...');
 
         // API Docs
-        var sections = [];
-
-        var base = 'tmp/wiki/';
-        var names = grunt.file.expand({cwd:base}, ['*', '!grunt*.md', '!*.js']);
+        var sections = [],
+          base = 'tmp/wiki/',
+          names = grunt.file.expand({cwd:base}, ['*', '!grunt*.md', '!*.js']);
 
         // Generate Sections
         names.forEach(function (name) {
-          var section = {name:name};
+          var section = {
+            name:name.replace('-', ' ').replace('.md', ''),
+            url:name.replace('.md', '').toLowerCase()
+          };
           sections.push(section);
         });
 
         names.forEach(function (name) {
 
-          var title = name.replace('.md', '');
-          var section = {name:name};
-          var src = base + name;
-          var dest = 'build/docs/' + title + '.html';
+          var title = name.replace('-', ' ').replace('.md', ''),
+            src = base + name,
+            dest = 'build/docs/' + name.replace('.md', '').toLowerCase() + '.html';
 
           grunt.file.copy(src, dest, {
             process:function (src) {
-              //return marked(wikiAnchors(src));
-              return marked(src);
+
+              try {
+                var file = 'src/tmpl/docs.jade',
+                  templateData = {
+                    page:'docs',
+                    title:title,
+                    content:marked(src),
+                    sections:sections
+                  };
+                return jade.compile(grunt.file.read(file), {filename:file})(templateData);
+              } catch (e) {
+                grunt.log.error(e);
+                grunt.fail.warn('Jade failed to compile.');
+              }
             }
           });
         });
@@ -138,18 +143,40 @@ module.exports = function (grunt) {
           return name.substring(0, name.length - 3);
         });
 
+
+        // Generate Sections
+        names.forEach(function (name) {
+          var section = {
+            name:name.replace('.md', ''),
+            url:name.replace('grunt.', '').replace('.md', '').toLowerCase()
+          };
+          sections.push(section);
+        });
+
+        // the default api page is special
+        names.push('grunt');
+
         names.forEach(function (name) {
           var title = name.replace('grunt.', ''),
             section = {name:name},
             src = base + name + '.md',
             dest = 'build/api/' + title + '.html';
 
-          sections.push(section);
-
           grunt.file.copy(src, dest, {
             process:function (src) {
-              //return marked(wikiAnchors(src));
-              return marked(src);
+              try {
+                var file = 'src/tmpl/docs.jade',
+                  templateData = {
+                    page:'api',
+                    title:title,
+                    content:marked(src),
+                    sections:sections
+                  };
+                return jade.compile(grunt.file.read(file), {filename:file})(templateData);
+              } catch (e) {
+                grunt.log.error(e);
+                grunt.fail.warn('Jade failed to compile.');
+              }
             }
           });
         });

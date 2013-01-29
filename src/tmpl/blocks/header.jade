@@ -1,0 +1,22 @@
+.navbar.navbar-inverse
+  .navbar-inner
+    .container
+      a.btn.btn-navbar(data-toggle='collapse', data-target='.nav-collapse')
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      a.brand(href='/')
+        img(src='/img/grunt-logo-small.png', alt='Bocoup')
+      .nav-collapse.collapse
+        ul.nav
+          li
+            a(href='/docs') Getting Started
+          li
+            a(href='/plugins') Plugins
+          li
+            a(href='/docs') Documentation
+          li
+            a(href='/api') API
+        form.navbar-search.pull-right
+          input.search-query(type='text', placeholder='Search')
+  //.nav-collapse

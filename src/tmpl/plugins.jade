@@ -1,0 +1,89 @@
+extends layout
+
+block content
+  .container
+    .row-fluid
+      .span3
+        .well.sidebar-nav
+          .nav-header Plugins
+          form.navbar-search.pull-left
+            input.search-query(type='text', placeholder='Search Grunt Plugins')
+          .btn-group
+            button.btn All Plugins
+            button.btn Contrib Plugins
+          .btn-group
+            button.btn.btn-large Title
+              button.btn.btn-large.dropdown-toggle(data-toggle='dropdown')
+                span.caret
+              ul.dropdown-menu
+                li
+                  a(href='#') Date
+                li
+                  a(href='#') Stars
+                li
+                  a(href='#') Forks
+                li
+                  a(href='#') Author
+
+
+      .span9.page
+        .hero-unit
+          h1 The world of Grunt Plugins
+          section.main
+            #loading
+              p Loading plugins...
+              #plugins-all
+              p
+                small
+                  i Plugins must be published on NPM with the `gruntplugin` keyword.
+
+
+  script(src='/js/vendor/jquery.js')
+  script(src='/js/vendor/jquery.timeago.js')
+  script(src='/js/vendor/list.js')
+  script(src='/js/vendor/lodash.js')
+  script(src='/js/plugins.js')
+
+  script#plugins-latest-template(type='text/template')
+    |<h4>Latest plugins</h4>
+    |  <dl class="dl-horizontal">
+    |  <% _.each(modules, function (el) { %>
+    |  <% var name = el.name.replace('grunt-', ''); %>
+    |  <dt><a href="https://npmjs.org/package/<%- el.name %>"><%- name %></a></dt>
+    |  <dd><%- el.description %></dd>
+    |  <% }); %>
+    |  </dl>
+  script#plugins-all-template(type='text/template')
+    |<table class="table">
+    |<caption>
+    |<input style="display:none" class="search input-medium search-query" type="search" placeholder="Search in <%= modules.length %> plugins..." autofocus>
+    |</caption>
+    |<thead>
+    |<tr>
+    |<th class="sort" data-sort="name">Name</th>
+    |<th class="sort" data-sort="desc">Description</th>
+    |<th class="sort" data-sort="author">Author</th>
+    |<th class="sort" data-sort="modified">Last modified</th>
+    |</tr>
+    |</thead>
+    |<tbody class="list">
+    |<% _.each(modules, function (el) { %>
+    |<% var name = el.name.replace('grunt-', ''); %>
+    |<% var keywords = el.keywords %>
+    |<tr>
+    |<td class="name"><a href="https://npmjs.org/package/<%- el.name %>"><%- name %></a></td>
+    |<td class="desc"><%- el.description %><div class="hidden"><%- keywords %></div></td>
+    |<% if (el.author) { %>
+    |<% if (el.author.url) { %>
+    |<td class="author"><a href="<%- el.author.url %>"><%- el.author.name %></a></td>
+    |<% } else { %>
+    |<td class="author"><%- el.author.name %></td>
+    |<% } %>
+    |<% } else { %>
+    |<td class="author"></td>
+    |<% } %>
+    |<td class="modified"><time datetime="<%- el.time.modified %>"><%- el.time.modified %></time></td>
+    |</tr>
+    |<% }); %>
+    |</tbody>
+    |</table>

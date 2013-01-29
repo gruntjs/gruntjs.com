@@ -9,7 +9,7 @@
 // Base class and wrapper
 .navbar {
   overflow: visible;
-  margin-bottom: @baseLineHeight;
+  margin-bottom: 0;
 
   // Fix for IE7's bad z-indexing so dropdowns don't appear below content that follows the navbar
   *position: relative;
@@ -35,6 +35,8 @@
 // We then reset it for fixed navbars in the #gridSystem mixin
 .navbar .container {
   width: auto;
+  width: 940px;
+  position: relative;
 }
 
 // Override the default collapsed state
@@ -51,7 +53,7 @@
   display: block;
   // Vertically center the text given @navbarHeight
   padding: ((@navbarHeight - @baseLineHeight) / 2) 20px ((@navbarHeight - @baseLineHeight) / 2);
-  margin-left: -20px; // negative indent to left-align the text down the page
+  margin-left: 0px;
   font-size: 20px;
   font-weight: 200;
   color: @navbarBrandColor;
@@ -388,8 +390,7 @@
 .navbar-inverse {
 
   .navbar-inner {
-    #gradient > .vertical(@navbarInverseBackgroundHighlight, @navbarInverseBackground);
-    border-color: @navbarInverseBorder;
+    background: @navbarInverseBackground;
   }
 
   .brand,

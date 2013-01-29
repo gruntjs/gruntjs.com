@@ -6,6 +6,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-contrib-jade');
 
   // Load local tasks
   grunt.loadTasks('tasks'); // getWiki, docs tasks
@@ -44,6 +45,26 @@ module.exports = function(grunt) {
       less: {
         files: 'src/less/*.less',
         tasks: ['less:development']
+      },
+      tmpl: {
+        files: 'src/tmpl/**',
+        tasks: ['jade']
+      }
+    },
+    // compile page layouts
+    jade: {
+      compile: {
+        options: {
+          data: {
+            debug: false
+          }
+        },
+        files: {
+          "build/index.html": "src/tmpl/index.jade",
+          "build/plugins/index.html": "src/tmpl/plugins.jade",
+          "build/community.html": "src/tmpl/community.jade",
+          "build/news.html": "src/tmpl/news.jade"
+        }
       }
     },
     copy: {
@@ -60,12 +81,7 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt.registerTask('build', ['clean', 'copy', 'docs']);
-
-  // Default task.
+  grunt.registerTask('build', ['clean', 'copy', 'jade', 'docs']);
   grunt.registerTask('default', ['build', 'less:production']);
   grunt.registerTask('dev', ['build', 'less:development', 'watch']);
-  //grunt.registerTask('docs', ['docs-contrib', 'docs-api', 'docs-index']);
-
-
 };
