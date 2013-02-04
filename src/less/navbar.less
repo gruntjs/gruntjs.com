@@ -20,12 +20,7 @@
 // Gradient is applied to its own element because overflow visible is not honored by IE when filter is present
 .navbar-inner {
   min-height: @navbarHeight;
-  padding-left:  20px;
-  padding-right: 20px;
   #gradient > .vertical(@navbarBackgroundHighlight, @navbarBackground);
-  border: 1px solid @navbarBorder;
-  .border-radius(@baseBorderRadius);
-  .box-shadow(0 1px 4px rgba(0,0,0,.065));
 
   // Prevent floats from breaking the navbar
   .clearfix();
@@ -35,7 +30,7 @@
 // We then reset it for fixed navbars in the #gridSystem mixin
 .navbar .container {
   width: auto;
-  width: 940px;
+  width: 1100px;
   position: relative;
 }
 
@@ -254,7 +249,6 @@
 .navbar .nav > li > a:focus,
 .navbar .nav > li > a:hover {
   background-color: @navbarLinkBackgroundHover; // "transparent" is default to differentiate :hover from .active
-  color: @navbarLinkColorHover;
   text-decoration: none;
 }
 
@@ -396,9 +390,8 @@
   .brand,
   .nav > li > a {
     color: @navbarInverseLinkColor;
-    text-shadow: 0 -1px 0 rgba(0,0,0,.25);
+    text-shadow: 1px 1px 2px rgba(0,0,0,.25);
     &:hover {
-      color: @navbarInverseLinkColorHover;
     }
   }
 
@@ -413,7 +406,6 @@
   .nav > li > a:focus,
   .nav > li > a:hover {
     background-color: @navbarInverseLinkBackgroundHover;
-    color: @navbarInverseLinkColorHover;
   }
 
   .nav .active > a,
