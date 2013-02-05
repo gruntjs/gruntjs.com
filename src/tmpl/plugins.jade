@@ -54,36 +54,24 @@ block content
     |  <% }); %>
     |  </dl>
   script#plugins-all-template(type='text/template')
-    |<table class="table">
-    |<caption>
     |<input style="display:none" class="search input-medium search-query" type="search" placeholder="Search in <%= modules.length %> plugins..." autofocus>
-    |</caption>
-    |<thead>
-    |<tr>
-    |<th class="sort" data-sort="name">Name</th>
-    |<th class="sort" data-sort="desc">Description</th>
-    |<th class="sort" data-sort="author">Author</th>
-    |<th class="sort" data-sort="modified">Last modified</th>
-    |</tr>
-    |</thead>
-    |<tbody class="list">
     |<% _.each(modules, function (el) { %>
     |<% var name = el.name.replace('grunt-', ''); %>
     |<% var keywords = el.keywords %>
-    |<tr>
-    |<td class="name"><a href="https://npmjs.org/package/<%- el.name %>"><%- name %></a></td>
-    |<td class="desc"><%- el.description %><div class="hidden"><%- keywords %></div></td>
+    |<a class="plugin" href="https://npmjs.org/package/<%- el.name %>"> 
+    |<div class="name-description">
+    |<span class="name"><%- name %></span>
     |<% if (el.author) { %>
-    |<% if (el.author.url) { %>
-    |<td class="author"><a href="<%- el.author.url %>"><%- el.author.name %></a></td>
+    |<span class="author"> by <%- el.author.name %></span>
     |<% } else { %>
-    |<td class="author"><%- el.author.name %></td>
+    |<span class="author"></span>
     |<% } %>
-    |<% } else { %>
-    |<td class="author"></td>
-    |<% } %>
-    |<td class="modified"><time datetime="<%- el.time.modified %>"><%- el.time.modified %></time></td>
-    |</tr>
+    |<div class="desc"><%- el.description %></div>
+    |</div>
+    |<div class="summary">
+    |<div class="modified"><time datetime="<%- el.time.modified %>"><%- el.time.modified %></time></div>
+    |<span class="stars"><i class="icon-star"></i>Stars<span>1000</span></span>
+    |<span class="forks"><i class="icon-star"></i>Forks<span>1000</span></span>
+    |</div>
+    |</a>
     |<% }); %>
-    |</tbody>
-    |</table>

@@ -5,7 +5,7 @@ body {
 
 .navbar .nav {
   margin: 0 10px 0 270px;
-  font-size: 17px;
+  font-size: 18px;
   font-weight: 200;
   letter-spacing: 1px;
 }
@@ -64,6 +64,7 @@ i {
   }
   .nav-list {
     padding: 0;
+    font-size: 16px;
     a {
       margin: 0;
       padding: 8px 15px 8px 35px;
@@ -84,6 +85,39 @@ i {
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
+}
+
+.plugin {
+	background: #f8e5c4;
+	display: block;
+	display: block;
+	margin: 15px 0;
+	border-radius: 5px;
+	padding: 10px 15px;
+	color: #6f5a40;
+	&:hover {
+		background: #f0debd;
+		color: #6f5a40;
+		text-decoration: none;
+	}
+	.name-description {
+		width: 59%;
+		display: inline-block;
+		.name {
+			font-size: 25px;
+			font-weight: 400;
+		}
+	}
+	.summary {
+		width: 35%;
+		float: right;
+		span {
+			display: inline-block;
+		}
+		.stars {
+			margin-right: 8px;
+		}
+	}
 }
 
 .grunt-footer {
