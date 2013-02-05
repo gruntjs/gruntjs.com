@@ -4,28 +4,32 @@ body {
 }
 
 .navbar .nav {
- 	margin: 0 10px 0 270px;
- 	font-size: 17px;
-	font-weight: 200;
-	letter-spacing: 1px;
+  margin: 0 10px 0 270px;
+  font-size: 17px;
+  font-weight: 200;
+  letter-spacing: 1px;
+}
+
+i {
+  margin-right: 5px;
 }
 
 .content {
   min-height: 600px;
   background: #f5f6f6;
-  .page .hero-unit{
+  .page .hero-unit {
     min-height: 1000px;
     max-width: 1088px;
   }
 }
 
 .container, .navbar-static-top .container, .navbar-fixed-top .container, .navbar-fixed-bottom .container {
-	width: 1100px;
+  width: 1100px;
 }
 
 .row-fluid .span9 {
-	margin-left: 0;
-	width: 76.599%;
+  margin-left: 0;
+  width: 76.599%;
 }
 
 .brand {
@@ -34,43 +38,41 @@ body {
 }
 
 .hero-unit {
-	padding: 40px;
-	h1 {
-		font-size: 28px;
-		margin: 0;
-	}
-	h2 {
-		font-size: 24px;
-	}
+  padding: 40px;
+  h1 {
+    font-size: 28px;
+    margin: 0;
+  }
+  h2 {
+    font-size: 24px;
+  }
 }
-
-
 
 .sidebar-nav {
   margin-top: 210px;
   padding: 0;
   .nav-header {
-		background: #e48632;
-		color: white;
-		margin: 0;
-		text-shadow: none;
-		text-transform: none;
-		font-size: 17px;
-		font-weight: 200;
-		letter-spacing: 1px;
-		padding: 12px 15px 12px 35px;
-	}
-	.nav-list {
-		padding: 0;
-		a {
-			margin: 0;
-			padding: 8px 15px 8px 35px;
-			color: #6f5a40; 
-			&:hover {
-				background: white;
-			}
-		}
-	}
+    background: #e48632;
+    color: white;
+    margin: 0;
+    text-shadow: none;
+    text-transform: none;
+    font-size: 17px;
+    font-weight: 200;
+    letter-spacing: 1px;
+    padding: 12px 15px 12px 35px;
+  }
+  .nav-list {
+    padding: 0;
+    a {
+      margin: 0;
+      padding: 8px 15px 8px 35px;
+      color: #6f5a40;
+      &:hover {
+        background: white;
+      }
+    }
+  }
 }
 
 .info-box {
@@ -122,11 +124,8 @@ body {
 
 @font-face {
   font-family: 'icomoon';
-  src:url('../fonts/icomoon.eot');
-  src:url('../fonts/icomoon.eot?#iefix') format('embedded-opentype'),
-  url('../fonts/icomoon.svg#icomoon') format('svg'),
-  url('../fonts/icomoon.woff') format('woff'),
-  url('../fonts/icomoon.ttf') format('truetype');
+  src: url('../fonts/icomoon.eot');
+  src: url('../fonts/icomoon.eot?#iefix') format('embedded-opentype'), url('../fonts/icomoon.svg#icomoon') format('svg'), url('../fonts/icomoon.woff') format('woff'), url('../fonts/icomoon.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
@@ -147,7 +146,7 @@ Instead of a list of all class selectors,
 you can use the generic selector below, but it's slower:
 [class*="icon-"]:before {
 */
-.icon-star:before, .icon-search:before {
+.icon-star:before, .icon-search:before, .icon-power-cord:before, .icon-document-alt-stroke:before, .icon-cog:before, .icon-arrow-right:before {
   font-family: 'icomoon';
   speak: none;
   font-style: normal;
@@ -155,9 +154,28 @@ you can use the generic selector below, but it's slower:
   line-height: 1;
   -webkit-font-smoothing: antialiased;
 }
+
 .icon-star:before {
   content: "\e000";
 }
+
 .icon-search:before {
   content: "\e001";
 }
+
+.icon-power-cord:before {
+  content: "\e002";
+}
+
+.icon-document-alt-stroke:before {
+  content: "\e003";
+}
+
+.icon-cog:before {
+  content: "\e004";
+}
+
+.icon-arrow-right:before {
+  content: "\e005";
+}
+

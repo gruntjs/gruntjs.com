@@ -87,18 +87,12 @@ module.exports = function (grunt) {
         grunt.log.ok('Generating Guides...');
 
         // API Docs
-        var sections = [],
+        var sidebars = [],
           base = 'tmp/wiki/',
           names = grunt.file.expand({cwd:base}, ['*', '!grunt*.md', '!*.js']);
 
-        // Generate Sections
-        names.forEach(function (name) {
-          var section = {
-            name:name.replace('-', ' ').replace('.md', ''),
-            url:name.replace('.md', '').toLowerCase()
-          };
-          sections.push(section);
-        });
+          sidebars[0] = getSidebarSection('## Documentation', '', 'icon-document-alt-stroke');
+          sidebars[1] = getSidebarSection('### Advanced');
 
         names.forEach(function (name) {
 
@@ -115,7 +109,7 @@ module.exports = function (grunt) {
                     page:'docs',
                     title:title,
                     content:marked(src),
-                    sections:sections
+                    sidebars: sidebars
                   };
                 return jade.compile(grunt.file.read(file), {filename:file})(templateData);
               } catch (e) {
@@ -135,7 +129,7 @@ module.exports = function (grunt) {
       function generateAPI() {
         grunt.log.ok('Generating API Docs...');
         // API Docs
-        var sections = [],
+        var sidebars = [],
           base = 'tmp/wiki/',
           names = grunt.file.expand({cwd:base}, ['grunt.*.md', '!*utils*']);
 
@@ -143,18 +137,11 @@ module.exports = function (grunt) {
           return name.substring(0, name.length - 3);
         });
 
-
-        // Generate Sections
-        names.forEach(function (name) {
-          var section = {
-            name:name.replace('.md', ''),
-            url:name.replace('grunt.', '').replace('.md', '').toLowerCase()
-          };
-          sections.push(section);
-        });
-
         // the default api page is special
         names.push('grunt');
+
+        // get docs sidebars
+        sidebars[0] = getSidebarSection('## API', 'grunt.', 'icon-cog');
 
         names.forEach(function (name) {
           var title = name.replace('grunt.', ''),
@@ -170,8 +157,9 @@ module.exports = function (grunt) {
                     page:'api',
                     title:title,
                     content:marked(src),
-                    sections:sections
+                    sidebars: sidebars
                   };
+
                 return jade.compile(grunt.file.read(file), {filename:file})(templateData);
               } catch (e) {
                 grunt.log.error(e);
@@ -185,60 +173,44 @@ module.exports = function (grunt) {
 
 
       /**
-       * Generates documentation for all grunt-contrib modules
+       * Get sidebar list for section from Home.md
        */
-      function generateContrib() {
-        grunt.log.ok('Generating Contrib Docs...');
-        var sections = [];
+      function getSidebarSection(section, stripFromURL, iconClass) {
 
-        var base = 'node_modules/grunt-contrib/node_modules/';
-        var names = grunt.file.expand({cwd:base}, 'grunt-contrib-*');
-        names = names.map(function (name) {
-          return name.replace(/.*-([^\-]+)\//, '$1');
-        });
+        var rMode = false,
+          l,
+          items = [];
 
-        names.forEach(function (name) {
-          var title = name.replace('grunt-contrib-', '');
-          var section = {name:title};
-          sections.push(section);
+        // read the Home.md of the wiki, extract the section links
+        var lines = fs.readFileSync('tmp/wiki/Home.md').toString().split('\n');
+        for(l in lines) {
+          var line = lines[l];
 
-          var src = base + name + '/README.md';
-          var dest = 'build/contrib/' + title + '.html';
-          grunt.file.copy(src, dest, {
-            process:function (src) {
-              section.description = src.split('\n')[1].replace(/^>\s+/, '');
-              return marked(wikiAnchors(src));
-            }
-          });
-        });
+          // choose a section of the file
+          if (line === section) { rMode = true }
+          // end of section
+          else if (line.substring(0,2) === '##') { rMode = false }
 
+          if (rMode && line.length > 0) {
+            var item = line.replace(/#/g,'').replace(']]', '').replace('* [[', ''),
+              url = item;
 
-        /**
-         * Create links from wiki anchors
-         */
-        function wikiAnchors(text, config) {
-          var bu = '';
-          text = text.replace(/\[\[([^|\]]+)\|([^\]]+)\]\]/g, function (wholeMatch, m1, m2) {
-            var ext = /\/\//.test(m2),
-              path = ext ? m2 : Path.join(bu, m2.split(' ').join('-'));
-
-            return "[" + m1 + "](/" + path + ")";
-
-          });
-
-          text = text.replace(/\[\[([^\]]+)\]\]/g, function (wholeMatch, m1) {
-            var path = Path.join(bu, m1.split(' ').join('-'));
-
-            if ((/^grunt/).test(path)) {
-              path = path.replace('grunt.', 'api/');
+            if (stripFromURL) url = item.replace(stripFromURL, '');
+            if (item[0] === " ") {
+              // TODO: clean this up...
+              if (iconClass) {
+                items.push({name: item.substring(1,item.length), icon: iconClass});
+              } else {
+                items.push({name: item.substring(1,item.length)});
+              }
             } else {
-              path = 'docs/' + path;
+              items.push({name: item, url: url.replace(/ /g,'-').toLowerCase()});
             }
-            return "[" + m1 + "](/" + path + ")";
-          });
-          return text;
+          }
         }
+        return items;
       }
+
     }
   });
 };

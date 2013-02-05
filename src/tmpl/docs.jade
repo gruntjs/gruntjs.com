@@ -5,12 +5,19 @@ block content
     .row-fluid
       .span3
         .well.sidebar-nav
-          h2.nav-header Documentation
-          ul.nav.nav-list
-            each section in sections
-              li
-                a(href='/' + page + '/' + section.url)= section.name
+          if locals.sidebars
+            each sidebar in sidebars
+              ul.nav.nav-list
+                each link in sidebar
+                  if link.url
+                    li
+                      a(href='/' + page + '/' + link.url)= link.name
+                  else
+                    li.nav-header
+                      if link.icon
+                        i(class=link.icon)
+                      span= link.name
       .span9.page
-        .hero-unit
-          h1= title
-          p!= content
+          .hero-unit
+            h1= title
+            p!= content
