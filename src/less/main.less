@@ -78,12 +78,24 @@ i {
     font-weight: 200;
     letter-spacing: 1px;
     padding: 12px 15px 12px 15px;
+    position: relative;
+		z-index: 2;
   }
   .nav-list {
     padding: 0;
     font-size: 16px;
     position: relative;
     z-index: 2;
+    li.active {
+    	background: white;
+      border: 1px solid #CCC;
+      border-right: none;
+			padding: 9px 14px 9px 34px;
+      a {
+      	background: none;
+      	padding: 9px 14px 9px 34px;
+      }
+    }
     &:last-child {
     	margin-top: 20px;
     	li:first-child {
@@ -97,13 +109,13 @@ i {
     }
     a {
       margin: 0;
-      padding: 8px 15px 8px 35px;
+      padding: 10px 15px 10px 35px;
       color: #6f5a40;
       &:hover {
         background: white;
         border: 1px solid #CCC;
         border-right: none;
-				padding: 7px 14px 7px 34px;
+				padding: 9px 14px 9px 34px;
       }
     }
   }
@@ -123,6 +135,10 @@ i {
 .search-options {
 	background: white;
 	padding: 20px;
+	border-bottom: 1px solid #CCC;
+	border-left: 1px solid #CCC;
+	position: relative;
+	z-index: 2;
 	.navbar-search {
 		margin: 0 0 20px;
 		input{
