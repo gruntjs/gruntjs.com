@@ -12,6 +12,9 @@ body {
 
 i {
   margin-right: 5px;
+  display: inline-block;
+	vertical-align: top;
+	margin-top: 1px;
 }
 
 .content {
@@ -60,7 +63,7 @@ i {
     font-size: 17px;
     font-weight: 200;
     letter-spacing: 1px;
-    padding: 12px 15px 12px 35px;
+    padding: 12px 15px 12px 15px;
   }
   .nav-list {
     padding: 0;
@@ -85,6 +88,34 @@ i {
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
+}
+
+.search-options {
+	background: white;
+	padding: 20px;
+	.navbar-search {
+		margin: 0 0 20px;
+		input{
+			width: 100%;
+		}
+	}
+	.btn-group {
+		margin-bottom: 20px;
+		.btn {
+			padding: 6px 12px;
+			color: #453015;
+			border: 1px solid #c0b297;
+			background-image: linear-gradient(bottom, rgb(204,190,163) 0%, rgb(231,214,183) 100%);
+			background-image: -o-linear-gradient(bottom, rgb(204,190,163) 0%, rgb(231,214,183) 100%);
+			background-image: -moz-linear-gradient(bottom, rgb(204,190,163) 0%, rgb(231,214,183) 100%);
+			background-image: -webkit-linear-gradient(bottom, rgb(204,190,163) 0%, rgb(231,214,183) 100%);
+			background-image: -ms-linear-gradient(bottom, rgb(204,190,163) 0%, rgb(231,214,183) 100%);
+			background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, rgb(204,190,163)), color-stop(1, rgb(231,214,183)));
+			&:hover {
+    background-position: 0 0;
+			}
+		}
+	}
 }
 
 .plugin {
@@ -212,4 +243,3 @@ you can use the generic selector below, but it's slower:
 .icon-arrow-right:before {
   content: "\e005";
 }
-
