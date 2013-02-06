@@ -33,6 +33,10 @@ i {
 .row-fluid .span9 {
   margin-left: 0;
   width: 76.599%;
+  border-left: 1px solid #CCC;
+  border-right: 1px solid #CCC;
+	position: relative;
+	left: -1px;
 }
 
 .brand {
@@ -49,6 +53,16 @@ i {
   h2 {
     font-size: 24px;
   }
+}
+
+.sidebar-nav .nav-list:last-child li:first-child {
+	background: #BEBEBE;
+	padding-left: 35px;
+}
+
+.sidebar-nav .nav-list:first-child li:first-child {
+	background: #e48632;
+	padding-left: 35px;
 }
 
 .sidebar-nav {
@@ -68,12 +82,28 @@ i {
   .nav-list {
     padding: 0;
     font-size: 16px;
+    position: relative;
+    z-index: 2;
+    &:last-child {
+    	margin-top: 20px;
+    	li:first-child {
+    		background: #BEBEBE;
+				padding-left: 35px;
+    	}
+    }
+    &:first-child li:first-child{
+			background: #e48632;
+			padding-left: 35px;
+    }
     a {
       margin: 0;
       padding: 8px 15px 8px 35px;
       color: #6f5a40;
       &:hover {
         background: white;
+        border: 1px solid #CCC;
+        border-right: none;
+				padding: 7px 14px 7px 34px;
       }
     }
   }
