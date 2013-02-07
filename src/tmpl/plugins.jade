@@ -60,7 +60,7 @@ block content
     |<% _.each(modules, function (el) { %>
     |<% var name = el.name.replace('grunt-', ''); %>
     |<% var keywords = el.keywords %>
-    |<a class="plugin" href="https://npmjs.org/package/<%- el.name %>"> 
+    |<a class="plugin list" href="https://npmjs.org/package/<%- el.name %>"> 
     |<div class="name-description">
     |<span class="name"><%- name %></span>
     |<% if (el.author) { %>
@@ -71,7 +71,7 @@ block content
     |<div class="desc"><%- el.description %></div>
     |</div>
     |<div class="summary">
-    |<div class="modified"><time datetime="<%- el.time.modified %>"><%- el.time.modified %></time></div>
+    |<div class="modified"><span class="last-modified">Last modified</span> <time datetime="<%- el.time.modified %>"><%- el.time.modified %></time></div>
     |<div class="stars"><i class="icon-star"></i><span>Stars</span>1000</div>
     |<div class="forks"><i class="icon-fork"></i><span>Forks</span>1000</div>
     |</div>
