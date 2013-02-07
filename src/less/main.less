@@ -310,13 +310,13 @@ Instead of a list of all class selectors,
 you can use the generic selector below, but it's slower:
 [class*="icon-"]:before {
 */
-.icon-star:before, .icon-search:before, .icon-power-cord:before, .icon-document-alt-stroke:before, .icon-cog:before, .icon-arrow-right:before {
+.icon-document-alt-stroke:before, .icon-power-cord:before, .icon-search:before, .icon-star:before, .icon-cog:before, .icon-fork:before, .icon-arrow-right:before {
   font-family: 'icomoon';
-  speak: none;
-  font-style: normal;
-  font-weight: normal;
-  line-height: 1;
-  -webkit-font-smoothing: antialiased;
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
 }
 
 .icon-star:before {
@@ -339,9 +339,14 @@ you can use the generic selector below, but it's slower:
   content: "\e004";
 }
 
-.icon-arrow-right:before {
+.icon-fork:before {
   content: "\e005";
 }
+
+.icon-arrow-right:before {
+  content: "\e006";
+}
+
 
 code, pre {
 	font-size: 13px;
