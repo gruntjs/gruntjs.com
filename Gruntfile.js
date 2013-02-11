@@ -49,6 +49,10 @@ module.exports = function(grunt) {
       tmpl: {
         files: 'src/tmpl/**',
         tasks: ['jade']
+      },
+      js: {
+        files: 'src/js/**',
+        tasks: ['copy']
       }
     },
     // compile page layouts

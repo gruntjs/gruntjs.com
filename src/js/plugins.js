@@ -41,6 +41,12 @@
       });
 
       $('#plugins-all .modified time').timeago();
+
+      $(document).on('click','.dropdown ul a',function(){
+        var text = $(this).text();
+        $(this).closest('.dropdown').find('.choice').text(text);
+      });
+
     });
   });
 })(window, jQuery);

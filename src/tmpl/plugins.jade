@@ -15,9 +15,12 @@ block content
               button.btn All Plugins
               button.btn Contrib Plugins
             .btn-group.dropdown
-                button.btn.btn-large.dropdown-toggle(data-toggle='dropdown') Title
+                button.btn.btn-large.dropdown-toggle(data-toggle='dropdown')
+                  span.choice Title
                   span.caret
                 ul.dropdown-menu
+                  li
+                    a(href='#') Title
                   li
                     a(href='#') Date
                   li
@@ -43,6 +46,7 @@ block content
   script(src='/js/vendor/jquery.js')
   script(src='/js/vendor/jquery.timeago.js')
   script(src='/js/vendor/list.js')
+  script(src='/js/vendor/bootstrap-dropdown.js')
   script(src='/js/vendor/lodash.js')
   script(src='/js/plugins.js')
 
