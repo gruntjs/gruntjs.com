@@ -70,7 +70,7 @@ module.exports = function(grunt) {
           }
         },
         files: {
-          "build/plugins/index.html": "src/tmpl/plugins.jade"
+          "build/plugins.html": "src/tmpl/plugins.jade"
         }
       },
       community: {

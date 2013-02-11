@@ -52,10 +52,10 @@ module.exports = function (grunt) {
       // Set default marked options
       marked.setOptions({
         gfm:true,
+        anchors: true,
+        base: "/docs/",
         pedantic:false,
         sanitize:true,
-        // convert .md links to .html
-        convertLinks:true,
         // callback for code highlighter
         highlight:function (code) {
           return code;
@@ -110,7 +110,7 @@ module.exports = function (grunt) {
                     page:'docs',
                     pageSegment: segment,
                     title:title,
-                    content:marked(src),
+                    content:marked(wikiAnchors(src)),
                     sidebars: sidebars
                   };
                 return jade.compile(grunt.file.read(file), {filename:file})(templateData);
@@ -157,7 +157,7 @@ module.exports = function (grunt) {
                     page:'api',
                     pageSegment: name,
                     title:name,
-                    content:marked(src),
+                    content:marked(wikiAnchors(src)),
                     sidebars: sidebars
                   };
 
@@ -214,4 +214,20 @@ module.exports = function (grunt) {
 
     }
   });
+
+  var wikiAnchors = function wikiAnchors(text) {
+    var bu = '';
+    text = text.replace(/\[\[([^|\]]+)\|([^\]]+)\]\]/g, function(wholeMatch, m1, m2) {
+      var ext = /\/\//.test(m2),
+        path = ext ? m2 : Path.join(bu, m2.split(' ').join('-'));
+      return "["+m1+"](" + path + ")";
+    });
+
+    text = text.replace(/\[\[([^\]]+)\]\]/g, function(wholeMatch, m1) {
+      return "["+m1+"](" + Path.join(bu, m1.split(' ').join('-')) + "/)";
+    });
+
+    return text;
+  }
+
 };
