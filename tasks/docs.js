@@ -9,7 +9,8 @@
 var Path = require('path'),
   fs = require('fs'),
   exec = require('child_process').exec,
-  jade = require('jade');
+  jade = require('jade'),
+  highlighter = require('highlight.js');
 
 module.exports = function (grunt) {
   'use strict';
@@ -58,7 +59,7 @@ module.exports = function (grunt) {
         sanitize:true,
         // callback for code highlighter
         highlight:function (code) {
-          return code;
+          return highlighter.highlight('javascript', code).value;
         }
       });
 
