@@ -57,9 +57,11 @@ block content
     |  </dl>
   script#plugins-all-template(type='text/template')
     |<input style="display:none" class="search input-medium search-query" type="search" placeholder="Search in <%= modules.length %> plugins..." autofocus>
+    |<ul>
     |<% _.each(modules, function (el) { %>
     |<% var name = el.name.replace('grunt-', ''); %>
     |<% var keywords = el.keywords %>
+    |<li>
     |<a class="plugin list" href="https://npmjs.org/package/<%- el.name %>"> 
     |<span class="name-description">
     |<span class="name"><%- name %></span>
@@ -76,4 +78,8 @@ block content
     |<span class="forks"><i class="icon-fork"></i><span>Forks</span>1000</span>
     |</span>
     |</a>
+    |</li>
     |<% }); %>
+    |</ul>
+
+
