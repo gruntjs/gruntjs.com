@@ -1,7 +1,7 @@
 extends layout
 
 block content
-  .container
+  .container(class=locals.pageSegment)
     .row-fluid
       .span3
         .well.sidebar-nav
@@ -11,7 +11,7 @@ block content
                 each link in sidebar
                   if link.url
                     li
-                      a(href='/' + page + '/' + link.url)= link.name
+                      a(href='/' + page + '/' + link.url, class=locals.pageSegment == link.url && 'active')= link.name
                   else
                     li.nav-header
                       if link.icon

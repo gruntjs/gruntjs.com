@@ -97,6 +97,7 @@ module.exports = function (grunt) {
         names.forEach(function (name) {
 
           var title = name.replace('-', ' ').replace('.md', ''),
+            segment = name.replace(/ /g,'-').replace('.md', '').toLowerCase(),
             src = base + name,
             dest = 'build/docs/' + name.replace('.md', '').toLowerCase() + '.html';
 
@@ -107,6 +108,7 @@ module.exports = function (grunt) {
                 var file = 'src/tmpl/docs.jade',
                   templateData = {
                     page:'docs',
+                    pageSegment: segment,
                     title:title,
                     content:marked(src),
                     sidebars: sidebars
@@ -141,13 +143,11 @@ module.exports = function (grunt) {
         names.push('grunt');
 
         // get docs sidebars
-        sidebars[0] = getSidebarSection('## API', 'grunt.', 'icon-cog');
+        sidebars[0] = getSidebarSection('## API', '', 'icon-cog');
 
         names.forEach(function (name) {
-          var title = name.replace('grunt.', ''),
-            section = {name:name},
-            src = base + name + '.md',
-            dest = 'build/api/' + title + '.html';
+          var src = base + name + '.md',
+            dest = 'build/api/' + name + '.html';
 
           grunt.file.copy(src, dest, {
             process:function (src) {
@@ -155,7 +155,8 @@ module.exports = function (grunt) {
                 var file = 'src/tmpl/docs.jade',
                   templateData = {
                     page:'api',
-                    title:title,
+                    pageSegment: name,
+                    title:name,
                     content:marked(src),
                     sidebars: sidebars
                   };

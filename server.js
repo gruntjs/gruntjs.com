@@ -30,7 +30,7 @@ app.get("/api/*", function(req, res) {
 app.get("/docs/*", function(req, res) {
   req.url = req.url.toLowerCase();
 
-  var filePath = req.url == "/docs/" ? 'build/docs/home.html' : 'build' + req.url + '.html';
+  var filePath = req.url == "/docs/" ? 'build/docs/getting-started.html' : 'build' + req.url + '.html';
   if(req.url === "/") {
     filePath = 'build/index.html';
   }
@@ -44,8 +44,10 @@ app.get("/docs/*", function(req, res) {
 app.get("/community", function(req, res) { res.sendfile('build/community.html'); });
 // news route
 app.get("/news", function(req, res) { res.sendfile('build/news.html'); });
+// redirect the getting started page to docs
+app.get("/getting-started", function(req, res) { res.redirect('/docs/getting-started') });
 
-
+// express configuration
 app.configure(function(){
   app.use(express.methodOverride());
   app.use(express.bodyParser());
@@ -57,4 +59,5 @@ app.configure(function(){
   app.use(app.router);
 });
 
+// server port
 app.listen(5678);

@@ -22,7 +22,7 @@ module.exports = function(grunt) {
     less: {
       development: {
         options: {
-          paths: ["build/css"]
+          paths: ["src/less"]
         },
         files: {
           "build/css/main.css": "src/less/main.less",
@@ -31,7 +31,7 @@ module.exports = function(grunt) {
       },
       production: {
         options: {
-          paths: ["build/css"],
+          paths: ["src/less"],
           yuicompress: true
         },
         files: {
@@ -53,16 +53,43 @@ module.exports = function(grunt) {
     },
     // compile page layouts
     jade: {
-      compile: {
+      index: {
         options: {
           data: {
-            debug: false
+            page: 'index'
           }
         },
         files: {
-          "build/index.html": "src/tmpl/index.jade",
-          "build/plugins/index.html": "src/tmpl/plugins.jade",
-          "build/community.html": "src/tmpl/community.jade",
+          "build/index.html": "src/tmpl/index.jade"
+        }
+      },
+      plugins: {
+        options: {
+          data: {
+            page: 'plugins'
+          }
+        },
+        files: {
+          "build/plugins/index.html": "src/tmpl/plugins.jade"
+        }
+      },
+      community: {
+        options: {
+          data: {
+            page: 'community'
+          }
+        },
+        files: {
+          "build/community.html": "src/tmpl/community.jade"
+        }
+      },
+      news: {
+        options: {
+          data: {
+            page: 'news'
+          }
+        },
+        files: {
           "build/news.html": "src/tmpl/news.jade"
         }
       }

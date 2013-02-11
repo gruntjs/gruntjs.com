@@ -13,18 +13,18 @@
             a(href='/docs')
               i.icon-arrow-right
               span Getting Started
-          li
+          li(class=(page == 'plugins') && 'active')
             a(href='/plugins')
               i.icon-power-cord
               span Plugins
-          li
+          li(class=(page == 'docs') && 'active')
             a(href='/docs')
               i.icon-document-alt-stroke
               span Documentation
-          li
+          li(class=(page == 'api') && 'active')
             a(href='/api')
               i.icon-cog
               span API
         form.navbar-search.pull-right
           input.search-query(type='text', placeholder='Search')
-  //.nav-collapse
+      //.nav-collapse

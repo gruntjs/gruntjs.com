@@ -36,7 +36,8 @@
           'desc',
           'author',
           'modified'
-        ]
+        ],
+        page: 9999
       });
 
       $('#plugins-all .modified time').timeago();
