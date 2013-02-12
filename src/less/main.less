@@ -15,6 +15,26 @@ body {
 
 h1, h2, h3 {
   font-family: 'Lato', sans-serif;
+  position: relative;
+}
+
+h1:hover .anchor, h2:hover .anchor, h3:hover .anchor{
+	opacity: 1;
+}
+
+a.anchor {
+	opacity: 0;
+	color: #6f5a40;
+	position: absolute;
+	width: 24px;
+	left: -28px;
+	font-size: 20px;
+	padding-right: 10px;
+	top: 1px;
+	&:hover {
+		opacity: 1;
+		text-decoration: none;
+	}
 }
 
 .navbar .nav {
@@ -365,9 +385,6 @@ pre {
 	  padding: 1em;
 	}
 }
-
-
-
 
 /* Nav Bars */
 .navbar {
