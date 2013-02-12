@@ -25,8 +25,7 @@ module.exports = function(grunt) {
           paths: ["src/less"]
         },
         files: {
-          "build/css/main.css": "src/less/main.less",
-          "build/css/bootstrap.css": "src/less/bootstrap.less"
+          "build/css/main.css": "src/less/main.less"
         }
       },
       production: {
@@ -35,8 +34,7 @@ module.exports = function(grunt) {
           yuicompress: true
         },
         files: {
-          "build/css/main.css": "src/less/main.less",
-          "build/css/bootstrap.css": "src/less/bootstrap.less"
+          "build/css/main.css": "src/less/main.less"
         }
       }
     },

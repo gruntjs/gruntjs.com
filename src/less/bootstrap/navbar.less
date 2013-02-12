@@ -9,7 +9,7 @@
 // Base class and wrapper
 .navbar {
   overflow: visible;
-  margin-bottom: 0;
+  margin-bottom: @baseLineHeight;
 
   // Fix for IE7's bad z-indexing so dropdowns don't appear below content that follows the navbar
   *position: relative;
@@ -20,7 +20,12 @@
 // Gradient is applied to its own element because overflow visible is not honored by IE when filter is present
 .navbar-inner {
   min-height: @navbarHeight;
+  padding-left:  20px;
+  padding-right: 20px;
   #gradient > .vertical(@navbarBackgroundHighlight, @navbarBackground);
+  border: 1px solid @navbarBorder;
+  .border-radius(@baseBorderRadius);
+  .box-shadow(0 1px 4px rgba(0,0,0,.065));
 
   // Prevent floats from breaking the navbar
   .clearfix();
@@ -30,8 +35,6 @@
 // We then reset it for fixed navbars in the #gridSystem mixin
 .navbar .container {
   width: auto;
-  width: 1100px;
-  position: relative;
 }
 
 // Override the default collapsed state
@@ -48,12 +51,13 @@
   display: block;
   // Vertically center the text given @navbarHeight
   padding: ((@navbarHeight - @baseLineHeight) / 2) 20px ((@navbarHeight - @baseLineHeight) / 2);
-  margin-left: 0px;
+  margin-left: -20px; // negative indent to left-align the text down the page
   font-size: 20px;
   font-weight: 200;
   color: @navbarBrandColor;
   text-shadow: 0 1px 0 @navbarBackgroundHighlight;
-  &:hover {
+  &:hover,
+  &:focus {
     text-decoration: none;
   }
 }
@@ -70,7 +74,8 @@
 // -------------------------
 .navbar-link {
   color: @navbarLinkColor;
-  &:hover {
+  &:hover,
+  &:focus {
     color: @navbarLinkColorHover;
   }
 }
@@ -92,7 +97,9 @@
 }
 .navbar .btn-group .btn,
 .navbar .input-prepend .btn,
-.navbar .input-append .btn {
+.navbar .input-append .btn,
+.navbar .input-prepend .btn-group,
+.navbar .input-append .btn-group {
   margin-top: 0; // then undo the margin here so we don't accidentally double it
 }
 
@@ -140,7 +147,6 @@
     padding: 4px 14px;
     #font > .sans-serif(13px, normal, 1);
     .border-radius(15px); // redeclare because of specificity of the type attribute
-    line-height: 25px;
   }
 }
 
@@ -236,20 +242,20 @@
 .navbar .nav > li > a {
   float: none;
   // Vertically center the text given @navbarHeight
-  padding: ((@navbarHeight - @baseLineHeight) / 2) 20px ((@navbarHeight - @baseLineHeight) / 2);
+  padding: ((@navbarHeight - @baseLineHeight) / 2) 15px ((@navbarHeight - @baseLineHeight) / 2);
   color: @navbarLinkColor;
   text-decoration: none;
   text-shadow: 0 1px 0 @navbarBackgroundHighlight;
 }
 .navbar .nav .dropdown-toggle .caret {
   margin-top: 8px;
-
 }
 
-// Hover
+// Hover/focus
 .navbar .nav > li > a:focus,
 .navbar .nav > li > a:hover {
-  background-color: @navbarLinkBackgroundHover; // "transparent" is default to differentiate :hover from .active
+  background-color: @navbarLinkBackgroundHover; // "transparent" is default to differentiate :hover/:focus from .active
+  color: @navbarLinkColorHover;
   text-decoration: none;
 }
 
@@ -332,10 +338,11 @@
   }
 }
 
-// Caret should match text color on hover
-.navbar .nav li.dropdown > a:hover .caret {
-  border-top-color: @navbarLinkColorActive;
-  border-bottom-color: @navbarLinkColorActive;
+// Caret should match text color on hover/focus
+.navbar .nav li.dropdown > a:hover .caret,
+.navbar .nav li.dropdown > a:focus .caret {
+  border-top-color: @navbarLinkColorHover;
+  border-bottom-color: @navbarLinkColorHover;
 }
 
 // Remove background color from open dropdown
@@ -385,14 +392,17 @@
 .navbar-inverse {
 
   .navbar-inner {
-    background: @navbarInverseBackground;
+    #gradient > .vertical(@navbarInverseBackgroundHighlight, @navbarInverseBackground);
+    border-color: @navbarInverseBorder;
   }
 
   .brand,
   .nav > li > a {
     color: @navbarInverseLinkColor;
-    text-shadow: 1px 1px 2px rgba(0,0,0,.25);
-    &:hover {
+    text-shadow: 0 -1px 0 rgba(0,0,0,.25);
+    &:hover,
+    &:focus {
+      color: @navbarInverseLinkColorHover;
     }
   }
 
@@ -407,6 +417,7 @@
   .nav > li > a:focus,
   .nav > li > a:hover {
     background-color: @navbarInverseLinkBackgroundHover;
+    color: @navbarInverseLinkColorHover;
   }
 
   .nav .active > a,
@@ -419,7 +430,8 @@
   // Inline text links
   .navbar-link {
     color: @navbarInverseLinkColor;
-    &:hover {
+    &:hover,
+    &:focus {
       color: @navbarInverseLinkColorHover;
     }
   }
@@ -437,7 +449,8 @@
     background-color: @navbarInverseLinkBackgroundActive;
     color: @navbarInverseLinkColorActive;
   }
-  .nav li.dropdown > a:hover .caret {
+  .nav li.dropdown > a:hover .caret,
+  .nav li.dropdown > a:focus .caret {
     border-top-color: @navbarInverseLinkColorActive;
     border-bottom-color: @navbarInverseLinkColorActive;
   }
@@ -456,7 +469,8 @@
   .navbar-search {
     .search-query {
       color: @white;
-      border: 0;
+      background-color: @navbarInverseSearchBackground;
+      border-color: @navbarInverseSearchBorder;
       .box-shadow(~"inset 0 1px 2px rgba(0,0,0,.1), 0 1px 0 rgba(255,255,255,.15)");
       .transition(none);
       .placeholder(@navbarInverseSearchPlaceholderColor);
@@ -464,10 +478,12 @@
       // Focus states (we use .focused since IE7-8 and down doesn't support :focus)
       &:focus,
       &.focused {
+        padding: 5px 15px;
         color: @grayDark;
         text-shadow: 0 1px 0 @white;
         background-color: @navbarInverseSearchBackgroundFocus;
-        box-shadow: 3px 0px 1px #c2732c, 0px 3px 1px #c2732c, -3px 0px 1px #c2732c, 0px -3px 1px #c2732c;
+        border: 0;
+        .box-shadow(0 0 3px rgba(0,0,0,.15));
         outline: 0;
       }
     }

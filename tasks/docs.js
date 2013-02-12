@@ -54,7 +54,7 @@ module.exports = function (grunt) {
       marked.setOptions({
         gfm:true,
         anchors: true,
-        base: "/docs/",
+        base: "/",
         pedantic:false,
         sanitize:true,
         // callback for code highlighter
@@ -109,6 +109,7 @@ module.exports = function (grunt) {
                 var file = 'src/tmpl/docs.jade',
                   templateData = {
                     page:'docs',
+                    rootSidebar: true,
                     pageSegment: segment,
                     title:title,
                     content:marked(wikiAnchors(src)),

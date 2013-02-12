@@ -1,5 +1,5 @@
 /*!
- * Bootstrap v2.2.2
+ * Bootstrap v2.3.0
  *
  * Copyright 2012 Twitter, Inc
  * Licensed under the Apache License v2.0
@@ -8,12 +8,11 @@
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
  */
 
+// Core variables and mixins
+@import "mixins";
+
 // CSS Reset
 @import "reset";
-
-// Core variables and mixins
-@import "variables"; // Modify this for custom colors, font-sizes, etc
-@import "mixins";
 
 // Grid system and page structure
 @import "scaffolding";
@@ -28,33 +27,17 @@
 
 // Components: common
 @import "dropdowns";
-@import "wells";
-@import "component-animations";
-@import "close";
 
 // Components: Buttons & Alerts
 @import "buttons";
 @import "button-groups";
-@import "alerts"; // Note: alerts share common CSS with buttons and thus have styles in buttons.less
 
 // Components: Nav
 @import "navs";
 @import "navbar";
-@import "breadcrumbs";
-@import "pagination";
-@import "pager";
-
-// Components: Popovers
-@import "modals";
-@import "popovers";
 
 // Components: Misc
-@import "thumbnails";
-@import "media";
 @import "labels-badges";
-@import "progress-bars";
-@import "accordion";
-@import "carousel";
 @import "hero-unit";
 
 // Utility classes

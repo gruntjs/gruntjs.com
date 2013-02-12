@@ -10,8 +10,12 @@ block content
               ul.nav.nav-list
                 each link in sidebar
                   if link.url
-                    li
-                      a(href='/' + page + '/' + link.url, class=locals.pageSegment == link.url && 'active')= link.name
+                    if locals.rootSidebar
+                      li
+                        a(href='/' + link.url, class=locals.pageSegment == link.url && 'active')= link.name
+                    else
+                      li
+                        a(href='/' + page + '/' + link.url, class=locals.pageSegment == link.url && 'active')= link.name
                   else
                     li.nav-header
                       if link.icon

@@ -13,8 +13,12 @@ app.configure(function(){
     dumpExceptions: true,
     showStack: true
   }));
-
   app.use(app.router);
+  app.use(function(req, res, next) {
+    if(req.url.substr(-1) == '/' && req.url.length > 1)
+      res.redirect(301, req.url.slice(0, -1));
+    next();
+  });
 });
 
 // server port
@@ -46,13 +50,18 @@ app.get("/api*", function(req, res) {
   });
 });
 
-// doc routes
-app.get("/docs*", function(req, res) {
+// news route
+app.get("/news", function(req, res) { res.sendfile('build/news.html'); });
+// plugins route
+app.get("/plugins", function(req, res) { res.sendfile('build/plugins.html'); });
 
+// doc routes
+app.get("/*", function(req, res) {
+  console.log(req.url);
   req.url = req.url.toLowerCase();
-  var filePath = 'build' + req.url + '.html';
-  if (req.url == "/docs/") res.redirect(301, '/docs/getting-started');
-  else if(req.url.substr(-1) == '/' && req.url.length > 1)
+  var filePath = 'build/docs/' + req.url + '.html';
+
+  if(req.url.substr(-1) == '/' && req.url.length > 1)
     res.redirect(301, req.url.slice(0, -1));
   else if(req.url.indexOf('/docs/grunt')==0)
     res.redirect(301, req.url.replace('/docs/', '/api/'));
@@ -61,12 +70,3 @@ app.get("/docs*", function(req, res) {
     exists ? res.sendfile(filePath) : res.send('404', 404);
   });
 });
-
-// community route
-app.get("/community", function(req, res) { res.sendfile('build/community.html'); });
-// news route
-app.get("/news", function(req, res) { res.sendfile('build/news.html'); });
-// plugins route
-app.get("/plugins", function(req, res) { res.sendfile('build/plugins.html'); });
-// redirect the getting started page to docs
-app.get("/getting-started", function(req, res) { res.redirect('/docs/getting-started') });
