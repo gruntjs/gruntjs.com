@@ -373,17 +373,28 @@ i {
 }
 
 code, pre {
-  font-size: 13px;
-  font-family: monospace;
+  font-size: 12px;
+  font-family: Monaco, Consolas, "Lucida Console", monospace;
 }
 
 pre {
 	padding: 0;
 	code {
-	  font-size: 15px;
+	  font-size: 14px;
 	  padding: 1em;
+	  color: #F8F8F8;
+  	background: #181818;
 	}
 }
+
+pre .comment   { color: #7E7680; font-style: italic; }
+pre .keyword   { color: #e9df8f; }
+pre .string    { color: #8F9D6A; }
+pre .regexp    { color: #E9C062; }
+pre .number    { color: #CF6A4C; }
+pre .title     { color: #CDA869; }
+pre .params    { color: #7587A6; }
+pre .literal   { color: #CDA869; }
 
 /* Nav Bars */
 .navbar {
