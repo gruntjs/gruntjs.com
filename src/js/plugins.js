@@ -26,27 +26,40 @@
         modules: allModules
       });
 
-      //$('#loading').remove();
+      $('#loading').hide();
       $('#plugins-latest').append(latestTpl);
-      $('#plugins-all').append(allTpl).find('.search').show();
+      $('#plugins-all').append(allTpl);
 
-      new List('plugins-all', {
+      var list = new List('plugins-all', {
         valueNames: [
-          'name',
+          'title',
           'desc',
           'author',
           'modified'
         ],
-        page: 9999
+        page: 9999,
+        searchClass: 'search-query'
+      });
+
+      $('.search-query').removeProp('disabled').focus()
+      .on('submit', false)
+      .on('keyup paste', function () {
+        list.search($(this).val());
       });
 
       $('#plugins-all .modified time').timeago();
 
-      $(document).on('click','.dropdown ul a',function(){
+      $('.dropdown').on('click', 'ul a',function () {
         var text = $(this).text();
-        $(this).closest('.dropdown').find('.choice').text(text);
-      });
+        var sortDesc = $(this).data('sort-desc');
+        var lastSortTitle = $('.dropdown-toggle .choice').text();
+        var sortInverse = lastSortTitle === text ? $(this).data('sort-inverse') : false;
+        var isAsc = sortInverse ? sortDesc : !sortDesc;
 
+        $(this).data('sort-inverse', !sortInverse);
+        $(this).closest('.dropdown').find('.choice').text(text);
+        list.sort(text.toLowerCase(), { asc: isAsc });
+      });
     });
   });
 })(window, jQuery);

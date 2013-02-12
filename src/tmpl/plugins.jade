@@ -5,12 +5,12 @@ block content
     .row-fluid
       .span3
         .well.sidebar-nav.plugins-search
-          .nav-header 
-            i.icon-power-cord 
+          .nav-header
+            i.icon-power-cord
             span Plugins
           .search-options
             form.navbar-search.pull-left
-              input.search-query(type='text', placeholder='Search Grunt Plugins')
+              input.search-query(type='text', placeholder='Search Grunt Plugins', disabled, autofocus)
             .btn-group
               button.btn All Plugins
               button.btn Contrib Plugins
@@ -22,11 +22,11 @@ block content
                   li
                     a(href='#') Title
                   li
-                    a(href='#') Date
+                    a(href='#', data-sort-desc='true') Modified
                   li
-                    a(href='#') Stars
+                    a(href='#', data-sort-desc='true') Stars
                   li
-                    a(href='#') Forks
+                    a(href='#', data-sort-desc='true') Forks
                   li
                     a(href='#') Author
 
@@ -37,10 +37,10 @@ block content
           section.main
             #loading
               p Loading plugins...
-              #plugins-all
-              p
-                small
-                  i Plugins must be published on NPM with the `gruntplugin` keyword.
+            #plugins-all
+            p
+              small
+                i Plugins must be published on NPM with the `gruntplugin` keyword.
 
 
   script(src='/js/vendor/jquery.js')
@@ -60,30 +60,26 @@ block content
     |  <% }); %>
     |  </dl>
   script#plugins-all-template(type='text/template')
-    |<input style="display:none" class="search input-medium search-query" type="search" placeholder="Search in <%= modules.length %> plugins..." autofocus>
-    |<ul>
+    |<ul class="list">
     |<% _.each(modules, function (el) { %>
     |<% var name = el.name.replace('grunt-', ''); %>
-    |<% var keywords = el.keywords %>
     |<li>
-    |<a class="plugin list" href="https://npmjs.org/package/<%- el.name %>"> 
+    |<a class="plugin list" href="https://npmjs.org/package/<%- el.name %>">
     |<span class="name-description">
-    |<span class="name"><%- name %></span>
+    |<span class="title"><%- name %></span>
     |<% if (el.author) { %>
     |<span class="author"> by <%- el.author.name %></span>
     |<% } else { %>
     |<span class="author"></span>
     |<% } %>
-    |<span class="desc"><%- el.description %></span>
+    |<span class="desc"><%- el.description %><div class="hidden"><%- el.keywords %></div></span>
     |</span>
     |<span class="summary">
     |<span class="modified"><span class="last-modified">Last modified</span> <time datetime="<%- el.time.modified %>"><%- el.time.modified %></time></div>
-    |<span class="stars"><i class="icon-star"></i><span>Stars</span>1000</span>
-    |<span class="forks"><i class="icon-fork"></i><span>Forks</span>1000</span>
+    |<span class="stars"><i class="icon-star"></i><span>Stars</span><%- el.stars %></span>
+    |<span class="forks"><i class="icon-fork"></i><span>Forks</span><%- el.forks %></span>
     |</span>
     |</a>
     |</li>
     |<% }); %>
     |</ul>
-
-
