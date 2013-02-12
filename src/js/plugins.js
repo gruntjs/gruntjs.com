@@ -44,10 +44,23 @@
       $('.search-query').removeProp('disabled').focus()
       .on('submit', false)
       .on('keyup paste', function () {
+        $('.contrib-toggle .btn:first').click();
         list.search($(this).val());
       });
 
       $('#plugins-all .modified time').timeago();
+
+      $('.contrib-toggle .btn').click(function () {
+        $(this).addClass('selected').siblings().removeClass('selected');
+
+        if ($(this).text() === 'All Plugins') {
+          list.filter();
+        } else {
+          list.filter(function (el) {
+            return /^contrib-/.test(el.values().title);
+          });
+        }
+      }).last().click();
 
       $('.dropdown').on('click', 'ul a',function () {
         var text = $(this).text();

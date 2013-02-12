@@ -11,9 +11,9 @@ block content
           .search-options
             form.navbar-search.pull-left
               input.search-query(type='text', placeholder='Search Grunt Plugins', disabled, autofocus)
-            .btn-group
+            .btn-group.contrib-toggle
               button.btn All Plugins
-              button.btn Contrib Plugins
+              button.btn.selected Contrib Plugins
             .btn-group.dropdown
                 button.btn.btn-large.dropdown-toggle(data-toggle='dropdown')
                   span.choice Title
@@ -64,7 +64,7 @@ block content
     |<% _.each(modules, function (el) { %>
     |<% var name = el.name.replace('grunt-', ''); %>
     |<li>
-    |<a class="plugin list" href="https://npmjs.org/package/<%- el.name %>">
+    |<a class="plugin <%= /^contrib-/.test(name) ? 'contrib' : '' %>" href="https://npmjs.org/package/<%- el.name %>">
     |<span class="name-description">
     |<span class="title"><%- name %></span>
     |<% if (el.author) { %>
@@ -72,7 +72,7 @@ block content
     |<% } else { %>
     |<span class="author"></span>
     |<% } %>
-    |<span class="desc"><%- el.description %><div class="hidden"><%- el.keywords %></div></span>
+    |<span class="desc"><%- el.description %><div class="hide"><%- el.keywords %></div></span>
     |</span>
     |<span class="summary">
     |<span class="modified"><span class="last-modified">Last modified</span> <time datetime="<%- el.time.modified %>"><%- el.time.modified %></time></div>
