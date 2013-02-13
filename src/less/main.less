@@ -224,7 +224,7 @@ i {
         box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.4);
       }
     }
-    .btn.active {
+    .btn.selected {
       box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.4);
     }
     .dropdown-toggle {
@@ -284,6 +284,7 @@ i {
   color: #6f5a40;
   font-size: 16px;
   border: 1px solid #CFBFAC;
+  position: relative;
   &:hover {
     background: #f0debd;
     color: #6f5a40;
@@ -295,6 +296,7 @@ i {
   .name-description {
     width: 59%;
     display: inline-block;
+    margin-left: 5%;
     .title {
       font-size: 25px;
       font-weight: 400;
@@ -317,14 +319,58 @@ i {
         margin-right: 2px;
       }
     }
-    .last-modified {
-      font-weight: 500;
+    .modified {
+    	display: block;
+    	.last-modified {
+      	font-weight: 500;
+    	}
     }
     .stars {
       margin-right: 10px;
     }
   }
 }
+
+.plugin.contrib:before {
+	position: absolute;
+	background-color: #e48632;
+	width: 32px;
+	height: 39px;
+	left: 8px;
+	top: -1px;
+	content: "";
+
+}
+
+.plugin.contrib:after {
+	font-family: 'icomoon';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  content: "\e000";
+  position: absolute;
+	left: .5em;
+	top: .5em;
+	color: white;
+	font-size: 1.5em;
+
+}
+
+.plugin.contrib .name-description:before {
+	content: "";
+	border-left: 16px solid transparent;
+	border-right: 16px solid transparent;
+	border-top: 10px solid #e48632;
+	width: 0px;
+	height: 0px;
+	left: 8px;
+	top: 38px;
+	position: absolute;
+}
+
+
 
 .grunt-footer {
   background: #e48632;
