@@ -54,19 +54,17 @@ block content
     |<h4>Latest plugins</h4>
     |  <dl class="dl-horizontal">
     |  <% _.each(modules, function (el) { %>
-    |  <% var name = el.name.replace('grunt-', ''); %>
-    |  <dt><a href="https://npmjs.org/package/<%- el.name %>"><%- name %></a></dt>
+    |  <dt><a href="https://npmjs.org/package/<%- el.name %>"><%- el.name %></a></dt>
     |  <dd><%- el.description %></dd>
     |  <% }); %>
     |  </dl>
   script#plugins-all-template(type='text/template')
     |<ul class="list">
     |<% _.each(modules, function (el) { %>
-    |<% var name = el.name.replace('grunt-', ''); %>
     |<li>
-    |<a class="plugin <%= /^contrib-/.test(name) ? 'contrib' : '' %>" href="https://npmjs.org/package/<%- el.name %>">
+    |<a class="plugin <%= /^contrib-/.test(el.name) ? 'contrib' : '' %>" href="https://npmjs.org/package/<%- el.name %>">
     |<span class="name-description">
-    |<span class="title"><%- name %></span>
+    |<span class="title"><%- el.name %></span>
     |<% if (el.author) { %>
     |<span class="author"> by <%- el.author.name %></span>
     |<% } else { %>

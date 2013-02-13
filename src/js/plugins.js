@@ -4,9 +4,20 @@
 
   $(function () {
     $.getJSON('http://grunt-plugin-list.herokuapp.com', function (modules) {
+      // remove grunt from the plugin name
+      modules = _.map(modules, function (el) {
+        el.name = el.name.replace('grunt-', '');
+        return el;
+      });
+
       // only show plugins created after the specified date
       modules = _.filter(modules, function (el) {
         return Date.parse(el.time.created) > new Date('1800-01-01');
+      });
+
+      // filter out contrib plugins not created by the Grunt Team
+      modules = _.filter(modules, function (el) {
+        return /^contrib-/.test(el.name) ? el.author && el.author.name === 'Grunt Team' : true;
       });
 
       var latestModules = _.sortBy(modules, function (el) {
@@ -14,8 +25,7 @@
       }).splice(0, 5);
 
       var allModules = _.sortBy(modules, function (el) {
-        // removing `grunt-` since some plugins don't contain it
-        return el.name.replace('grunt-', '');
+        return el.name;
       });
 
       var latestTpl = _.template($('#plugins-latest-template').html(), {
