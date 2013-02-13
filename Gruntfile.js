@@ -94,6 +94,11 @@ module.exports = function(grunt) {
         files: {
           "build/news.html": "src/tmpl/news.jade"
         }
+      },
+      other: {
+        files: {
+          "build/404.html": "src/tmpl/404.jade"
+        }
       }
     },
     copy: {

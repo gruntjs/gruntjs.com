@@ -30,7 +30,7 @@ app.get("/", function(req, res) {
   var filePath = 'build' + req.url + '.html';
   if(req.url === "/") { filePath = 'build/index.html'; }
   fs.exists(filePath, function (exists) {
-    exists ? res.sendfile(filePath) : res.send('404', 404);
+    exists ? res.sendfile(filePath) : res.sendfile('build/404.html', 404);
   });
 });
 
@@ -40,13 +40,16 @@ app.get("/api*", function(req, res) {
   var filePath = 'build' + req.url + '.html';
 
   // redirect to the main api page, fix slashes and folder issues
-  if (req.url == "/api/")
+  if (req.url == "/api/") {
     res.redirect(301, '/api/grunt');
-  else if(req.url.substr(-1) == '/' && req.url.length > 1)
+    return;
+  } else if(req.url.substr(-1) == '/' && req.url.length > 1) {
     res.redirect(301, req.url.slice(0, -1));
+    return;
+  }
 
   fs.exists(filePath, function (exists) {
-    exists ? res.sendfile(filePath) : res.send('404', 404);
+    exists ? res.sendfile(filePath) : res.sendfile('build/404.html', 404);
   });
 });
 
@@ -61,12 +64,16 @@ app.get("/*", function(req, res) {
   req.url = req.url.toLowerCase();
   var filePath = 'build/docs/' + req.url + '.html';
 
-  if(req.url.substr(-1) == '/' && req.url.length > 1)
+  if(req.url.substr(-1) == '/' && req.url.length > 1) {
     res.redirect(301, req.url.slice(0, -1));
-  else if(req.url.indexOf('/docs/grunt')==0)
-    res.redirect(301, req.url.replace('/docs/', '/api/'));
+    return;
+  }
+  else if(req.url.indexOf('/grunt')==0) {
+    res.redirect(301, '/api' + req.url);
+    return;
+  }
 
   fs.exists(filePath, function (exists) {
-    exists ? res.sendfile(filePath) : res.send('404', 404);
+    exists ? res.sendfile(filePath) : res.sendfile('build/404.html', 404);
   });
 });
