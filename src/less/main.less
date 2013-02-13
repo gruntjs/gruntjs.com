@@ -330,10 +330,9 @@ i {
   background: #e48632;
   color: #FFF;
   width: 100%;
-  font-size: 17px;
   font-weight: 200;
-  height: 60px;
-  line-height: 60px;
+  height: 4em;
+  line-height: 4em;
   letter-spacing: 1px;
   text-shadow: @text-shadow;
   .bocoup a:hover {
@@ -346,32 +345,36 @@ i {
   .inner {
     max-width: 1100px;
     margin: 0px auto;
-    .pull-left {
-      margin: 0;
+    p.pull-right {
+    	margin: 0 22em 0 0;
     }
+  	.social li a {
+  		font-size: 1.3em;
+			padding: .95em .6em;
+			vertical-align: middle;
+  	}
   }
   ul {
     margin: 0;
-  }
-  li {
-    float: left;
-    line-height: 60px;
-    &:last-child {
-      margin-right: 0;
-    }
-  }
-  li a,
-  li a:focus,
-  li a:hover {
-    color: #FFF;
-    padding: 19px;
-  }
-  ul {
     list-style-type: none;
+    li {
+	    float: left;
+	    line-height: 4em;
+	    height: 4em;
+	    &:last-child {
+      	margin-right: 0;
+      }
+    }
+	  li a,
+	  li a:focus,
+	  li a:hover {
+	    color: #FFF;
+	    padding: 1.4em 1em;
+	  }
   }
   .bocoup {
     img {
-      margin: -10px 0px 0px 10px;
+      margin: -6px 0px 0px 10px;
     }
   }
 }
