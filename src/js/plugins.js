@@ -6,7 +6,8 @@
     $.getJSON('http://grunt-plugin-list.herokuapp.com', function (modules) {
       // remove grunt from the plugin name
       modules = _.map(modules, function (el) {
-        el.name = el.name.replace('grunt-', '');
+        el.displayName = el.name.replace('grunt-', '');
+        el.isContrib = /^contrib-/.test(el.displayName);
         return el;
       });
 
@@ -17,7 +18,7 @@
 
       // filter out contrib plugins not created by the Grunt Team
       modules = _.filter(modules, function (el) {
-        return /^contrib-/.test(el.name) ? el.author && el.author.name === 'Grunt Team' : true;
+        return el.isContrib ? el.author && el.author.name === 'Grunt Team' : true;
       });
 
       var latestModules = _.sortBy(modules, function (el) {

@@ -54,7 +54,7 @@ block content
     |<h4>Latest plugins</h4>
     |  <dl class="dl-horizontal">
     |  <% _.each(modules, function (el) { %>
-    |  <dt><a href="https://npmjs.org/package/<%- el.name %>"><%- el.name %></a></dt>
+    |  <dt><a href="https://npmjs.org/package/<%- el.name %>"><%- el.displayname %></a></dt>
     |  <dd><%- el.description %></dd>
     |  <% }); %>
     |  </dl>
@@ -62,9 +62,9 @@ block content
     |<ul class="list">
     |<% _.each(modules, function (el) { %>
     |<li>
-    |<a class="plugin <%= /^contrib-/.test(el.name) ? 'contrib' : '' %>" href="https://npmjs.org/package/<%- el.name %>">
+    |<a class="plugin <%= el.isContrib ? 'contrib' : '' %>" href="https://npmjs.org/package/<%- el.name %>">
     |<span class="name-description">
-    |<span class="title"><%- el.name %></span>
+    |<span class="title"><%- el.displayName %></span>
     |<% if (el.author) { %>
     |<span class="author"> by <%- el.author.name %></span>
     |<% } else { %>
