@@ -22,7 +22,8 @@ app.configure(function(){
 });
 
 // server port
-app.listen(5678);
+var port = process.env.PORT || 5678;
+app.listen(port);
 
 // TODO: refactor routes
 // main route for root
@@ -60,7 +61,6 @@ app.get("/plugins", function(req, res) { res.sendfile('build/plugins.html'); });
 
 // doc routes
 app.get("/*", function(req, res) {
-  console.log(req.url);
   req.url = req.url.toLowerCase();
   var filePath = 'build/docs/' + req.url + '.html';
 

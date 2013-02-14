@@ -1,6 +1,6 @@
-// import code highlight theme
 @import "variables";
 @import "bootstrap/bootstrap";
+// import code highlight theme
 @import "zenburn";
 @import "icons";
 @import "forms";
@@ -137,9 +137,12 @@ i {
         padding: 9px 14px 9px 29px;
       }
     }
-    &:last-child {
+    &:first-child {
+      margin-top: 0px;
+    }
+    li.nav-header {
       margin-top: 20px;
-      li:first-child {
+      &:first-child {
         background: #BEBEBE;
         padding-left: 30px;
       }

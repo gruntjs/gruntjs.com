@@ -94,10 +94,11 @@ module.exports = function (grunt) {
 
           sidebars[0] = getSidebarSection('## Documentation', '', 'icon-document-alt-stroke');
           sidebars[1] = getSidebarSection('### Advanced');
+          sidebars[2] = getSidebarSection('### Migration guides');
 
         names.forEach(function (name) {
 
-          var title = name.replace('-', ' ').replace('.md', ''),
+          var title = name.replace(/-/g,' ').replace('.md', ''),
             segment = name.replace(/ /g,'-').replace('.md', '').toLowerCase(),
             src = base + name,
             dest = 'build/docs/' + name.replace('.md', '').toLowerCase() + '.html';
@@ -143,9 +144,13 @@ module.exports = function (grunt) {
 
         // the default api page is special
         names.push('grunt');
+        // TODO: temporary store for these
+        names.push('Inside-Tasks');
+        names.push('Exit-Codes');
 
         // get docs sidebars
         sidebars[0] = getSidebarSection('## API', '', 'icon-cog');
+        sidebars[1] = getSidebarSection('### Other');
 
         names.forEach(function (name) {
           var src = base + name + '.md',
@@ -158,7 +163,7 @@ module.exports = function (grunt) {
                   templateData = {
                     page:'api',
                     pageSegment: name,
-                    title:name,
+                    title:name.replace(/-/g,' '),
                     content:marked(wikiAnchors(src)),
                     sidebars: sidebars
                   };
@@ -179,7 +184,6 @@ module.exports = function (grunt) {
        * Get sidebar list for section from Home.md
        */
       function getSidebarSection(section, stripFromURL, iconClass) {
-
         var rMode = false,
           l,
           items = [];

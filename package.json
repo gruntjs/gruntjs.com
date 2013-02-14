@@ -1,12 +1,17 @@
 {
   "name": "gruntjs.com",
-  "version": "0.0.0",
+  "version": "0.4.0rc1",
   "engines": {
-    "node": ">= 0.6.0"
+    "node": ">= 0.6.0",
+    "npm": "1.1.x"
+  },
+  "scripts": {
+    "postinstall": "node_modules/.bin/grunt"
   },
   "private": true,
   "dependencies": {
     "grunt": "0.4.0rc7",
+    "grunt-cli": "0.1.x",
     "jade": "0.28.1",
     "express": "3.0.5",
     "grunt-contrib": "0.3.0",

@@ -114,8 +114,11 @@ module.exports = function(grunt) {
       }
     }
   });
-
+  
   grunt.registerTask('build', ['clean', 'copy', 'jade', 'docs']);
   grunt.registerTask('default', ['build', 'less:production']);
   grunt.registerTask('dev', ['build', 'less:development', 'watch']);
+
+  // build pack task
+  grunt.registerTask('heroku', 'default');
 };
