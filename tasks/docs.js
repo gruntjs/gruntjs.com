@@ -154,7 +154,7 @@ module.exports = function (grunt) {
 
         names.forEach(function (name) {
           var src = base + name + '.md',
-            dest = 'build/api/' + name + '.html';
+            dest = 'build/api/' + name.toLowerCase() + '.html';
           grunt.file.copy(src, dest, {
             process:function (src) {
               try {
