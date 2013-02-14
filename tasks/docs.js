@@ -155,14 +155,13 @@ module.exports = function (grunt) {
         names.forEach(function (name) {
           var src = base + name + '.md',
             dest = 'build/api/' + name + '.html';
-
           grunt.file.copy(src, dest, {
             process:function (src) {
               try {
                 var file = 'src/tmpl/docs.jade',
                   templateData = {
                     page:'api',
-                    pageSegment: name,
+                    pageSegment: name.toLowerCase(),
                     title:name.replace(/-/g,' '),
                     content:marked(wikiAnchors(src)),
                     sidebars: sidebars
