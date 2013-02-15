@@ -1,66 +1,104 @@
 extends layout
 
 block content
-  .container
+  .container.home-page
     .row-fluid
       .span3
         .well.sidebar-nav.plugins-search
           .nav-header
-            span v.0.4.0
+            span Latest News
 
       .span9.page
         .hero-unit
-          h1 GRUNT: The JavaScript Task Runner
+          h1.grunt-name GRUNT 
+            span.version stable version: 0.4.0
+          h1.tag-line The JavaScript Task Runner
 
-          .feature
-            h3 Gruntfiles are defined in standard JavaScript or CoffeeScript.
-            p There's no unwieldy XML to manage, and no custom syntax to memorize.
-          .feature
-            h3 A collection of officially-maintained plugins exists to help you get started.
-            p The most common tasks, like concatenting and minifying files, linting code and running unit tests have already been created for you.
-          .feature
-            h3 Creating custom tasks and Grunt plugins is easy.
-            p If you need to automate custom behavior, don't worry! Full task creation documentation and a complete API reference are available.
-          .feature
-            h3 Grunt configuration is declarative.
-            p But since the Gruntfile is JavaScript, the configuration can also be built dynamically using the grunt API.
-          .feature
-            h3 There's a large community of task and plugin authors.
-            p If an officially-maintained Grunt plugin doesn't exist, it's possible that you'll find a community-created one that does what you want.
+          .why.left
+            h1 Why use a task runner?
+            p In one word: automation. The less work you have to do when performing repetitive tasks like minification, compilation, unit testing, linting, etc, the easier your job becomes. After you've configured it, a task runner can do most of that mundane work for you—and your team—with basically zero effort.
           
-          pre.terminal
-            span.command-prompt
-              |grunt
-            |&nbsp;
-            |Running "jshint:gruntfile" (jshint) task
-            |<span class="green">&gt;&gt;</span> 1 file lint free.
-            |&nbsp;
-            |Running "jshint:src" (jshint) task
-            |<span class="green">&gt;&gt;</span> 1 file lint free.
-            |&nbsp;
-            |Running "jshint:test" (jshint) task
-            |<span class="green">&gt;&gt;</span> 1 file lint free.
-            |&nbsp;
-            |Running "qunit:files" (qunit) task
-            |Testing test/tiny-pubsub.html....<span class="green">OK</span>
-            |<span class="green">&gt;&gt;</span> 4 assertions passed (23ms)
-            |&nbsp;
-            |Running "clean:files" (clean) task
-            |Cleaning "dist"...<span class="green">OK</span>
-            |&nbsp;
-            |Running "concat:dist" (concat) task
-            |File "dist/ba-tiny-pubsub.js" created.
-            |&nbsp;
-            |Running "uglify:dist" (uglify) task
-            |File "dist/ba-tiny-pubsub.min.js" created.
-            |Uncompressed size: <span class="green">389</span> bytes.
-            |Compressed size: <span class="green">119</span> bytes gzipped (<span class="green">185</span> bytes minified).
-            |&nbsp;
-            |<span class="green">Done, without errors.</span>
-            |&nbsp;
-            |<span class="command-prompt active"><span class="active-prompt"></span></span>
+          .why.right
+            h1 Why use Grunt?
+            p The Grunt ecosystem is huge and it's growing every day. With literally hundreds of [plugins to choose from](/plugins), you can use Grunt to automate just about anything with a minimum of effort. If someone hasn't already built what you need, authoring and publishing your own Grunt plugin to npm is a breeze.
+          
+          .technology
+            h1 Technologies with Grunt Plugins
+            div
+              a.technology(href='http://coffeescript.org/')
+                span.logo
+                  img(src='/img/logo-coffeescript.jpg', alt='Bocoup')
+              a.technology(href='http://handlebarsjs.com/')
+                span.logo
+                  img(src='/img/logo-handlebars.jpg', alt='Bocoup')
+              a.technology(href='http://jade-lang.com/')
+                span.logo
+                  img(src='/img/logo-jade.jpg', alt='Bocoup') 
+              a.technology(href='http://www.jslint.com/')
+                span.logo
+                  img(src='/img/logo-jslint.jpg', alt='Bocoup')
+              a.technology(href='http://lesscss.org/')
+                span.logo
+                  img(src='/img/logo-less.jpg', alt='Bocoup')
+              a.technology(href='http://requirejs.org/')
+                span.logo
+                  img(src='/img/logo-requirejs.jpg', alt='Bocoup')
+              a.technology(href='http://sass-lang.com/')
+                span.logo
+                  img(src='/img/logo-sass.jpg', alt='Bocoup')
+              a.technology(href='http://learnboost.github.com/stylus/')
+                span.logo
+                  img(src='/img/logo-sylus.jpg', alt='Bocoup')
 
-          .span
-            h2 Who uses Grunt
+          .grunt-preview       	
+            h1 Here's a preview!
+            p While installing grunt is simple, it's slightly more involved to get it running on your project.  To see what your effort will win you, take a look at this example output from running Grunt in a <a href="https://github.com/cowboy/jquery-tiny-pubsub">sample project</a>
+            pre.terminal
+              span.command-prompt grunt
+              |&nbsp;
+              |Running "jshint:gruntfile" (jshint) task
+              |<span class="green">&gt;&gt;</span> 1 file lint free.
+              |&nbsp;
+              |Running "jshint:src" (jshint) task
+              |<span class="green">&gt;&gt;</span> 1 file lint free.
+              |&nbsp;
+              |Running "jshint:test" (jshint) task
+              |<span class="green">&gt;&gt;</span> 1 file lint free.
+              |&nbsp;
+              |Running "qunit:files" (qunit) task
+              |Testing test/tiny-pubsub.html....<span class="green">OK</span>
+              |<span class="green">&gt;&gt;</span> 4 assertions passed (23ms)
+              |&nbsp;
+              |Running "clean:files" (clean) task
+              |Cleaning "dist"...<span class="green">OK</span>
+              |&nbsp;
+              |Running "concat:dist" (concat) task
+              |File "dist/ba-tiny-pubsub.js" created.
+              |&nbsp;
+              |Running "uglify:dist" (uglify) task
+              |File "dist/ba-tiny-pubsub.min.js" created.
+              |Uncompressed size: <span class="green">389</span> bytes.
+              |Compressed size: <span class="green">119</span> bytes gzipped (<span class="green">185</span> bytes minified).
+              |&nbsp;
+              |<span class="green">Done, without errors.</span>
+              |&nbsp;
+              |<span class="command-prompt active"><span class="active-prompt"></span></span>
+
+          .getting-started
+            h1 Getting Started
+            p Read the <a href="/getting-started">Getting Started</a> guide for instructions on using Grunt in your projects. Once you've done that, check out a <a href="/sample-gruntfile">Sample Gruntfile</a> and learn more about <a href="/configuring-tasks">Configuring Tasks</a>.
+
+
+          
+
+
+
+
+
+
+
+
+
+
 
 
