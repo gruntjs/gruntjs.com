@@ -56,6 +56,14 @@ i {
   .page .hero-unit {
     min-height: 1000px;
     max-width: 1088px;
+    .feature {
+    	margin: 1em 0;
+	    h3, p {
+	    	margin: 0;
+	    	font-size: 1em;
+	    	line-height: 1.6em;
+	    }
+	  }
   }
 }
 
@@ -471,7 +479,95 @@ pre .literal   { color: #CDA869; }
   line-height: 25px;
 }
 
+pre.terminal {
+    position: relative;
+    color: #ddd;
+    background: #000;
+    padding: 5px;
+    margin-top: 2.6em;
+    border: 1px solid #aaa;
+    border: 1px solid hsla(0, 0%, 43%, .3);
+    font-family: Menlo, Menlo-Regular, Inconsolata, Monaco, monospace;
+    font-size: 13px;
+}
 
+pre.terminal:after {
+    display: block;
+    content: "";
+    position: absolute;
+    top: -1.6em;
+    bottom: 0px;
+    left: 0;
+    right: 100%;
+    width: 100%;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    box-shadow: 0px 0px 25px 0px #aaa;
+}
+
+pre.terminal:before {
+    display: block;
+    position: absolute;
+    content: "grunt";
+    text-align: center;
+    color: #000;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    background: #ccc;
+    background-image: -webkit-linear-gradient(top, #ddd, #aaa);
+    line-height: 1.8em;
+    height: 1.8em;
+    top: -1.8em;
+    left: -1px;
+    right: -1px;
+    font-family: LucidaGrande;
+    font-size: 12px;
+    color: #3A3A53;
+    text-shadow: 0 1px 0 hsla(0, 0%, 100%, .4);
+    border: 1px solid hsla(0, 0%, 43%, .3);
+}
+
+pre.terminal .green {
+    color: #0c0;
+}
+
+.command-prompt {
+    color: #FFF;
+}
+.command-prompt:before {
+    content: "$ ";
+    color: #ddd;
+}
+.active-prompt {    
+    -webkit-animation-direction: normal;
+    -webkit-animation-name: blink;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: ease;
+
+    animation-direction: normal;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-name: blink;
+    animation-timing-function: ease;
+    
+}
+.active-prompt:after {
+    content: "_";
+    color: #FFF;
+}
+
+@keyframes 'blink' {
+    0% {   opacity: 1.0; }
+    50% {  opacity: 0.0; }
+    100% { opacity: 1.0; }
+}
+
+@-webkit-keyframes 'blink' {
+    0% {   opacity: 1.0; }
+    50% {  opacity: 0.0; }
+    100% { opacity: 1.0; }
+}
 
 //
 // Navbars (Redux)
@@ -521,3 +617,95 @@ pre .literal   { color: #CDA869; }
 }
 
 /* ---------------------------------------------------- */
+
+
+pre.terminal {
+    position: relative;
+    color: #ddd;
+    background: #000;
+    padding: 5px;
+    margin-top: 2.6em;
+    border: 1px solid #aaa;
+    border: 1px solid hsla(0, 0%, 43%, .3);
+    font-family: Menlo, Menlo-Regular, Inconsolata, Monaco, monospace;
+    font-size: 13px;
+    line-height: 1.2em;
+}
+
+pre.terminal:after {
+    display: block;
+    content: "";
+    position: absolute;
+    top: -1.6em;
+    bottom: 0px;
+    left: 0;
+    right: 100%;
+    width: 100%;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    box-shadow: 0px 0px 25px 0px #aaa;
+}
+
+pre.terminal:before {
+    display: block;
+    position: absolute;
+    content: "grunt";
+    text-align: center;
+    color: #000;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    background: #ccc;
+    background-image: -webkit-linear-gradient(top, #ddd, #aaa);
+    line-height: 1.8em;
+    height: 1.8em;
+    top: -1.8em;
+    left: -1px;
+    right: -1px;
+    font-family: LucidaGrande;
+    font-size: 12px;
+    color: #3A3A53;
+    text-shadow: 0 1px 0 hsla(0, 0%, 100%, .4);
+    border: 1px solid hsla(0, 0%, 43%, .3);
+}
+
+pre.terminal .green {
+    color: #0c0;
+}
+
+.command-prompt {
+    color: #FFF;
+}
+.command-prompt:before {
+    content: "$ ";
+    color: #ddd;
+}
+.active-prompt {    
+    -webkit-animation-direction: normal;
+    -webkit-animation-name: blink;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: ease;
+
+    animation-direction: normal;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-name: blink;
+    animation-timing-function: ease;
+    
+}
+.active-prompt:after {
+    content: "_";
+    color: #FFF;
+}
+
+@keyframes 'blink' {
+    0% {   opacity: 1.0; }
+    50% {  opacity: 0.0; }
+    100% { opacity: 1.0; }
+}
+
+@-webkit-keyframes 'blink' {
+    0% {   opacity: 1.0; }
+    50% {  opacity: 0.0; }
+    100% { opacity: 1.0; }
+}

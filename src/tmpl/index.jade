@@ -2,30 +2,65 @@ extends layout
 
 block content
   .container
-    .span12
-      .hero-unit
-        span v.0.4.0
-        h1 A Task-based command line build tool for javascript projects
-    .row
+    .row-fluid
       .span3
-        h2 Getting Started
-        p
-          | Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-      .span3
-        h2 Plugins
-        p
-          | Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-      .span3
-        h2 Documentation
-        p
-          | Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
-      .span3
-        h2 API
-        p
-          | Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
+        .well.sidebar-nav.plugins-search
+          .nav-header
+            span v.0.4.0
 
-    .row
-      .span9
-        h2 Who uses Grunt
+      .span9.page
+        .hero-unit
+          h1 GRUNT: The JavaScript Task Runner
+
+          .feature
+            h3 Gruntfiles are defined in standard JavaScript or CoffeeScript.
+            p There's no unwieldy XML to manage, and no custom syntax to memorize.
+          .feature
+            h3 A collection of officially-maintained plugins exists to help you get started.
+            p The most common tasks, like concatenting and minifying files, linting code and running unit tests have already been created for you.
+          .feature
+            h3 Creating custom tasks and Grunt plugins is easy.
+            p If you need to automate custom behavior, don't worry! Full task creation documentation and a complete API reference are available.
+          .feature
+            h3 Grunt configuration is declarative.
+            p But since the Gruntfile is JavaScript, the configuration can also be built dynamically using the grunt API.
+          .feature
+            h3 There's a large community of task and plugin authors.
+            p If an officially-maintained Grunt plugin doesn't exist, it's possible that you'll find a community-created one that does what you want.
+          
+          pre.terminal
+            span.command-prompt
+              |grunt
+            |&nbsp;
+            |Running "jshint:gruntfile" (jshint) task
+            |<span class="green">&gt;&gt;</span> 1 file lint free.
+            |&nbsp;
+            |Running "jshint:src" (jshint) task
+            |<span class="green">&gt;&gt;</span> 1 file lint free.
+            |&nbsp;
+            |Running "jshint:test" (jshint) task
+            |<span class="green">&gt;&gt;</span> 1 file lint free.
+            |&nbsp;
+            |Running "qunit:files" (qunit) task
+            |Testing test/tiny-pubsub.html....<span class="green">OK</span>
+            |<span class="green">&gt;&gt;</span> 4 assertions passed (23ms)
+            |&nbsp;
+            |Running "clean:files" (clean) task
+            |Cleaning "dist"...<span class="green">OK</span>
+            |&nbsp;
+            |Running "concat:dist" (concat) task
+            |File "dist/ba-tiny-pubsub.js" created.
+            |&nbsp;
+            |Running "uglify:dist" (uglify) task
+            |File "dist/ba-tiny-pubsub.min.js" created.
+            |Uncompressed size: <span class="green">389</span> bytes.
+            |Compressed size: <span class="green">119</span> bytes gzipped (<span class="green">185</span> bytes minified).
+            |&nbsp;
+            |<span class="green">Done, without errors.</span>
+            |&nbsp;
+            |<span class="command-prompt active"><span class="active-prompt"></span></span>
+
+          .span
+            h2 Who uses Grunt
 
 
