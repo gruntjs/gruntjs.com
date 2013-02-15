@@ -51,6 +51,10 @@ module.exports = function(grunt) {
       js: {
         files: 'src/js/**',
         tasks: ['copy']
+      },
+      other: {
+        files: 'src/img/**',
+        tasks: ['default']
       }
     },
     // compile page layouts
