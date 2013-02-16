@@ -121,7 +121,7 @@ i {
 		  .why.left {
 		  	float: left;
 		  }
-		  .why.right{
+		  .why.right {
 		  	float: right;
 		  }
 		  .technology {
@@ -130,7 +130,7 @@ i {
 					margin-bottom: .5em;
 				}
 		  }
-		  .grunt-preview, .who-uses-grunt  {
+		  .grunt-preview, .who-uses-grunt {
 		  	margin-top: 3em;
 		  	h1 {
 					margin-bottom: .4em;
@@ -163,6 +163,9 @@ i {
 				}
 			}
 		}
+	}
+	.grunt-footer  .pull-right.bocoup {
+		float: left;
 	}
 }
 
@@ -482,7 +485,7 @@ i {
 
 
 .grunt-footer {
-  background: #e48632;
+  background: #453015;
   color: #FFF;
   width: 100%;
   font-weight: 200;
@@ -490,18 +493,23 @@ i {
   line-height: 4em;
   letter-spacing: 1px;
   text-shadow: @text-shadow;
-  .bocoup a:hover {
-    background: none;
+  .bocoup a {
+  	text-decoration: underline;
+  	color: white;
+  	&:hover {
+	    background: none;
+	    color: #0088cc;
+	  }
   }
   a:hover {
     text-decoration: none;
-    background: #dc822d;
+    background: #3e2b13;
   }
   .inner {
     max-width: 1100px;
     margin: 0px auto;
     p.pull-right {
-    	margin: 0 22em 0 0;
+    	margin: 0 19em 0 0;
     }
   	.social li a {
   		font-size: 1.3em;
