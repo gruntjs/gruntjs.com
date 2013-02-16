@@ -7,6 +7,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-jade');
+  grunt.loadNpmTasks('grunt-contrib-jshint');
 
   // Load local tasks
   grunt.loadTasks('tasks'); // getWiki, docs tasks
@@ -17,6 +18,9 @@ module.exports = function(grunt) {
     clean: {
       build: ['build/'],
       tmp: ['tmp/']
+    },
+    jshint: {
+      all: ['Gruntfile.js']
     },
     // compile less -> css
     less: {
@@ -89,16 +93,6 @@ module.exports = function(grunt) {
           "build/community.html": "src/tmpl/community.jade"
         }
       },
-      news: {
-        options: {
-          data: {
-            page: 'news'
-          }
-        },
-        files: {
-          "build/news.html": "src/tmpl/news.jade"
-        }
-      },
       other: {
         files: {
           "build/404.html": "src/tmpl/404.jade"
@@ -121,7 +115,7 @@ module.exports = function(grunt) {
   
   grunt.registerTask('build', ['clean', 'copy', 'jade', 'docs']);
   grunt.registerTask('default', ['build', 'less:production']);
-  grunt.registerTask('dev', ['build', 'less:development', 'watch']);
+  grunt.registerTask('dev', ['build', 'less:development', 'jshint', 'watch']);
 
   // build pack task
   grunt.registerTask('heroku', 'default');

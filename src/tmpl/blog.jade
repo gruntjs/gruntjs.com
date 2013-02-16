@@ -13,5 +13,9 @@ block content
               a Article 1
       .span9.page
         .hero-unit
-          h1 Grunt News
-          p Page coming soon..
+          h1= title
+          each article in content
+            h2
+              a(href='/blog/' + article.url)= article.title
+            span.post-date= "Posted on " + article.postDate
+            != article.content

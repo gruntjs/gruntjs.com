@@ -55,7 +55,17 @@ app.get("/api*", function(req, res) {
 });
 
 // news route
-app.get("/news", function(req, res) { res.sendfile('build/news.html'); });
+app.get("/blog*", function(req, res) {
+  var filePath = 'build' + req.url + '.html';
+  if (req.url == "/blog") {
+    res.sendfile('build/blog/index.html');
+  } else {
+
+    fs.exists(filePath, function (exists) {
+      exists ? res.sendfile(filePath) : res.sendfile('build/404.html', 404);
+    });
+  }
+});
 // plugins route
 app.get("/plugins", function(req, res) { res.sendfile('build/plugins.html'); });
 

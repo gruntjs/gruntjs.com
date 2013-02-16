@@ -1,5 +1,5 @@
 /*
- * grunt api docs
+ * grunt docs
  * http://gruntjs.com/
  *
  * Copyright (c) 2013 grunt contributors
@@ -66,6 +66,9 @@ module.exports = function (grunt) {
       // grunt guides - wiki articles that are not part of the grunt api
       generateGuides();
 
+      // grunt news!
+      grunt.task.run('blog');
+
       // docs for core grunt contrib plugins
       //generateContrib(); // TODO: Coming soon..
 
@@ -90,7 +93,7 @@ module.exports = function (grunt) {
         // API Docs
         var sidebars = [],
           base = 'tmp/wiki/',
-          names = grunt.file.expand({cwd:base}, ['*', '!grunt*.md', '!*.js']);
+          names = grunt.file.expand({cwd:base}, ['*', '!Blog-*', '!grunt*.md', '!*.js']);
 
           sidebars[0] = getSidebarSection('## Documentation', '', 'icon-document-alt-stroke');
           sidebars[1] = getSidebarSection('### Advanced');
@@ -105,7 +108,6 @@ module.exports = function (grunt) {
 
           grunt.file.copy(src, dest, {
             process:function (src) {
-
               try {
                 var file = 'src/tmpl/docs.jade',
                   templateData = {
@@ -193,9 +195,9 @@ module.exports = function (grunt) {
           var line = lines[l];
 
           // choose a section of the file
-          if (line === section) { rMode = true }
+          if (line === section) rMode = true;
           // end of section
-          else if (line.substring(0,2) === '##') { rMode = false }
+          else if (line.substring(0,2) === '##') rMode = false;
 
           if (rMode && line.length > 0) {
             var item = line.replace(/#/g,'').replace(']]', '').replace('* [[', ''),
