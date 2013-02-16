@@ -66,48 +66,103 @@ i {
   .page .hero-unit {
     min-height: 1000px;
     max-width: 1088px;
-    .why {
-    	margin: 3em 0;
-			width: 48%;
-			float: left;
-	    h3, p {
-	    	margin: 0;
-	    	font-size: 1em;
-	    	line-height: 1.6em;
-	    }
-	  }
-	  .why.left {
-	  	float: left;
-	  }
-	  .why.left {
-	  	float: right;
-	  }
-	  .technology {
-	  	clear: both;
-	  }
-	  .grunt-preview, .getting-started, .who-uses-grunt  {
-	  	margin-top: 3em;
-	  }
   }
 }
 
-.home-page {
-	.grunt-name {
-		color: #453015;
-		font-size: 3em;
-		font-weight: 900;
+.page-index {
+	.home-header {
+		margin: 1em 0 3.5em;
+		.grunt-name {
+			color: #453015;
+			font-size: 2.8em;
+			font-weight: 900;
+			letter-spacing: 0.06em;
+			-webkit-text-stroke: 4px;
+		}
 		.version {
 			opacity: .5;
-			font-size: .5em;
+			font-size: 1.1em;
 			font-weight: 200;
 		}
+		.tag-line {
+			margin-top: 0.1em;
+			font-size: 3.25em;
+			color: #453015;
+			margin-bottom: 0;
+		}
 	}
-	.tag-line {
-		margin-top: 0.1em;
-		font-size: 2.3em;
+	.brand {
+		margin-top: -12px;
+	 .logo {
+			height: 340px;
+			background-size: 163% 123%;
+			width: 300px;
+			background-position: -90px 0;
+		}
 	}
-	.hero-unit div h1 {
-		margin-bottom: .5em;
+	.row-fluid {
+		background-color: white;
+		border-left: 1px solid #CCC;
+		border-right: 1px solid #CCC;
+		.span9 {
+			width: 69%;
+			float: right;
+			border: none;
+			.why {
+	    	margin: 3em 0;
+				width: 48%;
+				h1 {
+					margin-bottom: .4em;
+				}
+				p {
+					margin: 0;
+				}
+		  }
+		  .why.left {
+		  	float: left;
+		  }
+		  .why.right{
+		  	float: right;
+		  }
+		  .technology {
+		  	clear: both;
+		  	h1 {
+					margin-bottom: .5em;
+				}
+		  }
+		  .grunt-preview, .who-uses-grunt  {
+		  	margin-top: 3em;
+		  	h1 {
+					margin-bottom: .4em;
+				}
+		  }
+		  .technology img {
+			  width: 25%;
+			}
+		}
+		.span3 {
+			width: 30%;
+			font-weight: 200;
+			font-size: 16px;
+			line-height: 1.6em;
+			.sidebar-nav {
+				margin-top: 302px;
+				padding-left: 3em;
+				h1 {
+					font-size: 32px;
+				}
+				.latest-news {
+					margin-bottom: 2.5em;
+					ul {
+						list-style-type: none;
+						margin-left: 0;
+					}
+					a {
+						display: block;
+					}
+				}
+			}
+		}
 	}
 }
 
