@@ -1,18 +1,29 @@
 extends layout
 
 block content
-  .container.home-page
+  .container
     .row-fluid
       .span3
-        .well.sidebar-nav.plugins-search
-          .nav-header
-            span Latest News
+        .well.sidebar-nav
+          .latest-news
+            h1 Latest News
+            ul
+              li 
+                span.date February 18th, 2013
+                a(href='#') Grunt 0.4.0 released
+
+          .getting-started
+            h1 Getting Started
+            p Read the <a href="/getting-started">Getting Started</a> guide for instructions on using Grunt in your projects. Once you've done that, check out a <a href="/sample-gruntfile">Sample Gruntfile</a> and learn more about <a href="/configuring-tasks">Configuring Tasks</a>.
+
 
       .span9.page
         .hero-unit
-          h1.grunt-name GRUNT 
-            span.version stable version: 0.4.0
-          h1.tag-line The JavaScript Task Runner
+          .home-header
+            h1
+              span.grunt-name GRUNT
+              span.version stable version: 0.4.0
+            h1.tag-line The JavaScript Task Runner
 
           .why.left
             h1 Why use a task runner?
@@ -25,28 +36,28 @@ block content
           .technology
             h1 Technologies with Grunt Plugins
             div
-              a.technology(href='http://coffeescript.org/')
+              a.technology(href='https://npmjs.org/package/grunt-contrib-coffee')
                 span.logo
                   img(src='/img/logo-coffeescript.jpg', alt='Bocoup')
-              a.technology(href='http://handlebarsjs.com/')
+              a.technology(href='https://npmjs.org/package/grunt-contrib-handlebars')
                 span.logo
                   img(src='/img/logo-handlebars.jpg', alt='Bocoup')
-              a.technology(href='http://jade-lang.com/')
+              a.technology(href='https://npmjs.org/package/grunt-contrib-jade')
                 span.logo
                   img(src='/img/logo-jade.jpg', alt='Bocoup') 
-              a.technology(href='http://www.jslint.com/')
+              a.technology(href='https://npmjs.org/package/grunt-linter')
                 span.logo
-                  img(src='/img/logo-jslint.jpg', alt='Bocoup')
-              a.technology(href='http://lesscss.org/')
+                  img(src='/img/logo-jshint.jpg', alt='Bocoup')
+              a.technology(href='https://npmjs.org/package/grunt-contrib-less')
                 span.logo
                   img(src='/img/logo-less.jpg', alt='Bocoup')
-              a.technology(href='http://requirejs.org/')
+              a.technology(href='https://npmjs.org/package/grunt-contrib-requirejs')
                 span.logo
                   img(src='/img/logo-requirejs.jpg', alt='Bocoup')
-              a.technology(href='http://sass-lang.com/')
+              a.technology(href='https://npmjs.org/package/grunt-contrib-sass')
                 span.logo
                   img(src='/img/logo-sass.jpg', alt='Bocoup')
-              a.technology(href='http://learnboost.github.com/stylus/')
+              a.technology(href='https://npmjs.org/package/grunt-contrib-stylus')
                 span.logo
                   img(src='/img/logo-sylus.jpg', alt='Bocoup')
 
@@ -84,11 +95,21 @@ block content
               |&nbsp;
               |<span class="command-prompt active"><span class="active-prompt"></span></span>
 
-          .getting-started
-            h1 Getting Started
-            p Read the <a href="/getting-started">Getting Started</a> guide for instructions on using Grunt in your projects. Once you've done that, check out a <a href="/sample-gruntfile">Sample Gruntfile</a> and learn more about <a href="/configuring-tasks">Configuring Tasks</a>.
-
-
+          .who-uses-grunt
+            h1 Who uses Grunt
+            div
+              a.technology(href='https://twitter.com')
+                span.logo
+                  img(src='/img/logo-twitter.jpg', alt='Bocoup')
+              a.technology(href='http://modernizr.com/')
+                span.logo
+                  img(src='/img/logo-modernizr.jpg', alt='Bocoup')
+              a.technology(href='http://www.adobe.com/')
+                span.logo
+                  img(src='/img/logo-adobe.jpg', alt='Bocoup')
+              a.technology(href='http://jquery.com/')
+                span.logo
+                  img(src='/img/logo-jquery.jpg', alt='Bocoup')
           
 
 
