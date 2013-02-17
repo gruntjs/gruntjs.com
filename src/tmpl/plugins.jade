@@ -3,6 +3,16 @@ extends layout
 block content
   .container
     .row-fluid
+      .span9.page
+        .hero-unit
+          h1 The world of Grunt Plugins
+          section.main
+            #loading
+              p Loading plugins...
+            #plugins-all
+            p
+              small
+                i Plugins must be published on NPM with the `gruntplugin` keyword.
       .span3
         .well.sidebar-nav.plugins-search
           .nav-header
@@ -29,19 +39,6 @@ block content
                     a(href='#', data-sort-desc='true') Forks
                   li
                     a(href='#') Author
-
-
-      .span9.page
-        .hero-unit
-          h1 The world of Grunt Plugins
-          section.main
-            #loading
-              p Loading plugins...
-            #plugins-all
-            p
-              small
-                i Plugins must be published on NPM with the `gruntplugin` keyword.
-
 
   script(src='/js/vendor/jquery.js')
   script(src='/js/vendor/jquery.timeago.js')

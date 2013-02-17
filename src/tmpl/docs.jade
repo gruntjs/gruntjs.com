@@ -3,6 +3,10 @@ extends layout
 block content
   .container(class=locals.pageSegment)
     .row-fluid
+      .span9.page
+        .hero-unit
+          h1= title
+          != content
       .span3
         .well.sidebar-nav
           if locals.sidebars
@@ -21,7 +25,3 @@ block content
                       if link.icon
                         i(class=link.icon)
                       span= link.name
-      .span9.page
-          .hero-unit
-            h1= title
-            != content

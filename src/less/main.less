@@ -20,7 +20,7 @@ h1, h2, h3 {
 
 h2 {
 	margin-top: 2em;
-	border-bottom: 1px solid #6F5A40; 
+	border-bottom: 1px solid #6F5A40;
 }
 
 h3 {
@@ -73,7 +73,41 @@ i {
   .page .hero-unit {
     min-height: 1000px;
     max-width: 1088px;
-    padding-left: 20px;
+  }
+}
+
+.brand {
+  position: absolute;
+  left: 15px;
+  .logo {
+    background-image: url(../img/grunt-logo-small.png);
+    background-image: url(../img/grunt-logo.svg);
+    width: 190px;
+    height: 224px;
+    display: block;
+  }
+}
+
+.page-secondary {
+  .brand {
+    left: 27px;
+  }
+  .row-fluid {
+    margin-left: 1px;
+    border-right: 1px solid #CCC;
+    .span9 {
+      float: right;
+      margin-left: 0;
+      background-color: white;
+      border-left: 1px solid #CCC;
+      position: relative;
+      left: -1px;
+    }
+    .span3 {
+      float: right;
+      margin-left: 0;
+      width: 25%;
+    }
   }
 }
 
@@ -128,6 +162,9 @@ i {
 			float: right;
 			border: none;
       padding-bottom: 3em;
+      .hero-unit {
+        padding-left: 20px;
+      }
 			.why {
 	    	margin: 3em 0;
 				width: 48%;
@@ -239,26 +276,6 @@ i {
   max-width: 1100px;
 }
 
-.row-fluid .span9 {
-  margin-left: 0;
-  width: 76.589%;
-  border-left: 1px solid #CCC;
-  border-right: 1px solid #CCC;
-  position: relative;
-  left: -1px;
-}
-
-.brand {
-  position: absolute;
-  left: 15px;
-  .logo {
-    background-image: url(../img/grunt-logo-small.png);
-    background-image: url(../img/grunt-logo.svg);
-    width: 190px;
-    height: 224px;
-    display: block;
-  }
-}
 
 .hero-unit {
   font-size: 16px;
@@ -289,12 +306,16 @@ i {
     font-size: 17px;
     font-weight: 200;
     letter-spacing: 1px;
-    padding: 10px 15px 9px 12px;
+    padding: 10px 15px 9px 33px;
     position: relative;
     z-index: 2;
     text-shadow: @text-shadow;
     i {
-    	margin-right: 5px;
+      position: absolute;
+      left: 0;
+      width: 33px;
+    	margin-right: 9px;
+      text-align: center;
     }
   }
   .nav-list {
@@ -306,10 +327,10 @@ i {
       background: white;
       border: 1px solid #CCC;
       border-right: none;
-      padding: 9px 14px 9px 29px;
+      padding: 9px 14px 9px 33px;
       a {
         background: none;
-        padding: 9px 14px 9px 29px;
+        padding: 9px 14px 9px 33px;
       }
     }
     &:first-child {
@@ -317,17 +338,14 @@ i {
     }
     li.nav-header {
       margin-top: 20px;
-      &:first-child {
-        padding-left: 30px;
-      }
     }
-    &:first-child li:first-child {
-      background: #e48632;
-      padding-left: 12px;
-    }
+    // &:first-child li:first-child {
+    //   background: #e48632;
+    //   padding-left: 13px;
+    // }
     a {
       margin: 0;
-      padding: 10px 15px 10px 30px;
+      padding: 10px 15px 10px 33px;
       color: #6f5a40;
       &:hover {
         background: #dcdcdc;
@@ -336,7 +354,7 @@ i {
         background: white;
         border: 1px solid #CCC;
         border-right: none;
-        padding: 9px 14px 9px 29px;
+        padding: 9px 14px 9px 32px;
       }
     }
   }
