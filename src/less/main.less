@@ -18,11 +18,6 @@ h1, h2, h3 {
   position: relative;
 }
 
-h2 {
-	margin-top: 2em;
-	border-bottom: 1px solid #6F5A40;
-}
-
 h3 {
 	font-size: 1.2em;
 	margin-top: 1em;
@@ -102,6 +97,10 @@ i {
       border-left: 1px solid #CCC;
       position: relative;
       left: -1px;
+      h2 {
+        margin-top: 2em;
+        border-bottom: 1px solid #6F5A40;
+      }
     }
     .span3 {
       float: right;
@@ -165,11 +164,15 @@ i {
       .hero-unit {
         padding-left: 20px;
       }
+      h2 {
+        font-size: 30px;
+        margin: 2em 0 0.4em;
+      }
 			.why {
 	    	margin: 3em 0;
 				width: 48%;
-				h1 {
-					margin-bottom: .4em;
+				h2 {
+          margin-top: 0;
 				}
 				p {
 					margin: 0;
@@ -185,12 +188,6 @@ i {
 		  	clear: both;
 		  	h1 {
 					margin-bottom: .5em;
-				}
-		  }
-		  .grunt-preview, .who-uses-grunt {
-		  	margin-top: 3em;
-		  	h1 {
-					margin-bottom: .4em;
 				}
 		  }
 		  .technology img {
