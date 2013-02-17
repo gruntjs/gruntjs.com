@@ -3,130 +3,126 @@ extends layout
 block content
   .container
     .row-fluid
-      .span3
-        .well.sidebar-nav
-          .latest-news
-            h1 Latest News
-            ul
-              li 
-                span.date February 18th, 2013
-                a(href='#') Grunt 0.4.0 released
-
-          .getting-started
-            h1 Getting Started
-            p Read the <a href="/getting-started">Getting Started</a> guide for instructions on using Grunt in your projects. Once you've done that, check out a <a href="/sample-gruntfile">Sample Gruntfile</a> and learn more about <a href="/configuring-tasks">Configuring Tasks</a>.
-          
-          .social
-            a.github(href='https://github.com/gruntjs/grunt/') 
-              span.icon-github
-            a.twitter(href='https://twitter.com/gruntjs/') 
-              span.icon-twitter
-            a.feed(href='#') 
-              span.icon-feed
-
       .span9.page
         .hero-unit
           .home-header
             h1
-              span.grunt-name GRUNT
-              span.version stable version: 0.4.0
-            h1.tag-line The JavaScript Task Runner
+              span.grunt-name Grunt
+              span.tag-line The JavaScript Task Runner
 
           .why.left
             h1 Why use a task runner?
             p In one word: automation. The less work you have to do when performing repetitive tasks like minification, compilation, unit testing, linting, etc, the easier your job becomes. After you've configured it, a task runner can do most of that mundane work for you—and your team—with basically zero effort.
-          
+
           .why.right
             h1 Why use Grunt?
-            p The Grunt ecosystem is huge and it's growing every day. With literally hundreds of [plugins to choose from](/plugins), you can use Grunt to automate just about anything with a minimum of effort. If someone hasn't already built what you need, authoring and publishing your own Grunt plugin to npm is a breeze.
-          
+            p The Grunt ecosystem is huge and it's growing every day. With literally hundreds of plugins to choose from, you can use Grunt to automate just about anything with a minimum of effort. If someone hasn't already built what you need, authoring and publishing your own Grunt plugin to npm is a breeze.
+
           .technology
-            h1 Technologies with Grunt Plugins
+            h1 Available Grunt plugins
+            p Many of the tasks you need are already available as Grunt Plugins, and new plugins are published every day. While the <a href="/plugins">plugin listing</a> is more complete, here's a few you may have heard of.
             div
               a.technology(href='https://npmjs.org/package/grunt-contrib-coffee')
                 span.logo
-                  img(src='/img/logo-coffeescript.jpg', alt='Bocoup')
+                  img(src='/img/logo-coffeescript.jpg', alt='CoffeeScript')
               a.technology(href='https://npmjs.org/package/grunt-contrib-handlebars')
                 span.logo
-                  img(src='/img/logo-handlebars.jpg', alt='Bocoup')
+                  img(src='/img/logo-handlebars.jpg', alt='Handlebars')
               a.technology(href='https://npmjs.org/package/grunt-contrib-jade')
                 span.logo
-                  img(src='/img/logo-jade.jpg', alt='Bocoup') 
-              a.technology(href='https://npmjs.org/package/grunt-linter')
+                  img(src='/img/logo-jade.jpg', alt='Jade')
+              a.technology(href='https://npmjs.org/package/grunt-contrib-jshint')
                 span.logo
-                  img(src='/img/logo-jshint.jpg', alt='Bocoup')
+                  img(src='/img/logo-jshint.jpg', alt='JSHint')
               a.technology(href='https://npmjs.org/package/grunt-contrib-less')
                 span.logo
-                  img(src='/img/logo-less.jpg', alt='Bocoup')
+                  img(src='/img/logo-less.jpg', alt='Less')
               a.technology(href='https://npmjs.org/package/grunt-contrib-requirejs')
                 span.logo
-                  img(src='/img/logo-requirejs.jpg', alt='Bocoup')
+                  img(src='/img/logo-requirejs.jpg', alt='Require.js')
               a.technology(href='https://npmjs.org/package/grunt-contrib-sass')
                 span.logo
-                  img(src='/img/logo-sass.jpg', alt='Bocoup')
+                  img(src='/img/logo-sass.jpg', alt='Sass')
               a.technology(href='https://npmjs.org/package/grunt-contrib-stylus')
                 span.logo
-                  img(src='/img/logo-sylus.jpg', alt='Bocoup')
+                  img(src='/img/logo-sylus.jpg', alt='Stylus')
 
-          .grunt-preview       	
+          .grunt-preview
             h1 Here's a preview!
-            p While installing grunt is simple, it's slightly more involved to get it running on your project.  To see what your effort will win you, take a look at this example output from running Grunt in a <a href="https://github.com/cowboy/jquery-tiny-pubsub">sample project</a>
+            p While installing grunt is simple, it's slightly more involved to get it running on your project.  To see what your effort will win you, take a look at this example output from running Grunt in a <a href="https://github.com/cowboy/jquery-tiny-pubsub">sample project</a>.
+            <!-- THX 2 @GF3 4 THE CSS <3!! -->
             pre.terminal
               span.command-prompt grunt
-              |&nbsp;
+              | 
               |Running "jshint:gruntfile" (jshint) task
               |<span class="green">&gt;&gt;</span> 1 file lint free.
-              |&nbsp;
+              | 
               |Running "jshint:src" (jshint) task
               |<span class="green">&gt;&gt;</span> 1 file lint free.
-              |&nbsp;
+              | 
               |Running "jshint:test" (jshint) task
               |<span class="green">&gt;&gt;</span> 1 file lint free.
-              |&nbsp;
+              | 
               |Running "qunit:files" (qunit) task
               |Testing test/tiny-pubsub.html....<span class="green">OK</span>
               |<span class="green">&gt;&gt;</span> 4 assertions passed (23ms)
-              |&nbsp;
+              | 
               |Running "clean:files" (clean) task
               |Cleaning "dist"...<span class="green">OK</span>
-              |&nbsp;
+              | 
               |Running "concat:dist" (concat) task
               |File "dist/ba-tiny-pubsub.js" created.
-              |&nbsp;
+              | 
               |Running "uglify:dist" (uglify) task
               |File "dist/ba-tiny-pubsub.min.js" created.
               |Uncompressed size: <span class="green">389</span> bytes.
               |Compressed size: <span class="green">119</span> bytes gzipped (<span class="green">185</span> bytes minified).
-              |&nbsp;
+              | 
               |<span class="green">Done, without errors.</span>
-              |&nbsp;
+              | 
               |<span class="command-prompt active"><span class="active-prompt"></span></span>
 
           .who-uses-grunt
-            h1 Who uses Grunt
+            h1 Who uses Grunt?
+            p This is just a small sample of the companies that are using Grunt to run tasks in their projects.
             div
               a.technology(href='https://twitter.com')
                 span.logo
-                  img(src='/img/logo-twitter.jpg', alt='Bocoup')
-              a.technology(href='http://modernizr.com/')
-                span.logo
-                  img(src='/img/logo-modernizr.jpg', alt='Bocoup')
-              a.technology(href='http://www.adobe.com/')
-                span.logo
-                  img(src='/img/logo-adobe.jpg', alt='Bocoup')
+                  img(src='/img/logo-twitter.jpg', alt='Twitter')
               a.technology(href='http://jquery.com/')
                 span.logo
-                  img(src='/img/logo-jquery.jpg', alt='Bocoup')
-          
+                  img(src='/img/logo-jquery.jpg', alt='jQuery')
+              a.technology(href='http://www.adobe.com/')
+                span.logo
+                  img(src='/img/logo-adobe.jpg', alt='Adobe')
+              a.technology(href='http://modernizr.com/')
+                span.logo
+                  img(src='/img/logo-modernizr.jpg', alt='Modernizr')
 
+      .span3
+        .well.sidebar-nav
+          .latest-version
+            h3 Latest Version
+            ul
+              li Stable: v0.4.0
+              li Development: N/A
 
+          .latest-news
+            h3 Latest News
+            ul
+              li
+                a(href='#')
+                  span.title Grunt 0.4.0 released
+                  span.date February 18th, 2013
 
+          .getting-started
+            h3 Getting Started
+            p Read the <a href="/getting-started">Getting Started</a> guide for instructions on using Grunt in your projects. Once you've done that, check out a <a href="/sample-gruntfile">Sample Gruntfile</a> and learn more about <a href="/configuring-tasks">Configuring Tasks</a>.
 
-
-
-
-
-
-
-
-
+          .social
+            a.github(href='https://github.com/gruntjs/grunt/', alt='Grunt on GitHub')
+              span.icon-github
+            a.twitter(href='https://twitter.com/gruntjs/', alt='Grunt on Twitter')
+              span.icon-twitter
+            a.feed(href='#', alt='Grunt blog RSS feed')
+              span.icon-feed
