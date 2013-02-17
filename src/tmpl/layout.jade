@@ -7,9 +7,8 @@ html(lang='en')
     link(rel='stylesheet', href='/css/main.css')
     link(rel='stylesheet', href='http://fonts.googleapis.com/css?family=Lato:400,700')
     link(rel='shortcut icon', href='../img/favicon.ico', type='image/x-icon')
-    body(class=locals.page ? 'page-' + locals.page : '')
-      include blocks/header
-      .content
-        block content
-
-      include blocks/footer
+  body(class=locals.page ? 'page-' + locals.page : '')
+    include blocks/header
+    .content
+      block content
+    include blocks/footer
