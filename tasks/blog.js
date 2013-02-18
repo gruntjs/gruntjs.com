@@ -113,7 +113,7 @@ module.exports = function (grunt) {
       var src = 'src/tmpl/blog.jade',
         templateData = {
         page:'blog',
-        title:"Latest Grunt News",
+        title:"The Grunt Blog",
         content:shortList,
         articleList: articleList
       };
