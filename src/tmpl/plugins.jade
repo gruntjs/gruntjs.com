@@ -26,11 +26,7 @@ block content
           .search-options
             div.navbar-search.pull-left
               input.search-query(type='text', placeholder='Search Grunt Plugins', disabled, autofocus)
-            .contrib-only
-              label.checkbox
-                | Show <strong>contrib</strong> plugins first
-                input#contrib-top(type='checkbox')
-            p Sort plugins list by
+            p.sort-by Sort plugins list by
             .btn-group.dropdown
                 button.btn.btn-large.dropdown-toggle(data-toggle='dropdown')
                   span.choice Title
@@ -48,7 +44,10 @@ block content
                     a(href='#') Author
                   li
                     a(href='#', data-sort-desc='true') Version
-
+            .contrib-only
+              label.checkbox
+                | Show <strong>contrib</strong> plugins first
+                input#contrib-top(type='checkbox')
   script(src='/js/plugins.js')
   script#plugins-latest-template(type='text/template')
     |<h4>Latest plugins</h4>

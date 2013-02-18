@@ -10,7 +10,7 @@
         el.displayName = el.name.replace('grunt-', '');
         el.isContrib = /^contrib-/.test(el.displayName);
         if (!el.author) {
-          // temporary way to sort out no author names
+          // TODO: update this, temporary way to sort out no author names
           el.author = {};
           el.author.name = 'zzzz';
         }
