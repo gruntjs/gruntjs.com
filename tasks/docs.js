@@ -97,7 +97,8 @@ module.exports = function (grunt) {
 
           sidebars[0] = getSidebarSection('## Documentation', '', 'icon-document-alt-stroke');
           sidebars[1] = getSidebarSection('### Advanced');
-          sidebars[2] = getSidebarSection('### Migration guides');
+          sidebars[2] = getSidebarSection('### Community');
+          sidebars[3] = getSidebarSection('### Migration guides');
 
         names.forEach(function (name) {
 
