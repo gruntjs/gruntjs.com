@@ -11,11 +11,10 @@ feed(xmlns='http://www.w3.org/2005/Atom')
     entry
       title= post.title
       link <a href="http://gruntjs.com/blog/#{post.url}" rel="nofollow">http://gruntjs.com/blog/#{post.url}</a>
-      description
+      content(type='html')
         | <![CDATA[
         | !{post.content}
         p
-          a(href='<a href="http://gruntjs.com/blog/#{post.url}', rel="nofollow") http://gruntjs.com/blog/#{post.url}' 'Read more'
+          a(href='http://gruntjs.com/blog/#{post.url}', rel="nofollow") http://gruntjs.com/blog/#{post.url}' 'Read more'
         | ]]>
       pubDate= new Date(post.postRawDate).toUTCString()
-      guid(isPermaLink='false') <a href="http://gruntjs.com/blog/#{post.url}" rel="nofollow">http://gruntjs.com/blog/#{post.url}</a>

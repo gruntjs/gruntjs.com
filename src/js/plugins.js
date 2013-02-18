@@ -59,7 +59,7 @@
 
       $searchQuery.removeProp('disabled').focus()
       .on('submit', false)
-      .on('focus keyup paste', function () {
+      .on('keyup paste', function () {
         if ($contribCheck.is(':checked')) $contribCheck.trigger('click');
         $('.contrib-toggle .btn:first').click();
         list.search($(this).val());
