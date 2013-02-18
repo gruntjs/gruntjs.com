@@ -9,6 +9,11 @@
       modules = _.map(modules, function (el) {
         el.displayName = el.name.replace('grunt-', '');
         el.isContrib = /^contrib-/.test(el.displayName);
+        if (!el.author) {
+          // temporary way to sort out no author names
+          el.author = {};
+          el.author.name = 'zzzz';
+        }
         return el;
       });
 
@@ -45,6 +50,16 @@
 
       $pluginsContrib.append(contribTpl);
       $('#plugins-all').append(allTpl);
+      var list2 = new List('plugins-contrib', {
+        valueNames: [
+          'title',
+          'desc',
+          'author',
+          'modified'
+        ],
+        page: 9999,
+        searchClass: 'search-query'
+      });
 
       var list = new List('plugins-all', {
         valueNames: [
@@ -81,7 +96,6 @@
       }).trigger('click');
 
       $('.dropdown').on('click', 'ul a',function () {
-        if ($contribCheck.is(':checked')) $contribCheck.trigger('click');
         var text = $(this).text();
         var sortDesc = $(this).data('sort-desc');
         var lastSortTitle = $('.dropdown-toggle .choice').text();
@@ -89,8 +103,13 @@
         var isAsc = sortInverse ? sortDesc : !sortDesc;
 
         $(this).data('sort-inverse', !sortInverse);
-        $(this).closest('.dropdown').find('.choice').text(text);
+        var drop = $(this).closest('.dropdown');
+        drop.find('.choice').text(text);
+        drop.removeClass('open');
         list.sort(text.toLowerCase(), { asc: isAsc });
+        list2.sort(text.toLowerCase(), { asc: isAsc });
+
+        return false;
       });
 
       // url plugin search, search grunt plugins using /plugins/[query]

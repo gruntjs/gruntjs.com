@@ -24,7 +24,7 @@ block content
             i.icon-power-cord
             span Plugins
           .search-options
-            form.navbar-search.pull-left
+            div.navbar-search.pull-left
               input.search-query(type='text', placeholder='Search Grunt Plugins', disabled, autofocus)
             .contrib-only
               label.checkbox
@@ -40,12 +40,14 @@ block content
                     a(href='#') Title
                   li
                     a(href='#', data-sort-desc='true') Modified
-                  li
+                  //li
                     a(href='#', data-sort-desc='true') Stars
-                  li
+                  //li
                     a(href='#', data-sort-desc='true') Forks
                   li
                     a(href='#') Author
+                  li
+                    a(href='#') Version
 
   script(src='/js/plugins.js')
   script#plugins-latest-template(type='text/template')
@@ -64,7 +66,7 @@ block content
     |<span class="name-description">
     |<span class="title"><%- el.displayName %></span>
     |<% if (el.author) { %>
-    |<span class="author"> by <%- el.author.name %></span>
+    |<span class="author <%= el.author.name === 'zzzz'? 'author-hide' : '' %>"> by <%= el.author.name %></span>
     |<% } else { %>
     |<span class="author"></span>
     |<% } %>
