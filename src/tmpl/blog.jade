@@ -9,6 +9,7 @@ block content
           if locals.singlePost
             span.post-date= "Posted on " + postDate
             != content
+            include includes/disqus
           else
             each article in content
               h2
@@ -20,7 +21,7 @@ block content
           ul.nav.nav-list
             li.nav-header
               i.icon-newspaper
-              span News
+              span Blog
             each article in articleList
               li
                 a(href='/blog/' + article.url, class=locals.url == article.url && 'active')= article.title
