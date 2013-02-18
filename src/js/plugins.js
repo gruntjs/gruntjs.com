@@ -8,7 +8,7 @@
       // remove grunt from the plugin name
       modules = _.map(modules, function (el) {
         el.displayName = el.name.replace('grunt-', '');
-        el.isContrib = /^contrib-/.test(el.displayName);
+        el.isContrib = /^contrib/.test(el.displayName);
         if (!el.author) {
           // TODO: update this, temporary way to sort out no author names
           el.author = {};
@@ -28,7 +28,7 @@
       });
 
       var contribModules = _.filter(modules, function (el) {
-        return !!(/^grunt-contrib-/.test(el.name));
+        return !!(/^grunt-contrib/.test(el.name));
       });
 
       var allModules = _.sortBy(modules, function (el) {
@@ -47,6 +47,8 @@
       var $contribCheck = $('#contrib-top'),
           $pluginsContrib = $('#plugins-contrib'),
           $searchQuery = $('.search-query');
+
+      $searchQuery.val('');
 
       $pluginsContrib.append(contribTpl);
       $('#plugins-all').append(allTpl);
@@ -88,7 +90,7 @@
         if ($contribCheck.is(':checked')) {
           $pluginsContrib.fadeIn();
           list.filter(function (el) {
-            return !(/^contrib-/.test(el.values().title));
+            return !(/^contrib/.test(el.values().title));
           });
         } else {
           $pluginsContrib.fadeOut();
@@ -121,10 +123,11 @@
       });
 
       // url plugin search, search grunt plugins using /plugins/[query]
-      var url = document.URL,
-        shortUrl= url.substring(url.lastIndexOf("/") + 1, url.length);
-      if (shortUrl.length > 0 && shortUrl.indexOf("plugins") !== 0) $searchQuery.val(shortUrl).focus();
-
+      var url = document.URL.split('/');
+      if (url[4] && url[4].length > 1) {
+        $contribCheck.trigger('click');
+        $searchQuery.val(url[4]).keyup();
+      }
     });
   });
 })(window, jQuery);

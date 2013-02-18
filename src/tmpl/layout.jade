@@ -8,7 +8,7 @@ html(lang='en')
     link(rel='stylesheet', href='http://fonts.googleapis.com/css?family=Lato:400,700')
     link(rel='shortcut icon', href='../img/favicon.ico', type='image/x-icon')
     link(href='/rss', rel='alternate', title='Grunt Blog Feed', type='application/atom+xml')
-    script(src='js/vendor/lib/modernizr.min.js')
+    script(src='/js/vendor/lib/modernizr.min.js')
   body(class=locals.page ? 'page-' + locals.page + (locals.page === 'index' ? '' : ' page-secondary') : '')
     include blocks/header
     .content
