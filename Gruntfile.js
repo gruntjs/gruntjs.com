@@ -99,7 +99,7 @@ module.exports = function(grunt) {
     copy: {
       assets: {
         files: [
-          {expand: true, cwd: 'src/', src: ['img/**', 'fonts/**'], dest: 'build/'}
+          {expand: true, cwd: 'src/', src: ['img/**', 'fonts/**', 'js/vendor/lib/modernizr.min.js'], dest: 'build/'}
         ]
       },
       root: {
