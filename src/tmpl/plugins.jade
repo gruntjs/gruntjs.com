@@ -47,7 +47,7 @@ block content
                   li
                     a(href='#') Author
                   li
-                    a(href='#') Version
+                    a(href='#', data-sort-desc='true') Version
 
   script(src='/js/plugins.js')
   script#plugins-latest-template(type='text/template')
@@ -73,8 +73,8 @@ block content
     |<span class="desc"><%- el.description %><div class="hide"><%- el.keywords %></div></span>
     |</span>
     |<span class="summary">
-    |<span class="modified"><span>Last modified</span> <time datetime="<%- el.time.modified %>"><%- el.time.modified %></time></span>
-    |<span class="version"><span>Grunt Version</span> <%- el.gruntVersion || "N/A" %></span>
+    |<span class="modified"><span>Modified</span> <time datetime="<%- el.time.modified %>"><%- el.time.modified %></time></span>
+    |<span class="gruntVersion"><span>Grunt Version</span> <%- el.gruntVersion || "N/A" %></span>
     |</span>
     |</a>
     |</li>

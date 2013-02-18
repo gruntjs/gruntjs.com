@@ -55,7 +55,8 @@
           'title',
           'desc',
           'author',
-          'modified'
+          'modified',
+          'gruntVersion'
         ],
         page: 9999,
         searchClass: 'search-query'
@@ -66,7 +67,8 @@
           'title',
           'desc',
           'author',
-          'modified'
+          'modified',
+          'gruntVersion'
         ],
         page: 9999,
         searchClass: 'search-query'
@@ -106,8 +108,14 @@
         var drop = $(this).closest('.dropdown');
         drop.find('.choice').text(text);
         drop.removeClass('open');
-        list.sort(text.toLowerCase(), { asc: isAsc });
-        list2.sort(text.toLowerCase(), { asc: isAsc });
+
+        if (text === "Version") {
+          text = "gruntVersion";
+        } else {
+          text = text.toLowerCase();
+        }
+        list.sort(text, { asc: isAsc });
+        list2.sort(text, { asc: isAsc });
 
         return false;
       });

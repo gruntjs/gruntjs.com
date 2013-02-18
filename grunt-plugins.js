@@ -9,6 +9,14 @@ var Q = require('q');
 
 function condensePlugin(plugin) {
   var keywords = keywords = _.last(_.values(plugin.versions)).keywords;
+
+  var gruntVersion,
+    latestTagInfo = plugin.versions[ plugin['dist-tags'].latest ];
+
+  if (latestTagInfo && latestTagInfo.peerDependencies && latestTagInfo.peerDependencies.grunt) {
+    gruntVersion = latestTagInfo.peerDependencies.grunt;
+  }
+
   return {
     name: plugin.name,
     description: plugin.description,
@@ -16,6 +24,7 @@ function condensePlugin(plugin) {
     url: plugin.url,
     github: plugin.repository != null ? plugin.repository.url : "",
     keywords: keywords,
+    gruntVersion: gruntVersion,
     // only get created and modified date, leave out all of the version timestamps
     time: {modified: plugin.time.modified, created: plugin.time.created}
   };
