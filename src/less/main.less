@@ -76,10 +76,10 @@ i {
   position: absolute;
   left: 15px;
   .logo {
-		background: transparent url(../img/grunt-logo.png) no-repeat;
-		background-image: -webkit-linear-gradient(transparent, transparent), url(../img/grunt-logo.svg);
-		background-image: -moz-linear-gradient(transparent, transparent), url(../img/grunt-logo.svg);
-		background-image: linear-gradient(transparent, transparent), url(../img/grunt-logo.svg);
+    background: transparent url(../img/grunt-logo.png) no-repeat;
+    background-image: -webkit-linear-gradient(transparent, transparent), url(../img/grunt-logo.svg);
+    background-image: -moz-linear-gradient(transparent, transparent), url(../img/grunt-logo.svg);
+    background-image: linear-gradient(transparent, transparent), url(../img/grunt-logo.svg);
     width: 190px;
     height: 224px;
     display: block;
@@ -87,7 +87,8 @@ i {
 }
 
 .page-secondary .brand .logo{
-		background-size: 100% auto;
+  background-size: 100% auto;
+  -ms-behavior: url('/backgroundsize.htc');
 }
 
 .page-secondary {
@@ -706,14 +707,17 @@ pre .literal {
 
 .navbar-inverse {
   padding: 0;
+
   .navbar-inner {
-    padding: 0;
-    border: 0;
-    border-radius: 0;
-    background: @navbarInverseBackground;
-  }
-  .brand, .nav > li > a {
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, .25);
+     padding: 0;
+     border: 0;
+     border-radius: 0;
+     filter: none;
+     background-image: none;
+     background-color: @navbarInverseBackground;
+    .brand, .nav > li > a {
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, .25);
+    }
   }
 }
 
