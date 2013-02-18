@@ -75,7 +75,13 @@ module.exports = function(grunt) {
           "build/plugins.html": "src/tmpl/plugins.jade"
         }
       },
-      other: {
+      notfound: {
+        options: {
+          data: {
+            page: 'notfound',
+            title: '404 Not Found'
+          }
+        },
         files: {
           "build/404.html": "src/tmpl/404.jade"
         }
