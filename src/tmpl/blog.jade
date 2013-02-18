@@ -3,19 +3,22 @@ extends layout
 block content
   .container
     .row-fluid
+      .span9.page
+        .hero-unit
+          h1= title
+          if locals.singlePost
+            span.post-date= "Posted on " + postDate
+            != content
+          else
+            each article in content
+              h2
+                a(href='/blog/' + article.url)= article.title
+              span.post-date= "Posted on " + article.postDate
+              != article.content
       .span3
         .well.sidebar-nav.news
           h2.nav-header News
           ul.nav.nav-list
-            li
-              a Article 1
-            li 
-              a Article 1
-      .span9.page
-        .hero-unit
-          h1= title
-          each article in content
-            h2
-              a(href='/blog/' + article.url)= article.title
-            span.post-date= "Posted on " + article.postDate
-            != article.content
+            each article in articleList
+              li
+                a(href='/blog/' + article.url)= article.title

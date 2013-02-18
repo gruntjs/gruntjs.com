@@ -1,0 +1,21 @@
+doctype xml
+feed(xmlns='http://www.w3.org/2005/Atom')
+  title Grunt Blog Feed
+    link(href='http://gruntjs.com/rss', rel='self')
+    link(href='http://gruntjs.com')
+    if posts.length
+      updated= new Date(posts[0].postRawDate).toUTCString()
+    id http://gruntjs.com
+
+    each post in posts
+      entry
+        title= post.title
+        link <a href="http://gruntjs.com/blog/#{post.url}" rel="nofollow">http://gruntjs.com/blog/#{post.url}</a>
+        description
+          | <![CDATA[
+          | !{post.content}
+          p
+            a(href='<a href="http://gruntjs.com/blog/#{post.url}', rel="nofollow") http://gruntjs.com/blog/#{post.url}' 'Read more'
+          | ]]>
+        pubDate= new Date(post.postRawDate).toUTCString()
+        guid(isPermaLink='false') <a href="http://gruntjs.com/blog/#{post.url}" rel="nofollow">http://gruntjs.com/blog/#{post.url}</a>

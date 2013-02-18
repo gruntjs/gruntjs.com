@@ -50,8 +50,8 @@ module.exports = function(grunt) {
         tasks: ['less:development']
       },
       tmpl: {
-        files: 'src/tmpl/**',
-        tasks: ['jade']
+        files: 'src/tmpl/**/*.js',
+        tasks: ['jade', 'default']
       },
       js: {
         files: 'src/js/**',
@@ -64,16 +64,6 @@ module.exports = function(grunt) {
     },
     // compile page layouts
     jade: {
-      index: {
-        options: {
-          data: {
-            page: 'index'
-          }
-        },
-        files: {
-          "build/index.html": "src/tmpl/index.jade"
-        }
-      },
       plugins: {
         options: {
           data: {

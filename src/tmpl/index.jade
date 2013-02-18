@@ -117,10 +117,11 @@ block content
           .latest-news
             h3 Latest News
             ul
-              li
-                a(href='#')
-                  span.title Grunt 0.4.0 released
-                  span.date February 18th, 2013
+              each article in news
+                li
+                  a(href='/blog/' + article.url)
+                    span.title= article.title
+                    span.date= article.postDate
 
           .getting-started
             h3 Getting Started
@@ -131,5 +132,5 @@ block content
               span.icon-github
             a.twitter(href='https://twitter.com/gruntjs/', alt='Grunt on Twitter')
               span.icon-twitter
-            a.feed(href='#', alt='Grunt blog RSS feed')
+            a.feed(href='/rss', alt='Grunt blog RSS feed')
               span.icon-feed

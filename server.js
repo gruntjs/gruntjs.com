@@ -76,7 +76,16 @@ app.get("/blog*", function(req, res) {
 });
 
 // plugins route
-app.get("/plugins*", function(req, res) { res.sendfile('build/plugins.html'); });
+app.get("/plugins*", function(req, res) {
+  if(req.url.substr(-1) == '/' && req.url.length > 1) {
+    res.redirect(301, req.url.slice(0, -1));
+    return;
+  }
+  res.sendfile('build/plugins.html');
+});
+
+
+
 
 // plugin list route
 app.get("/plugin-list", function(req, res) {
@@ -102,7 +111,14 @@ app.get("/plugin-list", function(req, res) {
   });
 });
 
-// doc routes
+// rss atom feed
+app.get('/rss', function(req, res) {
+  res.setHeader("Content-Type", "application/xml");
+  res.setHeader('Charset', 'utf-8');
+  res.sendfile('build/atom.xml');
+});
+
+// final route, if nothing else matched, this will match docs
 app.get("/*", function(req, res) {
   req.url = req.url.toLowerCase();
   var filePath = 'build/docs/' + req.url + '.html';
@@ -121,9 +137,10 @@ app.get("/*", function(req, res) {
   });
 });
 
-// plugin list route
 
-
+/**
+ * Plugin List Helpers
+ */
 // Update once every hour
 const UPDATE_INTERVAL_IN_SECONDS = 60*60;
 // pluginListEntity - promise {etag: '', json: ''}
