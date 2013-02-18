@@ -96,7 +96,7 @@
       // url plugin search, search grunt plugins using /plugins/[query]
       var url = document.URL,
         shortUrl= url.substring(url.lastIndexOf("/") + 1, url.length);
-      if (shortUrl.length > 0 && shortUrl !== "plugins") $searchQuery.val(shortUrl).focus();
+      if (shortUrl.length > 0 && shortUrl.indexOf("plugins") !== 0) $searchQuery.val(shortUrl).focus();
 
     });
   });

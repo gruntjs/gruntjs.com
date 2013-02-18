@@ -67,7 +67,8 @@ module.exports = function(grunt) {
       plugins: {
         options: {
           data: {
-            page: 'plugins'
+            page: 'plugins',
+            title: 'Plugins'
           }
         },
         files: {
