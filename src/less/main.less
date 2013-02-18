@@ -76,8 +76,10 @@ i {
   position: absolute;
   left: 15px;
   .logo {
-    background-image: url(../img/grunt-logo.png);
-    background-image: url(../img/grunt-logo.svg);
+		background: transparent url(../img/grunt-logo.png) no-repeat;
+		background-image: -webkit-linear-gradient(transparent, transparent), url(../img/grunt-logo.svg);
+		background-image: -moz-linear-gradient(transparent, transparent), url(../img/grunt-logo.svg);
+		background-image: linear-gradient(transparent, transparent), url(../img/grunt-logo.svg);
     width: 190px;
     height: 224px;
     display: block;
