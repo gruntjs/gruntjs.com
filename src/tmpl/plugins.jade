@@ -5,14 +5,18 @@ block content
     .row-fluid
       .span9.page
         .hero-unit
-          h1 The world of Grunt Plugins
+          h1 Grunt Plugins
           section.main
+            //- p Many of the tasks you need are already available as Grunt Plugins, and new plugins are published every day. While the plugin listing is more complete, here's a few you may have heard of.
+            p This plugin listing is automatically generated from the npm module database. Officially maintained "contrib" plugins are marked with a star 
+              span.icon-star 
+              |icon and are shown at the top of every search by default.
+            p
+              small
+                i In order for a grunt plugin to be listed here, it must be published on <a href="https://npmjs.org/">npm</a> with the <a href="https://npmjs.org/browse/keyword/gruntplugin">gruntplugin</a> keyword. Additionally, we recommend that you use the <a href="https://github.com/gruntjs/grunt-init-gruntplugin">gruntplugin grunt-init template</a> when creating a grunt plugin.
             #loading
               p Loading plugins...
             #plugins-all
-            p
-              small
-                i Plugins must be published on NPM with the `gruntplugin` keyword.
       .span3
         .well.sidebar-nav.plugins-search
           .nav-header
@@ -24,6 +28,7 @@ block content
             .btn-group.contrib-toggle
               button.btn All Plugins
               button.btn.selected Contrib Plugins
+            p Sort plugins list by
             .btn-group.dropdown
                 button.btn.btn-large.dropdown-toggle(data-toggle='dropdown')
                   span.choice Title
@@ -70,9 +75,8 @@ block content
     |<span class="desc"><%- el.description %><div class="hide"><%- el.keywords %></div></span>
     |</span>
     |<span class="summary">
-    |<span class="modified"><span class="last-modified">Last modified</span> <time datetime="<%- el.time.modified %>"><%- el.time.modified %></time></span>
-    |<span class="stars"><i class="icon-star"></i><span>Stars</span><%- el.stars %></span>
-    |<span class="forks"><i class="icon-fork"></i><span>Forks</span><%- el.forks %></span>
+    |<span class="modified"><span>Last modified</span> <time datetime="<%- el.time.modified %>"><%- el.time.modified %></time></span>
+    |<span class="version"><span>Grunt Version</span> <%- el.gruntVersion || "N/A" %></span>
     |</span>
     |</a>
     |</li>
