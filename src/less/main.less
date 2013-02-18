@@ -291,7 +291,7 @@ i {
   }
 }
 
-.container, .navbar-static-top .container, .navbar-fixed-top .container, .navbar-fixed-bottom .container, .navbar .container {
+.container, .navbar-static-top .container, .navbar-fixed-top .container, .navbar-fixed-bottom .container, .navbar .container, .grunt-footer .inner .container{
   width: 1100px;
 }
 
@@ -585,61 +585,64 @@ i {
 }
 
 .grunt-footer {
-  background: #453015;
   color: #FFF;
-  width: 100%;
   font-weight: 200;
   height: 4em;
   line-height: 4em;
   letter-spacing: 1px;
   text-shadow: @text-shadow;
-  .pull-left {
-    margin-left: 10px;
-    a {
-      text-decoration: underline;
-      color: white;
-      &:hover {
-        text-decoration: underline;
-        background: none;
-        color: @gruntOrange;
-      }
-    }
-  }
-  a:hover {
-    text-decoration: none;
-    background: #3e2b13;
-  }
   .inner {
-    max-width: 1100px;
-    margin: 0px auto;
-  }
-  ul {
-    margin: 0;
-    list-style-type: none;
-    li {
-      float: left;
-      line-height: 4em;
-      height: 4em;
-      &:last-child {
-        margin-right: 0;
-      }
-    }
-  }
-  .pull-right {
-    li {
-      a,
-      a:focus,
-      a:hover {
-        color: #FFF;
-        padding: 1.4em 1em;
-      }
-      &.social a,
-      &.social a:hover {
-        font-size: 1.3em;
-        padding: .95em .6em;
-        vertical-align: middle;
-      }
-    }
+  	background: #453015;
+  	.container {
+  		background: #453015;
+		  .pull-left {
+		    margin-left: 10px;
+		    a {
+		      text-decoration: underline;
+		      color: white;
+		      &:hover {
+		        text-decoration: underline;
+		        background: none;
+		        color: @gruntOrange;
+		      }
+		    }
+		  }
+		  a:hover {
+		    text-decoration: none;
+		    background: #3e2b13;
+		  }
+		  .inner {
+		    margin: 0px auto;
+		  }
+		  ul {
+		    margin: 0;
+		    list-style-type: none;
+		    li {
+		      float: left;
+		      line-height: 4em;
+		      height: 4em;
+		      &:last-child {
+		        margin-right: 0;
+		      }
+		    }
+		  }
+		  .pull-right {
+		    li {
+		      a,
+		      a:focus,
+		      a:hover {
+		        color: #FFF;
+		        padding: 1.4em 1em;
+		      }
+		      &.social a,
+		      &.social a:hover {
+		        font-size: 1.3em;
+		        padding: .95em .6em;
+		        vertical-align: middle;
+		      }
+		    }
+		  }
+		}
   }
 }
 
