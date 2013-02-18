@@ -17,8 +17,9 @@ block content
               != article.content
       .span3
         .well.sidebar-nav.news
-          h2.nav-header News
           ul.nav.nav-list
+            li.nav-header
+              span News
             each article in articleList
               li
-                a(href='/blog/' + article.url)= article.title
+                a(href='/blog/' + article.url, class=locals.url == article.url && 'active')= article.title
