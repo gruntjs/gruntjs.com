@@ -13,7 +13,7 @@ block content
             each article in content
               h2
                 a(href='/blog/' + article.url)= article.title
-              span.post-date= "Posted on " + article.postDate
+                span.post-date= "Posted on " + article.postDate
               != article.content
       .span3
         .well.sidebar-nav.news
