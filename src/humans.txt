@@ -1,2 +1,59 @@
 # gruntjs.com
-# A task-based command line build tool for JavaScript projects
+# Grunt: The JavaScript Task Runner
+
+/* TEAM */
+
+    Ben Alman
+    Tyler Kellen
+    Sindre Sorhus
+    Jarrod Overson
+    Isaac Durazo
+    Kyle Robinson Young
+    Tim Branyen
+    Vlad Filippov
+
+
+
+/* PROJECT */
+
+    Source: https://github.com/gruntjs/grunt
+
+
+                      ``.`
+     ```````          `.. `.---    ``       ```````
+  `.--:///:---.`     `---`-----.`.--    `..--:///:--..`
+ ..--:///+osyo:--`  `--------------`  `.--/syo++//:--..`
+     `.-:+/-:oyo:--`.--------------.`.--+ys/-/+/--.`
+       --oss/-:o/----:/++oooooo++//:---:++--oss:-`
+      `--/sso---:+syyyyyyyyyyyyyyyyyyso/---/sss--.
+  `.-------:--/sssyyyyyyyyyyyyyyyyyyyyyss+----------.`
+  --oyyyyyso+/--/osyyyyyyyyyyyyyyyyyyys/:-:+osyyyyys:-.
+ `--yyyyyyyyyyys+:-+yyyyyyyyyyyyyyyys/-/oyyyyyyyyyyy/-.
+  `-:+yyyyyyyyyyyyy+/syyyyyyyyyyyyy+/syyyyyyyyyyyyo+-.
+   `--oyyyyyyyyyyyyyysyyyyyyyyyyyysyyyyyyyyyyyyyyy:-.
+   `--oyysoossyyyyyyyyyyyyyyyyysyyyyyyyyyyysooosyy--.
+   `--syy/----:/+syyyyyyys+///oyyyyyyyso/:-----syy:-.
+  `--:yyy-:-:Nh+--/oyyyyyyyyyyyyyyyys+:-:smy--:+yyo--.`
+`--//syyyso--mMMNy:-/oyyyyyyyyyyyys+--+dMMMo-:yyyyy++--.
+--:ssyyyyyy+-:ydmmd/----:syyyyy/-----ymmmho-/yyyyyyyso--`
+.--+syyyyyyyso//:::+/-+syyyyyyyyys--+/:::/+syyyyyyyss:--
+ `.--/ossyyyyyyyyyyso:yyyyyyyyyyyyo/ssyyyyyyyyysss+:--.
+    `.--:ossyyyyyyyssyyyyyyyyyyyyyysssyyyyyyyss/:-..`
+       `.-/syyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyso--.
+         --ossyyyyyyyyyyyyyyyyyyyyyyyyyyyyyss:-.
+         .-ossyyyyyyyyyyyyyyyyyyyyysyyyyyyyss:-`
+    `    --osyyyyyyy/yyyyyyyyyyyyyy+oyyyyyyss:-`   `
+   .-.   --osyyyyyy/+yyyyyyyyyyyyyyy-syyyyyss:-`   --`
+  .-:-. `--ssyyyyy+-yyyyyyyyyyyyyyyy+:syyyyss/-. `--:-`
+ `-:m+-..--syyyyyo-+yyyyyyyyyyyyyyyyy-:syyyys+-..-:ds-.
+ `-/mMd+---+ossso-:yyyyyyyyyyyyyyyyyyo-/ssso+/--:sNNy-.
+ `--dmMMNdso/::---oyyyyyyyyyyyyyyyyyyy:---:/+symMMNdo-.
+  .-+dmNMMMMMMy---::::::::::::::::::::---+NMMMMMMmdh--`
+   .-/hddmNNMo-/yyyyyyyyyyyyyyyyyyyyyyyyo--mNNNmdds--`
+    `.-/oyhdd/-oyo------:yyyyyyo------:yy--yddhs+--.`
+      ``.---:---yy+----:syyyyyyy+----:sy+--:----.`
+         `--+s+-:syso+oyyyyyyyyyys++oyy+-:oo:-.
+          `.-:++--oyyyyyyyyyyyyyyyyyys/-:o/--`
+            `..----:+ssssyyyyyyyssso/-----.`
+                ```.--:/+oooooo++/--..``
+                     ``...........`

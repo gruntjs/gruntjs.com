@@ -1,6 +1,6 @@
 {
   "name": "gruntjs.com",
-  "version": "0.4.0rc1",
+  "version": "0.4.0rc2",
   "engines": {
     "node": ">= 0.6.0",
     "npm": "1.1.x"
@@ -10,19 +10,22 @@
   },
   "private": true,
   "dependencies": {
-    "grunt": "0.4.0rc7",
+    "grunt": "0.4.0rc8",
     "grunt-cli": "0.1.x",
     "jade": "0.28.1",
     "express": "3.0.5",
     "grunt-contrib": "0.3.0",
-    "grunt-contrib-jshint": "~0.1.0",
     "grunt-contrib-clean": "0.4.0rc6",
-    "grunt-contrib-jshint": "0.1.0",
+    "grunt-contrib-jshint": "~0.1.0",
     "grunt-contrib-less": "https://github.com/gruntjs/grunt-contrib-less/tarball/master",
     "grunt-contrib-watch": "https://github.com/gruntjs/grunt-contrib-watch/tarball/master",
     "grunt-contrib-copy": "https://github.com/gruntjs/grunt-contrib-copy/tarball/master",
     "grunt-contrib-jade": "https://github.com/gruntjs/grunt-contrib-jade/tarball/master",
+    "grunt-contrib-concat": "https://github.com/gruntjs/grunt-contrib-concat/tarball/master",
     "marked": "https://github.com/vladikoff/marked/tarball/master",
-    "highlight.js": "~7.3.0"
+    "highlight.js": "~7.3.0",
+    "request": "~2.12.0",
+    "q": "~0.8.12",
+    "lodash": "~1.0.0-rc.3"
   }
 }

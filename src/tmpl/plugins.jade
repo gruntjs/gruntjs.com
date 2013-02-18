@@ -16,7 +16,8 @@ block content
                 i In order for a grunt plugin to be listed here, it must be published on <a href="https://npmjs.org/">npm</a> with the <a href="https://npmjs.org/browse/keyword/gruntplugin">gruntplugin</a> keyword. Additionally, we recommend that you use the <a href="https://github.com/gruntjs/grunt-init-gruntplugin">gruntplugin grunt-init template</a> when creating a grunt plugin.
             #loading
               p Loading plugins...
-            #plugins-all
+            .plugin-list#plugins-contrib
+            .plugin-list#plugins-all
       .span3
         .well.sidebar-nav.plugins-search
           .nav-header
@@ -25,9 +26,10 @@ block content
           .search-options
             form.navbar-search.pull-left
               input.search-query(type='text', placeholder='Search Grunt Plugins', disabled, autofocus)
-            .btn-group.contrib-toggle
-              button.btn All Plugins
-              button.btn.selected Contrib Plugins
+            .contrib-only
+              label.checkbox
+                | Show <strong>contrib</strong> plugins first
+                input#contrib-top(type='checkbox')
             p Sort plugins list by
             .btn-group.dropdown
                 button.btn.btn-large.dropdown-toggle(data-toggle='dropdown')
@@ -45,13 +47,7 @@ block content
                   li
                     a(href='#') Author
 
-  script(src='/js/vendor/jquery.js')
-  script(src='/js/vendor/jquery.timeago.js')
-  script(src='/js/vendor/list.js')
-  script(src='/js/vendor/bootstrap-dropdown.js')
-  script(src='/js/vendor/lodash.js')
   script(src='/js/plugins.js')
-
   script#plugins-latest-template(type='text/template')
     |<h4>Latest plugins</h4>
     |  <dl class="dl-horizontal">

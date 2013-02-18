@@ -2,6 +2,7 @@
 
 module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-less');
@@ -54,7 +55,7 @@ module.exports = function(grunt) {
       },
       js: {
         files: 'src/js/**',
-        tasks: ['copy']
+        tasks: ['concat']
       },
       other: {
         files: 'src/img/**',
@@ -83,26 +84,31 @@ module.exports = function(grunt) {
           "build/plugins.html": "src/tmpl/plugins.jade"
         }
       },
-      community: {
-        options: {
-          data: {
-            page: 'community'
-          }
-        },
-        files: {
-          "build/community.html": "src/tmpl/community.jade"
-        }
-      },
       other: {
         files: {
           "build/404.html": "src/tmpl/404.jade"
         }
       }
     },
+
+    concat: {
+      // if we add more js, modify this properly
+      plugins: {
+        src: [
+          'src/js/vendor/lib/jquery.js',
+          'src/js/vendor/lib/lodash.js',
+          'src/js/vendor/*.js',
+          'src/js/*.js'
+        ],
+        dest: 'build/js/plugins.js'
+      }
+    },
+
+    // copy site source files
     copy: {
       assets: {
         files: [
-          {expand: true, cwd: 'src/', src: ['js/**', 'img/**', 'fonts/**'], dest: 'build/'}
+          {expand: true, cwd: 'src/', src: ['img/**', 'fonts/**'], dest: 'build/'}
         ]
       },
       root: {
@@ -113,7 +119,7 @@ module.exports = function(grunt) {
     }
   });
   
-  grunt.registerTask('build', ['clean', 'copy', 'jade', 'docs']);
+  grunt.registerTask('build', ['clean', 'copy', 'jade', 'docs', 'concat']);
   grunt.registerTask('default', ['build', 'less:production']);
   grunt.registerTask('dev', ['build', 'less:development', 'jshint', 'watch']);
 
