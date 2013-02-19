@@ -6,6 +6,7 @@
 @import "forms";
 @import "hero-unit";
 @import "wells";
+@import "effects";
 
 @text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.25);
 
@@ -46,6 +47,9 @@ a.anchor {
   }
   &:hover:before {
     opacity: 1;
+  }
+  &:target {
+    .blink(0.5s, 2)
   }
 }
 
@@ -825,46 +829,12 @@ pre.terminal .green {
 }
 
 .active-prompt {
-  -webkit-animation-direction: normal;
-  -webkit-animation-name: blink;
-  -webkit-animation-duration: 1s;
-  -webkit-animation-iteration-count: infinite;
-  -webkit-animation-timing-function: ease;
-
-  animation-direction: normal;
-  animation-duration: 1s;
-  animation-iteration-count: infinite;
-  animation-name: blink;
-  animation-timing-function: ease;
+  .blink(1s, infinite)
 }
 
 .active-prompt:after {
   content: "_";
   color: #FFF;
-}
-
-@keyframes 'blink' {
-  0% {
-    opacity: 1.0;
-  }
-  50% {
-    opacity: 0.0;
-  }
-  100% {
-    opacity: 1.0;
-  }
-}
-
-@-webkit-keyframes 'blink' {
-  0% {
-    opacity: 1.0;
-  }
-  50% {
-    opacity: 0.0;
-  }
-  100% {
-    opacity: 1.0;
-  }
 }
 
 hr.disqus {
