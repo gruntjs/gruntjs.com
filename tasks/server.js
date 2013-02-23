@@ -1,5 +1,5 @@
 /*
- * grunt plugins page
+ * gruntjs.com custom server
  * http://gruntjs.com/
  *
  * Copyright (c) 2013 grunt contributors
@@ -9,18 +9,19 @@
 module.exports = function (grunt) {
   'use strict';
 
+  var express = require('express'),
+    app = express(),
+    fs = require('fs'),
+    Q = require('q'),
+    gruntPlugins = require('../grunt-plugins'),
+    crypto = require('crypto');
+
   /**
    * Custom task to generate the plugins page
    */
   grunt.registerTask('server', 'Start the Grunt Site Server', function () {
-    var done = this.async();
-
-    var express = require('express'),
-      app = express(),
-      fs = require('fs'),
-      Q = require('q'),
-      gruntPlugins = require('../grunt-plugins'),
-      crypto = require('crypto');
+    // keep the server task running
+    this.async();
 
     // enable express strict routing, see http://expressjs.com/api.html#app-settings
     // for more info
@@ -36,7 +37,7 @@ module.exports = function (grunt) {
       // strip slashes
       app.use(function (req, res, next) {
         if (req.url.substr(-1) === '/' && req.url.length > 1) {
-          res.status(301).redirect(301, req.url.slice(0, -1));
+          res.redirect(301, req.url.slice(0, -1));
         } else {
           next();
         }
@@ -46,7 +47,7 @@ module.exports = function (grunt) {
       // use the static router
       app.use(express.static('build'));
       // if nothing matched, send 404
-      app.use(function (req, res, next) {
+      app.use(function (req, res) {
         res.status(404).sendfile('build/404.html');
       });
       app.use(express.errorHandler({
@@ -56,7 +57,9 @@ module.exports = function (grunt) {
 
     });
 
-    // server port
+    /**
+     * Server configuration
+     */
     var port = process.env.PORT || grunt.config.get('server_port');
     app.listen(port);
     console.log('Starting a server on port: ' + port);
@@ -73,7 +76,11 @@ module.exports = function (grunt) {
       }
 
       fs.exists(filePath, function (exists) {
-        exists ? res.sendfile(filePath) : next();
+        if (exists) {
+          res.sendfile(filePath);
+        } else {
+          next();
+        }
       });
     });
 
@@ -84,12 +91,16 @@ module.exports = function (grunt) {
 
       // redirect to the main api page, fix slashes and folder issues
       if (req.url === '/api') {
-        res.status(301).redirect('/api/grunt');
+        res.redirect(301, '/api/grunt');
         return;
       }
 
       fs.exists(filePath, function (exists) {
-        exists ? res.sendfile(filePath) : next();
+        if (exists) {
+          res.sendfile(filePath);
+        } else {
+          next();
+        }
       });
     });
 
@@ -101,7 +112,11 @@ module.exports = function (grunt) {
       } else {
 
         fs.exists(filePath, function (exists) {
-          exists ? res.sendfile(filePath) : next();
+          if (exists) {
+            res.sendfile(filePath);
+          } else {
+            next();
+          }
         });
       }
     });
@@ -129,7 +144,7 @@ module.exports = function (grunt) {
          */
         res.statusCode = 200;
         res.end(new Buffer(entity.json));
-      }).fail(function (e) {
+      }).fail(function () {
           next();
         });
     });
@@ -147,16 +162,19 @@ module.exports = function (grunt) {
       var filePath = 'build/docs/' + req.url + '.html';
 
       if (req.url.indexOf('/grunt') === 0) {
-        res.status(301).redirect(301,'/api' + req.url);
+        res.redirect(301, '/api' + req.url);
         return;
       }
 
       fs.exists(filePath, function (exists) {
-        exists ? res.sendfile(filePath) : next();
+        if (exists) {
+          res.sendfile(filePath);
+        } else {
+          next();
+        }
       });
 
     });
-
 
     /**
      * Plugin List Helpers

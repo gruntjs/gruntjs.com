@@ -6,14 +6,15 @@ module.exports = function(grunt) {
   grunt.initConfig({
     // server port, used to serve the site and run tests
     server_port: 5678,
+    // wiki url
+    wiki_url: 'https://github.com/gruntjs/grunt.wiki.git',
+    // wiki file check, file that exists in the wiki for sure
+    wiki_file: 'grunt.md',
 
     // clean directories
     clean: {
       build: ['build/'],
       tmp: ['tmp/']
-    },
-    jshint: {
-      all: ['Gruntfile.js']
     },
     // compile less -> css
     less: {
@@ -35,7 +36,7 @@ module.exports = function(grunt) {
         }
       }
     },
-    // watch
+
     watch: {
       less: {
         files: 'src/less/*.less',
@@ -54,6 +55,7 @@ module.exports = function(grunt) {
         tasks: ['default']
       }
     },
+
     // compile page layouts
     jade: {
       notfound: {
@@ -79,6 +81,25 @@ module.exports = function(grunt) {
           'src/js/*.js'
         ],
         dest: 'build/js/plugins.js'
+      }
+    },
+
+    jshint: {
+      all: ['Gruntfile.js', 'tasks/*.js'],
+      options: {
+        curly: true,
+        eqeqeq: true,
+        immed: true,
+        latedef: true,
+        newcap: true,
+        noarg: true,
+        sub: true,
+        undef: true,
+        unused: true,
+        boss: true,
+        eqnull: true,
+        node: true,
+        es5: true
       }
     },
 
@@ -112,9 +133,8 @@ module.exports = function(grunt) {
   // Load local tasks
   grunt.loadTasks('tasks'); // getWiki, docs tasks
   
-  grunt.registerTask('build', ['clean', 'copy', 'jade', 'docs', 'plugins', 'concat']);
+  grunt.registerTask('build', ['clean', 'copy', 'jade', 'docs', 'blog', 'plugins', 'concat']);
   grunt.registerTask('default', ['build', 'less:production']);
   grunt.registerTask('dev', ['build', 'less:development', 'jshint', 'watch']);
   grunt.registerTask('test', ['nodeunit']);
-
 };
