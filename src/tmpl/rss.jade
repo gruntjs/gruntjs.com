@@ -13,8 +13,8 @@ feed(xmlns='http://www.w3.org/2005/Atom')
       link <a href="http://gruntjs.com/blog/#{post.url}" rel="nofollow">http://gruntjs.com/blog/#{post.url}</a>
       content(type='html')
         | <![CDATA[
-        | !{post.content}
+        | !{post.rssSrc}
         p
-          a(href='http://gruntjs.com/blog/#{post.url}', rel="nofollow") http://gruntjs.com/blog/#{post.url}' 'Read more'
+          a(href='http://gruntjs.com/blog/#{post.url}', rel="nofollow") Read more
         | ]]>
       pubDate= new Date(post.postRawDate).toUTCString()

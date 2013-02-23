@@ -17,15 +17,15 @@
         return el;
       });
 
-      // only show plugins created after the specified date
-      modules = _.filter(modules, function (el) {
-        return Date.parse(el.time.created) > new Date('1800-01-01');
-      });
-
       // filter out contrib plugins not created by the Grunt Team
       modules = _.filter(modules, function (el) {
         return el.isContrib ? el.author && el.author.name === 'Grunt Team' : true;
       });
+
+      var $contribCheck = $('#contrib-top'),
+        $pluginsTemplate = $('#plugins-all-template'),
+        $pluginsContrib = $('#plugins-contrib'),
+        $searchQuery = $('.search-query');
 
       var contribModules = _.filter(modules, function (el) {
         return !!(/^grunt-contrib/.test(el.name));
@@ -35,18 +35,15 @@
         return el.name;
       });
 
-      var contribTpl = _.template($('#plugins-all-template').html(), {
+      var contribTpl = _.template($pluginsTemplate.html(), {
         modules: contribModules
       });
 
-      var allTpl = _.template($('#plugins-all-template').html(), {
+      var allTpl = _.template($pluginsTemplate.html(), {
         modules: allModules
       });
 
       $('#loading').hide();
-      var $contribCheck = $('#contrib-top'),
-          $pluginsContrib = $('#plugins-contrib'),
-          $searchQuery = $('.search-query');
 
       $searchQuery.val('');
 
@@ -79,9 +76,9 @@
       $searchQuery.removeProp('disabled').focus()
       .on('submit', false)
       .on('keyup paste', function () {
+        // disable contrib first, if searching
         if ($contribCheck.is(':checked')) $contribCheck.trigger('click');
-        $('.contrib-toggle .btn:first').click();
-        list.search($(this).val());
+        list.search( $(this).val());
       });
 
       $('#plugins-all .modified time, #plugins-contrib .modified time').timeago();

@@ -1,20 +1,12 @@
 'use strict';
 
 module.exports = function(grunt) {
-  grunt.loadNpmTasks('grunt-contrib-clean');
-  grunt.loadNpmTasks('grunt-contrib-concat');
-  grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-contrib-less');
-  grunt.loadNpmTasks('grunt-contrib-copy');
-  grunt.loadNpmTasks('grunt-contrib-jade');
-  grunt.loadNpmTasks('grunt-contrib-jshint');
-
-  // Load local tasks
-  grunt.loadTasks('tasks'); // getWiki, docs tasks
 
   // Project configuration.
   grunt.initConfig({
+    // server port, used to serve the site and run tests
+    server_port: 5678,
+
     // clean directories
     clean: {
       build: ['build/'],
@@ -64,17 +56,6 @@ module.exports = function(grunt) {
     },
     // compile page layouts
     jade: {
-      plugins: {
-        options: {
-          data: {
-            page: 'plugins',
-            title: 'Plugins'
-          }
-        },
-        files: {
-          "build/plugins.html": "src/tmpl/plugins.jade"
-        }
-      },
       notfound: {
         options: {
           data: {
@@ -113,13 +94,27 @@ module.exports = function(grunt) {
           {expand: true, cwd: 'src/', src: ['*'], dest: 'build/', filter: 'isFile'}
         ]
       }
+    },
+    nodeunit: {
+      all: ['test/*_test.js']
     }
   });
+
+  // Load contrib tasks
+  grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-contrib-concat');
+  grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-less');
+  grunt.loadNpmTasks('grunt-contrib-jade');
+  grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-contrib-nodeunit');
+  // Load local tasks
+  grunt.loadTasks('tasks'); // getWiki, docs tasks
   
-  grunt.registerTask('build', ['clean', 'copy', 'jade', 'docs', 'concat']);
+  grunt.registerTask('build', ['clean', 'copy', 'jade', 'docs', 'plugins', 'concat']);
   grunt.registerTask('default', ['build', 'less:production']);
   grunt.registerTask('dev', ['build', 'less:development', 'jshint', 'watch']);
+  grunt.registerTask('test', ['nodeunit']);
 
-  // build pack task
-  grunt.registerTask('heroku', 'default');
 };

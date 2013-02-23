@@ -6,29 +6,13 @@
  * Licensed under the MIT license.
  */
 
-var Path = require('path'),
-  fs = require('fs'),
-  exec = require('child_process').exec,
+var fs = require('fs'),
   jade = require('jade'),
-  highlighter = require('highlight.js');
-
-var marked = require('marked');
-// Set default marked options
-marked.setOptions({
-  gfm:true,
-  anchors:true,
-  base:"/",
-  pedantic:false,
-  sanitize:true,
-  // callback for code highlighter
-  highlight:function (code) {
-    return highlighter.highlight('javascript', code).value;
-  }
-});
+  highlighter = require('highlight.js'),
+  marked = require('marked');
 
 module.exports = function (grunt) {
   'use strict';
-
 
   /**
    * Custom task to generate grunt documentation
@@ -37,12 +21,24 @@ module.exports = function (grunt) {
     var done = this.async();
     grunt.log.ok('Generating blog...');
 
+    // Set default marked options
+    marked.setOptions({
+      gfm:true,
+      anchors:true,
+      base:"/",
+      pedantic:false,
+      sanitize:true,
+      // callback for code highlighter
+      highlight:function (code) {
+        return highlighter.highlight('javascript', code).value;
+      }
+    });
+
     var names,
       shortList = [],
       articleList = [],
       base = 'tmp/wiki/',
       files = grunt.file.expand({cwd:base}, ['Blog-*.md']);
-
 
     function formatBlogDate(postDate) {
       var postDate = postDate.split('-'),
@@ -50,7 +46,6 @@ module.exports = function (grunt) {
         "July", "August", "September", "October", "November", "December" ];
       return monthNames[parseInt(postDate[1], 10) - 1] + ' ' + postDate[2] + ', ' + postDate[0];
     }
-
 
     names = files.map(function (name) {
       return name.substring(5, name.length - 3);
@@ -92,7 +87,8 @@ module.exports = function (grunt) {
                 postDate: formatBlogDate(postDate),
                 postRawDate: postDate,
                 articleList: articleList,
-                content:marked(src)
+                content:marked(src),
+                rawSrc: src
               };
             shortList.push(templateData);
 
@@ -118,7 +114,7 @@ module.exports = function (grunt) {
         articleList: articleList
       };
       grunt.file.write(
-        'build/blog/index.html',
+        'build/blog.html',
         jade.compile(grunt.file.read(src), {filename:src})(templateData));
     } catch (e) {
       grunt.log.error(e);
@@ -130,6 +126,16 @@ module.exports = function (grunt) {
      * Generate the RSS feed
      */
     grunt.log.ok('Generating rss feed...');
+
+    // remove anchors from RSS setting
+    marked.setOptions({
+      anchors: false
+    });
+    // generate the feed items with different 'marked' settings
+    shortList.forEach(function(item) {
+      item.rssSrc = marked(item.rawSrc);
+    });
+
     try {
       var src = 'src/tmpl/rss.jade',
         templateData = {

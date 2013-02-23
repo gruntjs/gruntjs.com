@@ -6,14 +6,8 @@ block content
       .span9.page
         .hero-unit
           h1 Grunt Plugins
+          != content
           section.main
-            //- p Many of the tasks you need are already available as Grunt Plugins, and new plugins are published every day. While the plugin listing is more complete, here's a few you may have heard of.
-            p This plugin listing is automatically generated from the npm module database. Officially maintained "contrib" plugins are marked with a star 
-              span.icon-star 
-              |icon and are shown at the top of every search by default.
-            p
-              small
-                i In order for a grunt plugin to be listed here, it must be published on <a href="https://npmjs.org/">npm</a> with the <a href="https://npmjs.org/browse/keyword/gruntplugin">gruntplugin</a> keyword. Additionally, we recommend that you use the <a href="https://github.com/gruntjs/grunt-init-gruntplugin">gruntplugin grunt-init template</a> when creating a grunt plugin.
             #loading
               p Loading plugins...
             .plugin-list#plugins-contrib
@@ -49,14 +43,6 @@ block content
                 | Show <strong>contrib</strong> plugins first
                 input#contrib-top(type='checkbox')
   script(src='/js/plugins.js')
-  script#plugins-latest-template(type='text/template')
-    |<h4>Latest plugins</h4>
-    |  <dl class="dl-horizontal">
-    |  <% _.each(modules, function (el) { %>
-    |  <dt><a href="https://npmjs.org/package/<%- el.name %>"><%- el.displayname %></a></dt>
-    |  <dd><%- el.description %></dd>
-    |  <% }); %>
-    |  </dl>
   script#plugins-all-template(type='text/template')
     |<ul class="list">
     |<% _.each(modules, function (el) { %>
