@@ -103,7 +103,7 @@ module.exports = function (grunt) {
                     rootSidebar: true,
                     pageSegment: segment,
                     title:title,
-                    content:marked( docs.wikiAnchors(src) ),
+                    content: docs.anchorFilter( marked( docs.wikiAnchors(src) ) ),
                     sidebars: sidebars
                   };
                 return jade.compile(grunt.file.read(file), {filename:file})(templateData);
@@ -153,7 +153,7 @@ module.exports = function (grunt) {
                     page:'api',
                     pageSegment: name.toLowerCase(),
                     title:name.replace(/-/g,' '),
-                    content:marked( docs.wikiAnchors(src) ),
+                    content: docs.anchorFilter( marked( docs.wikiAnchors(src) ) ),
                     sidebars: sidebars
                   };
 

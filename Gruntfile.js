@@ -137,4 +137,5 @@ module.exports = function(grunt) {
   grunt.registerTask('default', ['build', 'less:production']);
   grunt.registerTask('dev', ['build', 'less:development', 'jshint', 'watch']);
   grunt.registerTask('test', ['nodeunit']);
+  grunt.registerTask('serve', ['server']);
 };

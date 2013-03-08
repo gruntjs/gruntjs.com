@@ -19,5 +19,17 @@ exports.init = function(/*grunt*/) {
     return text;
   };
 
+  exports.anchorFilter = function(html) {
+    // external links stay the same, local links get lowercase
+    html = html.replace(/(<a[^>]*href=)(['"])(.*?)\2([^>]*>)/gi, function(_, a, q, h, b) {
+      if (h.indexOf('http') === 0) {
+        return (a + q + h + q + b);
+      } else {
+        return (a + q + h.toLowerCase() + q + b);
+      }
+    });
+    return html;
+  };
+
   return exports;
 };
