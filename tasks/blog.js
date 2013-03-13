@@ -111,6 +111,7 @@ module.exports = function (grunt) {
     // generate the feed items with different 'marked' settings
     shortList.forEach(function (item) {
       item.rssSrc = marked(item.rawSrc);
+      item.atomId = blog.atomIDnTimeStampChurner(item.url, item.postRawDate);
     });
     var rssTpl = 'src/tmpl/rss.jade';
     var rssOut = jade.compile(grunt.file.read(rssTpl), {filename:rssTpl})({
