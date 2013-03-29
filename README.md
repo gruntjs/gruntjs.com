@@ -26,3 +26,7 @@ Grunt Website
 ## Notes
 
 1. Default server port is : `5678`. Configured in the `Gruntfile`
+
+## Deploy to Heroku
+
+'git push git@heroku.com:grunt.git site-0.4.0:master'
