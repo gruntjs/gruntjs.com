@@ -73,12 +73,30 @@
         searchClass: 'search-query'
       });
 
+      var searchTimer;
+      var baseURL = document.URL.split('/').slice(0,4).join('/');
       $searchQuery.removeProp('disabled').focus()
       .on('submit', false)
       .on('keyup paste', function () {
         // disable contrib first, if searching
         if ($contribCheck.is(':checked')) $contribCheck.trigger('click');
-        list.search( $(this).val());
+        var query = $(this).val();
+        list.search( query );
+        // wait .75 seconds to update location so it's not every keystroke
+        clearTimeout(searchTimer);
+        searchTimer = setTimeout(function () {
+          if (history && history.pushState) history.pushState({ page: query }, query, baseURL+'/'+query );
+        },750);
+      });
+      // update query value on popstate
+      $(window).on('popstate', function () {
+        if(history.state) {
+          $searchQuery.val(history.state.page);
+        } else {
+          $searchQuery.val('');
+        }
+        // execute the search
+        list.search( $searchQuery.val() );
       });
 
       $('#plugins-all .modified time, #plugins-contrib .modified time').timeago();
