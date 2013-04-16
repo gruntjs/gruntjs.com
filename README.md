@@ -29,4 +29,13 @@ Grunt Website
 
 ## Deploy to Heroku
 
-'git push git@heroku.com:grunt.git site-0.4.0:master'
+Set Heroku keys with
+```
+ssh-keygen -t rsa -C "YOUR_HEROKU_EMAIL" -f  ~/.ssh/id_rsa_heroku
+
+ssh-add ~/.ssh/id_rsa_heroku
+
+heroku keys:add ~/.ssh/id_rsa_heroku.pub
+
+git push git@heroku.com:grunt.git site-0.4.0:master
+```
