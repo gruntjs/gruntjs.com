@@ -5,7 +5,7 @@ Grunt Website
 ## Build
 
 1. `npm install`
-1. `grunt
+1. `grunt`
 
 
 ## Setup Development
