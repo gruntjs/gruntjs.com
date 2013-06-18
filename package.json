@@ -5,6 +5,13 @@
     "node": "0.10.x",
     "npm": "~1.2.x"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gruntjs/gruntjs.com.git"
+  },
+  "bugs": {
+    "url": "https://github.com/gruntjs/gruntjs.com/issues"
+  },
   "scripts": {
     "postinstall": "node_modules/.bin/grunt"
   },
