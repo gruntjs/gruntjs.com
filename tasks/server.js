@@ -183,8 +183,6 @@ module.exports = function (grunt) {
     var UPDATE_INTERVAL_IN_SECONDS = 60 * 60;
     // pluginListEntity - promise {etag: '', json: ''}
     // using a promise so that clients can connect and wait for the initial entity
-    var pluginListEntity = getPluginListEntity();
-
 
     function getPluginListEntity() {
       var deferred = Q.defer();
@@ -205,6 +203,7 @@ module.exports = function (grunt) {
       return deferred.promise;
     }
 
+    var pluginListEntity = getPluginListEntity();
     // Update function
     setInterval(function () {
       getPluginListEntity();

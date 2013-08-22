@@ -21,50 +21,10 @@ module.exports = function (grunt) {
   grunt.registerTask('docs', 'Compile Grunt Docs to HTML', function () {
     var done = this.async();
 
-    // clean the wiki directory, clone a fresh copy
-    exec('git clone ' + grunt.config.get('wiki_url') + ' tmp/wiki', function (error) {
-      if (error) {
-        grunt.log.warn('Warning: Could not clone the wiki! Trying to use a local copy...');
-      }
-
-      if (grunt.file.exists('tmp/wiki/' + grunt.config.get('wiki_file'))) {
-        // confirm the wiki exists, if so generate the docs
-        generateDocs();
-      } else {
-        // failed to get the wiki
-        grunt.log.error('Error: The wiki is missing...');
-        done(false);
-      }
-    });
-
     /**
      * generate the docs based on the github wiki
      */
     function generateDocs() {
-      // marked markdown parser
-      var marked = require('marked');
-      // Set default marked options
-      marked.setOptions({
-        gfm:true,
-        anchors: true,
-        base: "/",
-        pedantic:false,
-        sanitize:true,
-        // callback for code highlighter
-        highlight:function (code) {
-          return highlighter.highlight('javascript', code).value;
-        }
-      });
-
-      // grunt guides - wiki articles that are not part of the grunt api
-      generateGuides();
-
-      // grunt api docs - wiki articles that start with 'grunt.*'
-      generateAPI();
-
-      done(true);
-
-
       /**
        *
        * Helper Functions
@@ -82,10 +42,10 @@ module.exports = function (grunt) {
           base = 'tmp/wiki/',
           names = grunt.file.expand({cwd:base}, ['*', '!Blog-*', '!grunt*.md', '!*.js']);
 
-          sidebars[0] = getSidebarSection('## Documentation', 'icon-document-alt-stroke');
-          sidebars[1] = getSidebarSection('### Advanced');
-          sidebars[2] = getSidebarSection('### Community');
-          sidebars[3] = getSidebarSection('### Migration guides');
+        sidebars[0] = getSidebarSection('## Documentation', 'icon-document-alt-stroke');
+        sidebars[1] = getSidebarSection('### Advanced');
+        sidebars[2] = getSidebarSection('### Community');
+        sidebars[3] = getSidebarSection('### Migration guides');
 
         names.forEach(function (name) {
 
@@ -168,7 +128,6 @@ module.exports = function (grunt) {
         grunt.log.ok('Created ' + names.length + ' files.');
       }
 
-
       /**
        * Get sidebar list for section from Home.md
        */
@@ -206,7 +165,45 @@ module.exports = function (grunt) {
         return items;
       }
 
+      // marked markdown parser
+      var marked = require('marked');
+      // Set default marked options
+      marked.setOptions({
+        gfm:true,
+        anchors: true,
+        base: "/",
+        pedantic:false,
+        sanitize:true,
+        // callback for code highlighter
+        highlight:function (code) {
+          return highlighter.highlight('javascript', code).value;
+        }
+      });
+
+      // grunt guides - wiki articles that are not part of the grunt api
+      generateGuides();
+      // grunt api docs - wiki articles that start with 'grunt.*'
+      generateAPI();
+
+      done(true);
     }
+
+    // clean the wiki directory, clone a fresh copy
+    exec('git clone ' + grunt.config.get('wiki_url') + ' tmp/wiki', function (error) {
+      if (error) {
+        grunt.log.warn('Warning: Could not clone the wiki! Trying to use a local copy...');
+      }
+
+      if (grunt.file.exists('tmp/wiki/' + grunt.config.get('wiki_file'))) {
+        // confirm the wiki exists, if so generate the docs
+        generateDocs();
+      } else {
+        // failed to get the wiki
+        grunt.log.error('Error: The wiki is missing...');
+        done(false);
+      }
+    });
+
   });
 
 };
