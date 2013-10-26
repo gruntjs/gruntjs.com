@@ -7,10 +7,9 @@ module.exports = function(grunt) {
     // server port, used to serve the site and run tests
     server_port: 5678,
     // wiki url
-    wiki_url: 'https://github.com/gruntjs/grunt.wiki.git',
+    wiki_url: 'https://github.com/gruntjs/grunt-docs.git',
     // wiki file check, file that exists in the wiki for sure
     wiki_file: 'grunt.md',
-
     // clean directories
     clean: {
       build: ['build/'],
@@ -52,6 +51,10 @@ module.exports = function(grunt) {
       },
       other: {
         files: 'src/img/**',
+        tasks: ['default']
+      },
+      gruntfile: {
+        files: 'Gruntfile.js',
         tasks: ['default']
       }
     },

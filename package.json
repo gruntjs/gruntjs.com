@@ -21,7 +21,7 @@
     "grunt-cli": "~0.1.x",
     "express": "3.2.0",
     "grunt-contrib-clean": "~0.4.1",
-    "grunt-contrib-concat": "~0.2.0",
+    "grunt-contrib-concat": "~0.3.0",
     "grunt-contrib-copy": "~0.4.1",
     "grunt-contrib-less": "~0.5.0",
     "grunt-contrib-jade": "~0.5.0",
