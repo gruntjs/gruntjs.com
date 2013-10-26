@@ -55,7 +55,8 @@
           'desc',
           'author',
           'modified',
-          'gruntVersion'
+          'gruntVersion',
+          'downloads'
         ],
         page: 9999,
         searchClass: 'search-query'
@@ -67,7 +68,8 @@
           'desc',
           'author',
           'modified',
-          'gruntVersion'
+          'gruntVersion',
+          'downloads'
         ],
         page: 9999,
         searchClass: 'search-query'

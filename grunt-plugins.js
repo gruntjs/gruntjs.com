@@ -6,6 +6,7 @@ var request = require('request');
 var _ = require('lodash');
 var Q = require('q');
 
+require('date-utils');
 
 function condensePlugin(plugin) {
   var keywords = keywords = _.last(_.values(plugin.versions)).keywords;
@@ -59,6 +60,36 @@ function fetchPluginList() {
         return deferred.promise;
       });
       return Q.all(results);
+    }).then(function getDownloads(results) {
+      var resultsWithDownloads = _.map(results, function(result) {
+        var deferred = Q.defer();
+
+        var today = Date.today();
+        var oneMonthAgo = today.clone().add({months: -1});
+
+        var startKey = JSON.stringify([result.name, oneMonthAgo.toYMD()]);
+        var endKey = JSON.stringify([result.name, today.toYMD()]);
+
+        var url = 'http://isaacs.iriscouch.com/downloads/_design/app/_view/pkg?startkey=' + startKey + '&' + 'endkey=' + endKey;
+
+        request({url: url, json: true}, function handlePlugin(error, response, body) {
+          if (!error && response.statusCode == 200) {
+            if (body.rows && body.rows.length) {
+              result.downloads = body.rows[0].value;
+            } else {
+              result.downloads = 'N/A';
+            }
+
+            deferred.resolve(result);
+          } else {
+            deferred.reject(new Error(error));
+          }
+        });
+
+        return deferred.promise;
+      });
+
+      return Q.all(resultsWithDownloads);
     });
 }
 
