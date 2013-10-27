@@ -1,6 +1,8 @@
 'use strict';
 
 module.exports = function(grunt) {
+  // Load all grunt tasks matching the `grunt-*` pattern.
+  require('load-grunt-tasks')(grunt);
 
   // Project configuration.
   grunt.initConfig({
@@ -135,17 +137,9 @@ module.exports = function(grunt) {
     }
   });
 
-  // Load contrib tasks
-  grunt.loadNpmTasks('grunt-contrib-clean');
-  grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-contrib-concat');
-  grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-contrib-less');
-  grunt.loadNpmTasks('grunt-contrib-jade');
-  grunt.loadNpmTasks('grunt-contrib-copy');
-  grunt.loadNpmTasks('grunt-contrib-nodeunit');
-  grunt.loadNpmTasks('grunt-concurrent');
-  grunt.loadNpmTasks('grunt-open');
+  // Load grunt tasks
+  // All npm tasks are loaded via Sindre's load-grunt-tasks.
+
   // Load local tasks
   grunt.loadTasks('tasks'); // getWiki, docs tasks
 
