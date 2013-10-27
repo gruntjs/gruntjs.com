@@ -19,19 +19,19 @@ module.exports = function(grunt) {
     less: {
       development: {
         options: {
-          paths: ["src/less"]
+          paths: ['src/less']
         },
         files: {
-          "build/css/main.css": "src/less/main.less"
+          'build/css/main.css': 'src/less/main.less'
         }
       },
       production: {
         options: {
-          paths: ["src/less"],
+          paths: ['src/less'],
           yuicompress: true
         },
         files: {
-          "build/css/main.css": "src/less/main.less"
+          'build/css/main.css': 'src/less/main.less'
         }
       }
     },
@@ -69,7 +69,7 @@ module.exports = function(grunt) {
           }
         },
         files: {
-          "build/404.html": "src/tmpl/404.jade"
+          'build/404.html': 'src/tmpl/404.jade'
         }
       }
     },
@@ -121,6 +121,17 @@ module.exports = function(grunt) {
     },
     nodeunit: {
       all: ['test/*_test.js']
+    },
+
+    // Open the local server.
+    open: {
+      dev: {
+        path: 'http://localhost:<%= server_port %>/'
+      }
+    },
+
+    concurrent: {
+      server: ['server', 'open']
     }
   });
 
@@ -133,12 +144,14 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jade');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-nodeunit');
+  grunt.loadNpmTasks('grunt-concurrent');
+  grunt.loadNpmTasks('grunt-open');
   // Load local tasks
   grunt.loadTasks('tasks'); // getWiki, docs tasks
-  
+
   grunt.registerTask('build', ['clean', 'copy', 'jade', 'docs', 'blog', 'plugins', 'concat']);
   grunt.registerTask('default', ['build', 'less:production']);
   grunt.registerTask('dev', ['build', 'less:development', 'jshint', 'watch']);
   grunt.registerTask('test', ['nodeunit']);
-  grunt.registerTask('serve', ['server']);
+  grunt.registerTask('serve', ['concurrent:server']);
 };
