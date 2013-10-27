@@ -1,6 +1,8 @@
 'use strict';
 
 module.exports = function(grunt) {
+  // Load all grunt tasks matching the `grunt-*` pattern.
+  require('load-grunt-tasks')(grunt);
 
   // Project configuration.
   grunt.initConfig({
@@ -19,19 +21,19 @@ module.exports = function(grunt) {
     less: {
       development: {
         options: {
-          paths: ["src/less"]
+          paths: ['src/less']
         },
         files: {
-          "build/css/main.css": "src/less/main.less"
+          'build/css/main.css': 'src/less/main.less'
         }
       },
       production: {
         options: {
-          paths: ["src/less"],
+          paths: ['src/less'],
           yuicompress: true
         },
         files: {
-          "build/css/main.css": "src/less/main.less"
+          'build/css/main.css': 'src/less/main.less'
         }
       }
     },
@@ -69,7 +71,7 @@ module.exports = function(grunt) {
           }
         },
         files: {
-          "build/404.html": "src/tmpl/404.jade"
+          'build/404.html': 'src/tmpl/404.jade'
         }
       }
     },
@@ -121,24 +123,29 @@ module.exports = function(grunt) {
     },
     nodeunit: {
       all: ['test/*_test.js']
+    },
+
+    // Open the local server.
+    open: {
+      dev: {
+        path: 'http://localhost:<%= server_port %>/'
+      }
+    },
+
+    concurrent: {
+      server: ['server', 'open']
     }
   });
 
-  // Load contrib tasks
-  grunt.loadNpmTasks('grunt-contrib-clean');
-  grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-contrib-concat');
-  grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-contrib-less');
-  grunt.loadNpmTasks('grunt-contrib-jade');
-  grunt.loadNpmTasks('grunt-contrib-copy');
-  grunt.loadNpmTasks('grunt-contrib-nodeunit');
+  // Load grunt tasks
+  // All npm tasks are loaded via Sindre's load-grunt-tasks.
+
   // Load local tasks
   grunt.loadTasks('tasks'); // getWiki, docs tasks
-  
+
   grunt.registerTask('build', ['clean', 'copy', 'jade', 'docs', 'blog', 'plugins', 'concat']);
   grunt.registerTask('default', ['build', 'less:production']);
   grunt.registerTask('dev', ['build', 'less:development', 'jshint', 'watch']);
   grunt.registerTask('test', ['nodeunit']);
-  grunt.registerTask('serve', ['server']);
+  grunt.registerTask('serve', ['concurrent:server']);
 };
