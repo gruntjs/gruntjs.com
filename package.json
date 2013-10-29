@@ -31,14 +31,14 @@
     "lodash": "~1.0.0-rc.3",
     "request": "~2.27.0",
     "jade": "~0.35.0",
-    "date-utils": "1.2.14"
+    "date-utils": "1.2.14",
+    "load-grunt-tasks": "~0.2.0"
   },
   "devDependencies": {
     "grunt-contrib-watch": "~0.5.2",
     "grunt-contrib-jshint": "~0.1.1",
     "grunt-contrib-nodeunit": "~0.2.0",
     "grunt-open": "~0.2.2",
-    "grunt-concurrent": "~0.4.1",
-    "load-grunt-tasks": "~0.2.0"
+    "grunt-concurrent": "~0.4.1"
   }
 }
