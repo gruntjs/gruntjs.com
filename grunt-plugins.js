@@ -77,7 +77,7 @@ function fetchPluginList() {
             if (body.rows && body.rows.length) {
               result.downloads = body.rows[0].value;
             } else {
-              result.downloads = 'N/A';
+              result.downloads = '0 or N/A';
             }
 
             deferred.resolve(result);

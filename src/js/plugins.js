@@ -2,6 +2,13 @@
 (function (win, $) {
   'use strict';
 
+  // A list of grunt plugins that have wronged!
+  var bannedPlugins = [
+    'grunt-contrib-jst-2', // Reason: unofficial contrib plugin
+    'grunt-templates', // Reason: deprecated
+    'build-bootstrap' // Reason: deprecated
+  ];
+
   $(function () {
     // previous url: http://grunt-plugin-list.herokuapp.com
     $.getJSON('/plugin-list', function (modules) {
@@ -12,7 +19,7 @@
         if (!el.author) {
           // TODO: update this, temporary way to sort out no author names
           el.author = {};
-          el.author.name = 'zzzz';
+          el.author.name = 'Grunt Contributor';
         }
         return el;
       });
@@ -20,6 +27,10 @@
       // filter out contrib plugins not created by the Grunt Team
       modules = _.filter(modules, function (el) {
         return el.isContrib ? el.author && el.author.name === 'Grunt Team' : true;
+      });
+
+      modules = _.filter(modules, function (el) {
+        return $.inArray(el.name, bannedPlugins) == -1;
       });
 
       var $contribCheck = $('#contrib-top'),
@@ -30,6 +41,7 @@
       var contribModules = _.filter(modules, function (el) {
         return !!(/^grunt-contrib/.test(el.name));
       });
+
 
       var allModules = _.sortBy(modules, function (el) {
         return el.name;
