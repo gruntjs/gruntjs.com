@@ -38,6 +38,8 @@ block content
                     a(href='#') Author
                   li
                     a(href='#', data-sort-desc='true') Version
+                  li
+                    a(href='#', data-sort-desc='true') Downloads
             .contrib-only
               label.checkbox
                 | Show <strong>contrib</strong> plugins first
@@ -57,10 +59,10 @@ block content
     |<span class="author"></span>
     |<% } %>
     |<span class="desc"><%- el.description %><div class="hide"><%- el.keywords %></div></span>
-    |</span>
-    |<span class="summary">
+    |</span><span class="summary">
     |<span class="modified"><span>Modified</span> <time datetime="<%- el.time.modified %>"><%- el.time.modified %></time></span>
     |<span class="gruntVersion"><span>Grunt Version</span> <%- el.gruntVersion || "N/A" %></span>
+    |<span class="downloads"><span><%- el.downloads %></span> downloads in last 30 days</span>
     |</span>
     |</a>
     |</li>
