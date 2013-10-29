@@ -137,7 +137,7 @@ module.exports = function (grunt) {
           items = [];
 
         // read the Home.md of the wiki, extract the section links
-        var lines = fs.readFileSync('tmp/wiki/Home.md').toString().split('\n');
+        var lines = fs.readFileSync('tmp/wiki/Home.md').toString().split(/\r?\n/);
         for(l in lines) {
           var line = lines[l];
 
