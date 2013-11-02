@@ -150,7 +150,7 @@ module.exports = function (grunt) {
             var item = line.replace(/#/g,'').replace(']]', '').replace('* [[', ''),
               url = item;
 
-            if (item[0] === " ") {
+            if (item[0] === ' ') {
               // TODO: clean this up...
               if (iconClass) {
                 items.push({name: item.substring(1,item.length), icon: iconClass});
@@ -171,7 +171,7 @@ module.exports = function (grunt) {
       marked.setOptions({
         gfm:true,
         anchors: true,
-        base: "/",
+        base: '/',
         pedantic:false,
         sanitize:true,
         // callback for code highlighter
@@ -190,6 +190,8 @@ module.exports = function (grunt) {
 
     // clean the wiki directory, clone a fresh copy
     var wiki_url;
+    // If the config option local is set to true, get the docs from
+    // the local grunt-docs repo.
     if (grunt.config.get('local') === true) {
       wiki_url = __dirname.split('/gruntjs.com')[0] + '/grunt-docs';
     }
