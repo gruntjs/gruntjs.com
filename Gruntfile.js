@@ -10,6 +10,10 @@ module.exports = function(grunt) {
     server_port: 5678,
     // wiki url
     wiki_url: 'https://github.com/gruntjs/grunt-docs.git',
+    // If local is true retrieve the docs from the local
+    // grunt-docs which is expected to sit in the
+    // same dir as this one.
+    local: true,
     // wiki file check, file that exists in the wiki for sure
     wiki_file: 'grunt.md',
     // clean directories

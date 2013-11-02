@@ -189,7 +189,15 @@ module.exports = function (grunt) {
     }
 
     // clean the wiki directory, clone a fresh copy
-    exec('git clone ' + grunt.config.get('wiki_url') + ' tmp/wiki', function (error) {
+    var wiki_url;
+    if (grunt.config.get('local') === true) {
+      wiki_url = __dirname.split('/gruntjs.com')[0] + '/grunt-docs';
+    }
+    else {
+      wiki_url = grunt.config.get('wiki_url');
+    }
+
+    exec('git clone ' + wiki_url + ' tmp/wiki', function (error) {
       if (error) {
         grunt.log.warn('Warning: Could not clone the wiki! Trying to use a local copy...');
       }
