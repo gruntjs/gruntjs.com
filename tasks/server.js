@@ -129,6 +129,7 @@ module.exports = function (grunt) {
     // plugin list route
     app.get('/plugin-list', function (req, res, next) {
       // get the plugin list
+      /*
       pluginListEntity.then(function (entity) {
         // Allow Cross-origin resource sharing
         res.setHeader('Access-Control-Allow-Origin', '*');
@@ -141,12 +142,37 @@ module.exports = function (grunt) {
          res.end();
          return;
          }
-         */
         res.statusCode = 200;
         res.end(new Buffer(entity.json));
+
       }).fail(function () {
           next();
         });
+    */
+
+      var http = require('http');
+
+      var options = {
+        host: 'vf.io',
+        path: '/grunt-plugin-list.json'
+      };
+
+      var request = http.get(options, function(response){
+        var pluginData = '';
+
+        response.on('data', function(chunk){
+          pluginData += chunk
+        });
+
+        response.on('end', function(){
+          res.statusCode = 200;
+          res.json(JSON.parse(pluginData));
+        })
+
+      }).on("error", function(e){
+          console.log("Got error: " + e.message);
+          next();
+      });
     });
 
     // rss atom feed
