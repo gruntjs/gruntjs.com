@@ -13,7 +13,8 @@
     "url": "https://github.com/gruntjs/gruntjs.com/issues"
   },
   "scripts": {
-    "postinstall": "node_modules/.bin/grunt"
+    "start": "grunt server",
+    "postinstall": "grunt"
   },
   "private": true,
   "dependencies": {
@@ -27,7 +28,7 @@
     "grunt-contrib-jade": "~0.5.0",
     "marked": "https://github.com/vladikoff/marked/tarball/master",
     "highlight.js": "~7.3.0",
-    "q": "~0.9.6",
+    "q": "~0.9.7",
     "lodash": "~1.0.0-rc.3",
     "request": "~2.27.0",
     "jade": "~0.35.0",

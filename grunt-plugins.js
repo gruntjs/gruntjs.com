@@ -60,7 +60,7 @@ function fetchPluginList() {
         return deferred.promise;
       });
       return Q.all(results);
-  });/*.then(function getDownloads(results) {
+  }).then(function getDownloads(results) {
       var resultsWithDownloads = _.map(results, function(result) {
         var deferred = Q.defer();
 
@@ -90,7 +90,7 @@ function fetchPluginList() {
       });
 
       return Q.all(resultsWithDownloads);
-  });*/
+  });
 }
 
 exports.fetchPluginList = fetchPluginList;
