@@ -13,7 +13,7 @@ module.exports = function(grunt) {
     // If local is true retrieve the docs from the local
     // grunt-docs which is expected to sit in the
     // same dir as this one.
-    local: true,
+    local: false,
     // wiki file check, file that exists in the wiki for sure
     wiki_file: 'grunt.md',
     // clean directories
@@ -61,6 +61,10 @@ module.exports = function(grunt) {
       },
       gruntfile: {
         files: 'Gruntfile.js',
+        tasks: ['default']
+      },
+      docs: {
+        files: 'grunt-docs/**',
         tasks: ['default']
       }
     },

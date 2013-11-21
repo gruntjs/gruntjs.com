@@ -33,11 +33,11 @@ module.exports = function (grunt) {
       }
     });
 
-    var names,
-      shortList = [],
-      articleList = [],
-      base = 'tmp/wiki/',
-      files = grunt.file.expand({cwd:base}, ['Blog-*.md']);
+    var names;
+    var shortList = [];
+    var articleList = [];
+    var base = (grunt.config.get('local') === true) ? 'grunt-docs/' : 'tmp/wiki/';
+    var files = grunt.file.expand({cwd:base}, ['Blog-*.md']);
 
     names = files.map(function (name) {
       return name.substring(5, name.length - 3);

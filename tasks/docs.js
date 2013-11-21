@@ -24,12 +24,14 @@ module.exports = function (grunt) {
     /**
      * generate the docs based on the github wiki
      */
-    function generateDocs() {
+    function generateDocs(local) {
       /**
        *
        * Helper Functions
        *
        */
+
+      var base = local ? 'grunt-docs/' : 'tmp/wiki/';
 
       /**
        * Generate grunt guides documentation
@@ -38,9 +40,8 @@ module.exports = function (grunt) {
         grunt.log.ok('Generating Guides...');
 
         // API Docs
-        var sidebars = [],
-          base = 'tmp/wiki/',
-          names = grunt.file.expand({cwd:base}, ['*', '!Blog-*', '!grunt*.md', '!*.js']);
+        var sidebars = [];
+        var names = grunt.file.expand({cwd:base}, ['*', '!Blog-*', '!grunt*.md', '!*.js']);
 
         sidebars[0] = getSidebarSection('## Documentation', 'icon-document-alt-stroke');
         sidebars[1] = getSidebarSection('### Advanced');
@@ -84,9 +85,8 @@ module.exports = function (grunt) {
       function generateAPI() {
         grunt.log.ok('Generating API Docs...');
         // API Docs
-        var sidebars = [],
-          base = 'tmp/wiki/',
-          names = grunt.file.expand({cwd:base}, ['grunt.*.md', '!*utils*']);
+        var sidebars = [];
+        var names = grunt.file.expand({cwd:base}, ['grunt.*.md', '!*utils*']);
 
         names = names.map(function (name) {
           return name.substring(0, name.length - 3);
@@ -137,7 +137,7 @@ module.exports = function (grunt) {
           items = [];
 
         // read the Home.md of the wiki, extract the section links
-        var lines = fs.readFileSync('tmp/wiki/Home.md').toString().split(/\r?\n/);
+        var lines = fs.readFileSync(base + 'Home.md').toString().split(/\r?\n/);
         for(l in lines) {
           var line = lines[l];
 
@@ -193,26 +193,27 @@ module.exports = function (grunt) {
     // If the config option local is set to true, get the docs from
     // the local grunt-docs repo.
     if (grunt.config.get('local') === true) {
-      wiki_url = __dirname.split('/gruntjs.com')[0] + '/grunt-docs';
+      generateDocs('local');
     }
     else {
       wiki_url = grunt.config.get('wiki_url');
+
+      exec('git clone ' + wiki_url + ' tmp/wiki', function (error) {
+        if (error) {
+          grunt.log.warn('Warning: Could not clone the wiki! Trying to use a local copy...');
+        }
+
+        if (grunt.file.exists('tmp/wiki/' + grunt.config.get('wiki_file'))) {
+          // confirm the wiki exists, if so generate the docs
+          generateDocs();
+        } else {
+          // failed to get the wiki
+          grunt.log.error('Error: The wiki is missing...');
+          done(false);
+        }
+      });
     }
 
-    exec('git clone ' + wiki_url + ' tmp/wiki', function (error) {
-      if (error) {
-        grunt.log.warn('Warning: Could not clone the wiki! Trying to use a local copy...');
-      }
-
-      if (grunt.file.exists('tmp/wiki/' + grunt.config.get('wiki_file'))) {
-        // confirm the wiki exists, if so generate the docs
-        generateDocs();
-      } else {
-        // failed to get the wiki
-        grunt.log.error('Error: The wiki is missing...');
-        done(false);
-      }
-    });
 
   });
 

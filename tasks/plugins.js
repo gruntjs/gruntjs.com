@@ -18,6 +18,8 @@ module.exports = function (grunt) {
   grunt.registerTask('plugins', 'Compile Grunt Plugins Page', function () {
     var pluginTpl = 'src/tmpl/plugins.jade';
 
+    var base = (grunt.config.get('local') === true) ? 'grunt-docs/' : 'tmp/wiki/';
+
     // Set default marked options
     marked.setOptions({
       gfm:true,
@@ -29,7 +31,7 @@ module.exports = function (grunt) {
     var output = jade.compile(grunt.file.read(pluginTpl), {filename:pluginTpl})({
       page: 'plugins',
       title: 'Plugins',
-      content: marked(grunt.file.read('tmp/wiki/Grunt-Plugins.md'))
+      content: marked(grunt.file.read(base + 'Grunt-Plugins.md'))
     });
     grunt.file.write('build/plugins.html', output);
   });
