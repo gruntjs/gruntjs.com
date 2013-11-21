@@ -13,21 +13,22 @@
     "url": "https://github.com/gruntjs/gruntjs.com/issues"
   },
   "scripts": {
-    "postinstall": "node_modules/.bin/grunt"
+    "start": "grunt server",
+    "postinstall": "grunt"
   },
   "private": true,
   "dependencies": {
     "grunt": "~0.4.1",
     "grunt-cli": "~0.1.x",
-    "express": "3.2.0",
-    "grunt-contrib-clean": "~0.4.1",
+    "express": "3.4.4",
+    "grunt-contrib-clean": "~0.5.0",
     "grunt-contrib-concat": "~0.3.0",
     "grunt-contrib-copy": "~0.4.1",
     "grunt-contrib-less": "~0.5.0",
     "grunt-contrib-jade": "~0.5.0",
     "marked": "https://github.com/vladikoff/marked/tarball/master",
     "highlight.js": "~7.3.0",
-    "q": "~0.9.6",
+    "q": "~0.9.7",
     "lodash": "~1.0.0-rc.3",
     "request": "~2.27.0",
     "jade": "~0.35.0",

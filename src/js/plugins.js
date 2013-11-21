@@ -5,8 +5,7 @@
   // A list of grunt plugins that have wronged!
   var bannedPlugins = [
     'grunt-contrib-jst-2', // Reason: unofficial contrib plugin
-    'grunt-templates', // Reason: deprecated
-    'build-bootstrap' // Reason: deprecated
+    'loadnpmtasks'  // Reason: not a plugin
   ];
 
   $(function () {

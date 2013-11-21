@@ -128,25 +128,25 @@ module.exports = function (grunt) {
 
     // plugin list route
     app.get('/plugin-list', function (req, res, next) {
-      // get the plugin list
       pluginListEntity.then(function (entity) {
         // Allow Cross-origin resource sharing
         res.setHeader('Access-Control-Allow-Origin', '*');
         res.setHeader('Content-Type', 'application/json');
         res.setHeader('ETag', entity.etag);
-        /*
+
          // TODO: disabled for now.
          if(req.headers['if-none-match'] === entity.etag) {
          res.statusCode = 304;
          res.end();
          return;
          }
-         */
         res.statusCode = 200;
         res.end(new Buffer(entity.json));
+
       }).fail(function () {
           next();
         });
+
     });
 
     // rss atom feed
