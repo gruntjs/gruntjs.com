@@ -106,8 +106,10 @@ module.exports = function (grunt) {
 
     // news route
     app.get('/blog*', function (req, res, next) {
-      var filePath = 'build' + req.url + '.html';
-      if (req.url === '/blog') {
+      var cleanUrl = req.url.split('?')[0];
+      var filePath = 'build' + cleanUrl + '.html';
+      
+      if (cleanUrl === '/blog') {
         res.sendfile('build/blog.html');
       } else {
 
