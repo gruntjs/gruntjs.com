@@ -175,8 +175,22 @@ module.exports = function (grunt) {
         pedantic:false,
         sanitize:true,
         // callback for code highlighter
-        highlight:function (code) {
-          return highlighter.highlight('javascript', code).value;
+        highlight: function(code, lang) {
+          // No language specified, no syntax highlighting.
+          if (!lang) { return code; }
+          // Handle common abbreviations.
+          var langMap = {
+            js: 'javascript',
+            shell: 'bash',
+            html: 'xml',
+          };
+          if (lang in langMap) { lang = langMap[lang]; }
+          try {
+            return highlighter.highlight(lang, code).value;
+          } catch(error) {
+            grunt.log.error('[lang: %s] %s', lang, error.message);
+            return 'ERROR';
+          }
         }
       });
 
