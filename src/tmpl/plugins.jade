@@ -3,68 +3,25 @@ extends layout
 block content
   .container
     .row-fluid
-      .span9.page
+      .span12.page
         .hero-unit
-          h1 Grunt Plugins
-          != content
+          .plugin-unit
+            h1 Plugins
+            != content
+            include blocks/advertisements
           section.main
-            #loading
-              p Loading plugins...
             .plugin-list#plugins-contrib
-            .plugin-list#plugins-all
-      .span3
-        .well.sidebar-nav.plugins-search
-          .nav-header
-            i.icon-power-cord
-            span Plugins
-          .search-options
-            div.navbar-search.pull-left
-              input.search-query(type='text', placeholder='Search Grunt Plugins', disabled, autofocus)
-            p.sort-by Sort plugins list by
-            .btn-group.dropdown
-                button.btn.btn-large.dropdown-toggle(data-toggle='dropdown')
-                  span.choice Title
-                  span.caret
-                ul.dropdown-menu
-                  li
-                    a(href='#') Title
-                  li
-                    a(href='#', data-sort-desc='true') Modified
-                  //li
-                    a(href='#', data-sort-desc='true') Stars
-                  //li
-                    a(href='#', data-sort-desc='true') Forks
-                  li
-                    a(href='#') Author
-                  li
-                    a(href='#', data-sort-desc='true') Version
-                  li
-                    a(href='#', data-sort-desc='true') Downloads
-            .contrib-only
-              label.checkbox
-                | Show <strong>contrib</strong> plugins first
-                input#contrib-top(type='checkbox')
-        include blocks/advertisements
+            table.plugin-list#plugins-all.display(cellspacing='0', width='100%')
+              thead
+                tr
+                  th.colPlugin
+                    | Plugin
+                    span.legend
+                  th.colUpdated
+                    | Updated
+                    span.legend
+                  th.colDown
+                    | Downloads
+                    span.legend last 30 days
+
   script(src='/js/plugins.js')
-  script#plugins-all-template(type='text/template')
-    |<ul class="list">
-    |<% _.each(modules, function (el) { %>
-    |<li>
-    |<a class="plugin <%= el.isContrib ? 'contrib' : '' %>" href="https://npmjs.org/package/<%- el.name %>">
-    |<span class="name-description">
-    |<span class="title"><%- el.displayName %></span>
-    |<% if (el.author) { %>
-    |<span class="author <%= el.author.name === 'zzzz'? 'author-hide' : '' %>"> by <%= el.author.name %></span>
-    |<% } else { %>
-    |<span class="author"></span>
-    |<% } %>
-    |<span class="desc"><%- el.description %><div class="hide"><%- el.keywords %></div></span>
-    |</span><span class="summary">
-    |<span class="modified"><span>Modified</span> <time datetime="<%- el.time.modified %>"><%- el.time.modified %></time></span>
-    |<span class="gruntVersion"><span>Grunt Version</span> <%- el.gruntVersion || "N/A" %></span>
-    |<span class="downloads"><span><%- el.downloads %></span> downloads in last 30 days</span>
-    |</span>
-    |</a>
-    |</li>
-    |<% }); %>
-    |</ul>

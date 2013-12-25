@@ -89,7 +89,7 @@ module.exports = function(grunt) {
       plugins: {
         src: [
           'src/js/vendor/lib/jquery.js',
-          'src/js/vendor/lib/lodash.js',
+          'src/js/vendor/lib/jquery.dataTables.js',
           'src/js/vendor/*.js',
           'src/js/*.js'
         ],

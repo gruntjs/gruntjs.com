@@ -132,6 +132,9 @@ i {
       width: 25%;
     }
   }
+  &.page-plugins .row-fluid {
+    border: 1px solid #CCC;
+  }
 }
 
 .page-index {
@@ -467,7 +470,6 @@ i {
         float: right;
         border-left-width: 6px;
         border-right-width: 6px;
-        border-top-width: 6px;
         border-top: 6px solid #6f5a40;
         margin-top: 8px;
       }
@@ -501,17 +503,64 @@ i {
   margin: 0;
 }
 
-.plugin {
+.plugin-unit {
+  margin-left: 245px;
+  .advertisements {
+    float: right;
+  }
+}
+
+#plugins-all_info {
+  font-size: 23px;
+  text-align: center;
+  margin-top: 40px;
+}
+
+#plugins-all_filter {
+  float: left;
+  margin-top: 20px;
+  margin-left: 10px;
+  margin-right: 120px;
+  label {
+    font-weight: bold;
+    input {
+      margin-left: 10px;
+    }
+  }
+}
+
+#plugins-all th {
+  &:hover {
+    cursor: pointer;
+  }
+  &.colPlugin {
+    width: 70%;
+  }
+
+  &.colUpdated {
+    width: 15%;
+  }
+
+  &.colDown {
+    width: 15%;
+  }
+
+  .legend {
+    display: block;
+    font-weight: normal;
+    font-size: 10px;
+    line-height: 12px;
+    min-height: 12px;
+  }
+}
+
+
+#plugins-all tbody tr {
   background: #f8e5c4;
-  display: block;
-  display: block;
-  margin: 15px 0;
+  margin: 5px 0;
+  text-align: center;
   border-radius: 5px;
-  padding: 7px 15px;
-  color: #6f5a40;
-  font-size: 16px;
   border: 1px solid #CFBFAC;
-  position: relative;
   &:hover {
     background: #f0debd;
     color: #6f5a40;
@@ -520,14 +569,22 @@ i {
   &:active {
     box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.4);
   }
-
+  a {
+    text-align: left;
+    position: relative;
+    display: block;
+    padding: 7px 0px 7px 45px;
+    color: #6f5a40;
+    font-size: 16px;
+  }
+  .dw {
+    font-weight: bold;
+  }
   .name-description {
-    width: 54%;
     display: inline-block;
-    margin-left: 5%;
     vertical-align: top;
     .title {
-      font-size: 25px;
+      font-size: 24px;
       font-weight: 400;
       margin-right: 5px;
     }
@@ -560,15 +617,6 @@ i {
   }
 }
 
-.plugin.contrib:before {
-  position: absolute;
-  background-color: #e48632;
-  width: 32px;
-  height: 39px;
-  left: 8px;
-  top: -1px;
-  content: "";
-}
 
 .plugin.contrib:after {
   font-family: 'icomoon';
@@ -579,24 +627,13 @@ i {
   -webkit-font-smoothing: antialiased;
   content: "\e000";
   position: absolute;
-  left: .5em;
-  top: .5em;
-  color: white;
-  font-size: 1.5em;
+  left: 0.2em;
+  top: 0.6em;
+  color: #e48632;
+  font-size: 1.9em;
 
 }
 
-.plugin.contrib .name-description:before {
-  content: "";
-  border-left: 16px solid transparent;
-  border-right: 16px solid transparent;
-  border-top: 10px solid #e48632;
-  width: 0px;
-  height: 0px;
-  left: 8px;
-  top: 38px;
-  position: absolute;
-}
 
 .grunt-footer {
   color: #FFF;

@@ -129,10 +129,8 @@ module.exports = function (grunt) {
     });
 
     // plugin list route
-    app.get('/plugin-list', function (req, res, next) {
+    app.get('/plugin-list.json', function (req, res, next) {
       pluginListEntity.then(function (entity) {
-        // Allow Cross-origin resource sharing
-        res.setHeader('Access-Control-Allow-Origin', '*');
         res.setHeader('Content-Type', 'application/json');
         res.setHeader('ETag', entity.etag);
 
@@ -181,8 +179,8 @@ module.exports = function (grunt) {
     /**
      * Plugin List Helpers
      */
-    // Update once every hour
-    var UPDATE_INTERVAL_IN_SECONDS = 60 * 60;
+    // Update once every 12 hours
+    var UPDATE_INTERVAL_IN_SECONDS = 60 * 60 * 12;
     // pluginListEntity - promise {etag: '', json: ''}
     // using a promise so that clients can connect and wait for the initial entity
 
@@ -191,7 +189,7 @@ module.exports = function (grunt) {
       gruntPlugins.fetchPluginList().then(
         function (pluginList) {
           var entity = {
-            json:JSON.stringify(pluginList)
+            json: JSON.stringify({ "aaData": pluginList })
           };
           var shasum = crypto.createHash('sha1');
           shasum.update(entity.json);
