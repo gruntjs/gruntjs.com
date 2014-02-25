@@ -1,21 +1,9 @@
 'use strict';
 
 module.exports = function(grunt) {
-  // Load all grunt tasks matching the `grunt-*` pattern.
-  require('load-grunt-tasks')(grunt);
 
   // Project configuration.
   grunt.initConfig({
-    // server port, used to serve the site and run tests
-    server_port: 5678,
-    // wiki url
-    wiki_url: 'https://github.com/gruntjs/grunt-docs.git',
-    // If local is true retrieve the docs from the local
-    // grunt-docs which is expected to sit in the
-    // same dir as this one.
-    local: false,
-    // wiki file check, file that exists in the wiki for sure
-    wiki_file: 'grunt.md',
     // clean directories
     clean: {
       build: ['build/'],
@@ -141,7 +129,13 @@ module.exports = function(grunt) {
     },
 
     concurrent: {
-      server: ['server', 'open']
+      server: ['nodemon', 'open']
+    },
+
+    nodemon: {
+      dev: {
+        script: 'server.js'
+      }
     }
   });
 
@@ -150,9 +144,10 @@ module.exports = function(grunt) {
 
   // Load local tasks
   grunt.loadTasks('tasks'); // getWiki, docs tasks
+  require('matchdep').filterAll(['grunt-*', '!grunt-cli', '!grunt-docs']).forEach(grunt.loadNpmTasks);
 
-  grunt.registerTask('build', ['clean', 'copy', 'jade', 'docs', 'blog', 'plugins', 'concat']);
-  grunt.registerTask('default', ['build', 'less:production']);
+  grunt.registerTask('build', ['copy', 'jade', 'docs', 'blog', 'plugins', 'concat']);
+  grunt.registerTask('default', ['build', 'downloadPlugins', 'less:production']);
   grunt.registerTask('dev', ['build', 'less:development', 'jshint', 'watch']);
   grunt.registerTask('test', ['nodeunit']);
   grunt.registerTask('serve', ['concurrent:server']);

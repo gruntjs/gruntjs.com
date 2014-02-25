@@ -1,7 +1,6 @@
 Grunt Website
 ==========================
 
-
 ## Build
 
 1. `npm install`
@@ -51,4 +50,3 @@ If you need to regenerate the Heroku site, use empty commits:
 git commit --allow-empty -m "empty commit"
 git push git@heroku.com:grunt.git master:master
 ```
-

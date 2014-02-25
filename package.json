@@ -1,6 +1,6 @@
 {
   "name": "gruntjs.com",
-  "version": "0.4.1",
+  "version": "0.5.2",
   "engines": {
     "node": "0.10.x",
     "npm": "~1.2.x"
@@ -13,14 +13,18 @@
     "url": "https://github.com/gruntjs/gruntjs.com/issues"
   },
   "scripts": {
-    "start": "grunt server",
-    "postinstall": "grunt"
+    "start": "node server.js",
+    "postinstall": "node_modules/.bin/grunt"
   },
   "private": true,
   "dependencies": {
+    "express": "~3.4.8",
+    "node-schedule": "~0.1.13",
     "grunt": "~0.4.2",
     "grunt-cli": "~0.1.x",
-    "express": "3.4.4",
+    "async": "~0.2.10",
+    "grunt-docs": "git://github.com/gruntjs/grunt-docs",
+    "matchdep": "~0.3.0",
     "grunt-contrib-clean": "~0.5.0",
     "grunt-contrib-concat": "~0.3.0",
     "grunt-contrib-copy": "~0.4.1",
@@ -28,12 +32,10 @@
     "grunt-contrib-jade": "~0.5.0",
     "marked": "https://github.com/vladikoff/marked/tarball/master",
     "highlight.js": "~7.3.0",
-    "q": "~0.9.7",
     "lodash": "~1.0.0-rc.3",
     "request": "~2.27.0",
     "jade": "~0.35.0",
     "date-utils": "1.2.14",
-    "load-grunt-tasks": "~0.2.0",
     "ent": "~0.1.0"
   },
   "devDependencies": {
@@ -41,6 +43,7 @@
     "grunt-contrib-jshint": "~0.1.1",
     "grunt-contrib-nodeunit": "~0.2.0",
     "grunt-open": "~0.2.2",
-    "grunt-concurrent": "~0.4.1"
+    "grunt-concurrent": "~0.4.1",
+    "grunt-nodemon": "~0.2.0"
   }
 }

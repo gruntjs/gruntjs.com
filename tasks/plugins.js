@@ -18,7 +18,7 @@ module.exports = function (grunt) {
   grunt.registerTask('plugins', 'Compile Grunt Plugins Page', function () {
     var pluginTpl = 'src/tmpl/plugins.jade';
 
-    var base = (grunt.config.get('local') === true) ? 'grunt-docs/' : 'tmp/wiki/';
+    var base = 'node_modules/grunt-docs/';
 
     // Set default marked options
     marked.setOptions({
@@ -34,5 +34,15 @@ module.exports = function (grunt) {
       content: marked(grunt.file.read(base + 'Grunt-Plugins.md'))
     });
     grunt.file.write('build/plugins.html', output);
+  });
+
+  grunt.registerTask('downloadPlugins', 'Download Plugin Information', function () {
+      var done = this.async();
+      var cache = true;
+
+      var plugins = require('../grunt-plugins');
+      plugins.download({ cache: cache }, function() {
+        done();
+      });
   });
 };

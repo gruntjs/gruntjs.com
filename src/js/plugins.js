@@ -2,7 +2,7 @@
 (function (win, $) {
   'use strict';
 
-  $.fn.dataTableExt.sErrMode = 'throw';
+  //$.fn.dataTableExt.sErrMode = 'throw';
 
   var url = document.URL.split('/');
   var initSearch = '';
@@ -11,8 +11,11 @@
   }
 
   $('#plugins-all').dataTable({
+    // source
     'ajax': '/plugin-list.json',
+    // save search with a cookie
     'bStateSave': true,
+    // search features
     'oSearch': {"sSearch": initSearch},
     'bAutoWidth': false,
     "sDom": '<"top"ilfp<"clear">>',
@@ -23,7 +26,7 @@
     'bLengthChange': false,
     'iDisplayLength': 100,
     'aaSorting': [
-      [2, 'desc']
+      [3, 'desc']
     ],
     'columns': [
       { 'data': 'name',
@@ -31,8 +34,8 @@
         'sDefaultContent': '',
         'mRender': function (data, type, full) {
           var name = data.replace('grunt-', '');
-          var isContrib = full.author === 'Grunt Team' && data.indexOf('grunt-contrib-') === 0;
-          var author = (full.author && full.author.length > 0) ? ('by ' + full.author) : '';
+          var isContrib = full.a === 'Grunt Team' && data.indexOf('grunt-contrib-') === 0;
+          var author = (full.a && full.a.length > 0) ? ('by ' + full.a) : '';
 
           var tmpl = '';
           tmpl += '<a class="plugin ' + (isContrib ? 'contrib' : '') + '" href="https://npmjs.org/package/' + data + '">';
@@ -46,7 +49,7 @@
           return tmpl
         }
       },
-      { 'data': 'time.modified',
+      { 'data': 'm',
         'bSearchable': false,
         'sType': 'dateString',
         'sDefaultContent': '',
@@ -58,8 +61,14 @@
         },
         'asSorting': [ "desc" ]
       },
-      { 'data': 'dw',
-        'sClass': 'dw',
+      { 'data': 'v',
+        'sClass': 'v',
+        'bSearchable': false,
+        'sDefaultContent': '',
+        'asSorting': [ ]
+      },
+      { 'data': 'dl',
+        'sClass': 'dl',
         'sType': 'numeric',
         'bSearchable': false,
         'sDefaultContent': '',

@@ -10,7 +10,6 @@ module.exports = function (grunt) {
   'use strict';
 
   var fs = require('fs'),
-    exec = require('child_process').exec,
     jade = require('jade'),
     highlighter = require('highlight.js'),
     docs = require('./lib/docs').init(grunt);
@@ -24,14 +23,12 @@ module.exports = function (grunt) {
     /**
      * generate the docs based on the github wiki
      */
-    function generateDocs(local) {
+    function generateDocs(base) {
       /**
        *
        * Helper Functions
        *
        */
-
-      var base = local ? 'grunt-docs/' : 'tmp/wiki/';
 
       /**
        * Generate grunt guides documentation
@@ -202,32 +199,8 @@ module.exports = function (grunt) {
       done(true);
     }
 
-    // clean the wiki directory, clone a fresh copy
-    var wiki_url;
-    // If the config option local is set to true, get the docs from
-    // the local grunt-docs repo.
-    if (grunt.config.get('local') === true) {
-      generateDocs('local');
-    }
-    else {
-      wiki_url = grunt.config.get('wiki_url');
-
-      exec('git clone ' + wiki_url + ' tmp/wiki', function (error) {
-        if (error) {
-          grunt.log.warn('Warning: Could not clone the wiki! Trying to use a local copy...');
-        }
-
-        if (grunt.file.exists('tmp/wiki/' + grunt.config.get('wiki_file'))) {
-          // confirm the wiki exists, if so generate the docs
-          generateDocs();
-        } else {
-          // failed to get the wiki
-          grunt.log.error('Error: The wiki is missing...');
-          done(false);
-        }
-      });
-    }
-
+    // In the future this will run multiple times for different versions.
+    generateDocs('node_modules/grunt-docs/');
 
   });
 
