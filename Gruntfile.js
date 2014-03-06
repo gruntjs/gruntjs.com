@@ -72,8 +72,7 @@ module.exports = function(grunt) {
       }
     },
 
-    concat: {
-      // if we add more js, modify this properly
+    uglify: {
       plugins: {
         src: [
           'src/js/vendor/lib/jquery.js',
@@ -146,7 +145,7 @@ module.exports = function(grunt) {
   grunt.loadTasks('tasks'); // getWiki, docs tasks
   require('matchdep').filterAll(['grunt-*', '!grunt-cli', '!grunt-docs']).forEach(grunt.loadNpmTasks);
 
-  grunt.registerTask('build', ['copy', 'jade', 'docs', 'blog', 'plugins', 'concat']);
+  grunt.registerTask('build', ['copy', 'jade', 'docs', 'blog', 'plugins', 'uglify']);
   grunt.registerTask('default', ['build', 'downloadPlugins', 'less:production']);
   grunt.registerTask('dev', ['build', 'less:development', 'jshint', 'watch']);
   grunt.registerTask('test', ['nodeunit']);
