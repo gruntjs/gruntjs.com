@@ -1,15 +1,13 @@
-'use strict';
+"use strict";
 
 module.exports = function(grunt) {
 
-  // Project configuration.
   grunt.initConfig({
-    // clean directories
     clean: {
       build: ['build/'],
       tmp: ['tmp/']
     },
-    // compile less -> css
+
     less: {
       development: {
         options: {
@@ -41,7 +39,7 @@ module.exports = function(grunt) {
       },
       js: {
         files: 'src/js/**',
-        tasks: ['concat']
+        tasks: ['uglify']
       },
       other: {
         files: 'src/img/**',
@@ -57,7 +55,6 @@ module.exports = function(grunt) {
       }
     },
 
-    // compile page layouts
     jade: {
       notfound: {
         options: {
@@ -103,7 +100,6 @@ module.exports = function(grunt) {
       }
     },
 
-    // copy site source files
     copy: {
       assets: {
         files: [
@@ -116,38 +112,31 @@ module.exports = function(grunt) {
         ]
       }
     },
-    nodeunit: {
-      all: ['test/*_test.js']
-    },
 
-    // Open the local server.
     open: {
       dev: {
-        path: 'http://localhost:<%= server_port %>/'
+        path: 'http://localhost:5678/'
       }
-    },
-
-    concurrent: {
-      server: ['nodemon', 'open']
     },
 
     nodemon: {
       dev: {
         script: 'server.js'
       }
+    },
+
+    concurrent: {
+      server: ['nodemon', 'watch', 'open'],
+      options: {
+        logConcurrentOutput: true
+      }
     }
   });
 
-  // Load grunt tasks
-  // All npm tasks are loaded via Sindre's load-grunt-tasks.
-
-  // Load local tasks
   grunt.loadTasks('tasks'); // getWiki, docs tasks
   require('matchdep').filterAll(['grunt-*', '!grunt-cli', '!grunt-docs']).forEach(grunt.loadNpmTasks);
 
-  grunt.registerTask('build', ['copy', 'jade', 'docs', 'blog', 'plugins', 'uglify']);
-  grunt.registerTask('default', ['build', 'downloadPlugins', 'less:production']);
-  grunt.registerTask('dev', ['build', 'less:development', 'jshint', 'watch']);
-  grunt.registerTask('test', ['nodeunit']);
-  grunt.registerTask('serve', ['concurrent:server']);
+  grunt.registerTask('build', 'Build the site', ['copy', 'jade', 'docs', 'blog', 'plugins', 'uglify']);
+  grunt.registerTask('default', 'Build the site, download plugins, production ready', ['build', 'downloadPlugins', 'less:production']);
+  grunt.registerTask('dev', 'Development Mode', ['build', 'less:development', 'jshint', 'concurrent']);
 };

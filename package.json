@@ -1,6 +1,6 @@
 {
   "name": "gruntjs.com",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "engines": {
     "node": "0.10.x",
     "npm": "~1.2.x"
@@ -14,7 +14,7 @@
   },
   "scripts": {
     "start": "node server.js",
-    "postinstall": "node_modules/.bin/grunt"
+    "postinstall": "grunt"
   },
   "private": true,
   "dependencies": {
@@ -41,9 +41,8 @@
   "devDependencies": {
     "grunt-contrib-watch": "~0.5.2",
     "grunt-contrib-jshint": "~0.1.1",
-    "grunt-contrib-nodeunit": "~0.2.0",
     "grunt-open": "~0.2.2",
-    "grunt-concurrent": "~0.4.1",
-    "grunt-nodemon": "~0.2.0"
+    "grunt-nodemon": "~0.2.0",
+    "grunt-concurrent": "^0.5.0"
   }
 }
