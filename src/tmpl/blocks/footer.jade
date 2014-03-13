@@ -19,9 +19,13 @@ footer.grunt-footer
             span.icon-feed
       ul.pull-left
         li
-          |Grunt development is sponsored by 
+          |Grunt development is sponsored by
           a(href='http://bocoup.com/', alt='Bocoup')
             |Bocoup
+
+if locals.title === 'Contributing'
+  script(src='/js/contributing.js')
+
 script.
   var _gaq=[['_setAccount','UA-34623937-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))
 

@@ -75,9 +75,13 @@ module.exports = function(grunt) {
           'src/js/vendor/lib/jquery.js',
           'src/js/vendor/lib/jquery.dataTables.js',
           'src/js/vendor/*.js',
-          'src/js/*.js'
+          'src/js/plugins.js'
         ],
         dest: 'build/js/plugins.js'
+      },
+      contributing: {
+        src: ['src/js/contributing.js'],
+        dest: 'build/js/contributing.js'
       }
     },
 
