@@ -29,7 +29,8 @@ function getPlugin(item, callback) {
     if (!error && response.statusCode == 200) {
       callback(null, condensePlugin(body));
     } else {
-      callback(new Error(error));
+      console.log('Failed to get data for:', name);
+      callback(null, null);
     }
   });
 }
@@ -46,7 +47,7 @@ function getDownloads(item, callback) {
       }
       callback(null, item);
     } else {
-      callback(new Error(error));
+      callback(null, item);
     }
   });
 }
@@ -98,6 +99,8 @@ function getPlugins(opts, callback) {
       });
 
       async.mapLimit(filtered, 200, getPlugin, function(err, results){
+        // registry can be out of sync with deleted plugins
+        var results = _.reject(results, function(plugin) { return plugin === null; });
         callback(err, results);
       });
     },
