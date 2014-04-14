@@ -90,9 +90,10 @@ module.exports = function (grunt) {
         var names = grunt.file.expand({cwd: base}, ['*.md', '!grunt*.md', '!README.md']);
 
         sidebars[0] = getSidebarSection('## Documentation', 'icon-file-text');
-        sidebars[1] = getSidebarSection('### Advanced');
-        sidebars[2] = getSidebarSection('### Community');
-        sidebars[3] = getSidebarSection('### Migration guides');
+        sidebars[1] = getSidebarSection('### Guides');
+        sidebars[2] = getSidebarSection('### Advanced');
+        sidebars[3] = getSidebarSection('### Community');
+        sidebars[4] = getSidebarSection('### Migration guides');
 
         names.forEach(function (name) {
 
