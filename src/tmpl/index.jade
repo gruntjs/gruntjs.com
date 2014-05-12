@@ -133,11 +133,12 @@ block content
           .latest-news
             h3 Latest News
             ul
-              each article in news
-                li
-                  a(href='/blog/' + article.url)
-                    span.title= article.title
-                    span.date= article.postDate
+              each article, i in news
+                if i < 3
+                  li
+                    a(href='/blog/' + article.url)
+                      span.title= article.title
+                      span.date= article.postDate
 
           .getting-started
             h3 Getting Started
