@@ -23,7 +23,7 @@ app.configure(function () {
   app.use(express.compress());
   app.use(express.methodOverride());
   app.use(express.bodyParser());
-  
+
   // strip slashes
   app.use(function (req, res, next) {
     if (req.url.substr(-1) === '/' && req.url.length > 1) {
