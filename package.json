@@ -1,9 +1,9 @@
 {
   "name": "gruntjs.com",
-  "version": "0.5.3",
+  "version": "0.5.4",
   "engines": {
     "node": "0.10.x",
-    "npm": "~1.2.x"
+    "npm": "~1.4.x"
   },
   "repository": {
     "type": "git",
@@ -40,9 +40,9 @@
   },
   "devDependencies": {
     "grunt-contrib-watch": "~0.5.2",
-    "grunt-contrib-jshint": "~0.1.1",
-    "grunt-open": "~0.2.2",
-    "grunt-nodemon": "~0.2.0",
-    "grunt-concurrent": "^0.5.0"
+    "grunt-contrib-jshint": "~0.10.0",
+    "grunt-open": "~0.2.3",
+    "grunt-nodemon": "~0.2.1",
+    "grunt-concurrent": "~0.5.0"
   }
 }

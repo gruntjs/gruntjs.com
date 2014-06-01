@@ -1,8 +1,8 @@
-/*global jQuery, _, List */
+/*global jQuery */
 (function (win, $) {
   'use strict';
 
-  //$.fn.dataTableExt.sErrMode = 'throw';
+  $.fn.dataTableExt.sErrMode = 'throw';
 
   var url = document.URL.split('/');
   var initSearch = '';

@@ -16,7 +16,7 @@ table {
 // BASELINE STYLES
 // ---------------
 
-.table {
+table {
   width: 100%;
   margin-bottom: @baseLineHeight;
   // Cells
@@ -24,8 +24,6 @@ table {
   td {
     padding: 8px;
     line-height: @baseLineHeight;
-    text-align: left;
-    vertical-align: top;
     border-top: 1px solid @tableBorder;
   }
   th {
@@ -71,7 +69,7 @@ table {
 // BORDERED VERSION
 // ----------------
 
-.table-bordered {
+table {
   border: 1px solid @tableBorder;
   border-collapse: separate; // Done so we can round those corners!
   *border-collapse: collapse; // IE7 can't round corners anyway
@@ -153,7 +151,7 @@ table {
 // --------------
 
 // Default zebra-stripe styles (alternating gray and transparent backgrounds)
-.table-striped {
+table {
   tbody {
     > tr:nth-child(odd) > td,
     > tr:nth-child(odd) > th {
@@ -166,11 +164,11 @@ table {
 // HOVER EFFECT
 // ------------
 // Placed here since it has to come after the potential zebra striping
-.table-hover {
+table {
   tbody {
     tr:hover > td,
     tr:hover > th {
-      background-color: @tableBackgroundHover;
+      background-color: #fff;
     }
   }
 }

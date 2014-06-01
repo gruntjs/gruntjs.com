@@ -30,7 +30,7 @@ module.exports = function(grunt) {
 
     watch: {
       less: {
-        files: 'src/less/*.less',
+        files: 'src/less/**/*.less',
         tasks: ['less:development']
       },
       tmpl: {
@@ -50,7 +50,7 @@ module.exports = function(grunt) {
         tasks: ['default']
       },
       docs: {
-        files: 'grunt-docs/**',
+        files: 'node_modules/grunt-docs/**',
         tasks: ['default']
       }
     },
@@ -95,8 +95,7 @@ module.exports = function(grunt) {
         unused: true,
         boss: true,
         eqnull: true,
-        node: true,
-        es5: true
+        node: true
       }
     },
 
