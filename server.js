@@ -1,6 +1,7 @@
 var express = require('express');
 var app = express();
 var fs = require('fs');
+var path = require('path');
 var schedule = require('node-schedule');
 
 schedule.scheduleJob('0 0 * * *', function(){
@@ -23,6 +24,8 @@ app.configure(function () {
   app.use(express.compress());
   app.use(express.methodOverride());
   app.use(express.bodyParser());
+  app.set('views', path.join(__dirname, 'src', 'tmpl'));
+  app.set('view engine', 'jade');
 
   // strip slashes
   app.use(function (req, res, next) {
@@ -38,7 +41,10 @@ app.configure(function () {
   app.use(express.static('build'));
   // if nothing matched, send 404
   app.use(function (req, res) {
-    res.status(404).sendfile('build/404.html');
+    res.status(404).render('404', {
+      page: 'notfound',
+        title: '404 Not Found'
+    });
   });
   app.use(express.errorHandler({
     dumpExceptions:false,

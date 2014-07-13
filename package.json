@@ -29,7 +29,6 @@
     "grunt-contrib-uglify": "~0.3.3",
     "grunt-contrib-copy": "~0.4.1",
     "grunt-contrib-less": "~0.5.2",
-    "grunt-contrib-jade": "~0.5.1",
     "marked": "https://github.com/vladikoff/marked/tarball/master",
     "highlight.js": "~7.3.0",
     "lodash": "~1.0.1",

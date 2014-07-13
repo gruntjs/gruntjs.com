@@ -55,20 +55,6 @@ module.exports = function(grunt) {
       }
     },
 
-    jade: {
-      notfound: {
-        options: {
-          data: {
-            page: 'notfound',
-            title: '404 Not Found'
-          }
-        },
-        files: {
-          'build/404.html': 'src/tmpl/404.jade'
-        }
-      }
-    },
-
     uglify: {
       plugins: {
         src: [
@@ -135,7 +121,7 @@ module.exports = function(grunt) {
   grunt.loadTasks('tasks'); // getWiki, docs tasks
   require('matchdep').filterAll(['grunt-*', '!grunt-cli', '!grunt-docs']).forEach(grunt.loadNpmTasks);
 
-  grunt.registerTask('build', 'Build the site', ['copy', 'jade', 'docs', 'blog', 'plugins', 'uglify']);
+  grunt.registerTask('build', 'Build the site', ['copy', 'docs', 'blog', 'plugins', 'uglify']);
   grunt.registerTask('default', 'Build the site, download plugins, production ready', ['build', 'downloadPlugins', 'less:production']);
   grunt.registerTask('dev', 'Development Mode', ['build', 'less:development', 'jshint', 'concurrent']);
 };
