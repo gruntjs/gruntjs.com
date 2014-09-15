@@ -17,7 +17,8 @@ var bannedPlugins = [
   'dp-grunt-contrib-copy',
   'grunt-test',
   'grunt-testingoscar123',
-  'assemble-less-variables'
+  'assemble-less-variables',
+  'grunt-contrib-eslint'
 ];
 
 var pluginFile = 'build/plugin-list.json';
