@@ -1,4 +1,8 @@
 var express = require('express');
+var compression = require('compression');
+var bodyParser = require('body-parser');
+var methodOverride = require('method-override');
+var errorHandler = require('errorhandler');
 var app = express();
 var fs = require('fs');
 var path = require('path');
@@ -20,37 +24,22 @@ app.enable('strict routing');
 /**
  * express app configuration
  */
-app.configure(function () {
-  app.use(express.compress());
-  app.use(express.methodOverride());
-  app.use(express.bodyParser());
-  app.set('views', path.join(__dirname, 'src', 'tmpl'));
-  app.set('view engine', 'jade');
+app.use(compression());
+app.use(methodOverride());
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+app.use(bodyParser.json());
+app.set('views', path.join(__dirname, 'src', 'tmpl'));
+app.set('view engine', 'jade');
 
-  // strip slashes
-  app.use(function (req, res, next) {
-    if (req.url.substr(-1) === '/' && req.url.length > 1) {
-      res.redirect(301, req.url.slice(0, -1));
-    } else {
-      next();
-    }
-  });
-  // use the router
-  app.use(app.router);
-  // use the static router
-  app.use(express.static('build'));
-  // if nothing matched, send 404
-  app.use(function (req, res) {
-    res.status(404).render('404', {
-      page: 'notfound',
-        title: '404 Not Found'
-    });
-  });
-  app.use(express.errorHandler({
-    dumpExceptions:false,
-    showStack:false
-  }));
-
+// strip slashes
+app.use(function (req, res, next) {
+  if (req.url.substr(-1) === '/' && req.url.length > 1) {
+    res.redirect(301, req.url.slice(0, -1));
+  } else {
+    next();
+  }
 });
 
 /**
@@ -71,7 +60,7 @@ app.get('/', function (req, res, next) {
 
   fs.exists(filePath, function (exists) {
     if (exists) {
-      res.sendfile(filePath);
+      res.sendFile(filePath, { root: __dirname });
     } else {
       next();
     }
@@ -91,7 +80,7 @@ app.get('/api*', function (req, res, next) {
 
   fs.exists(filePath, function (exists) {
     if (exists) {
-      res.sendfile(filePath);
+      res.sendFile(filePath, { root: __dirname });
     } else {
       next();
     }
@@ -104,12 +93,12 @@ app.get('/blog*', function (req, res, next) {
   var filePath = 'build' + cleanUrl + '.html';
 
   if (cleanUrl === '/blog') {
-    res.sendfile('build/blog.html');
+    res.sendFile('build/blog.html', { root: __dirname });
   } else {
 
     fs.exists(filePath, function (exists) {
       if (exists) {
-        res.sendfile(filePath);
+        res.sendFile(filePath, { root: __dirname });
       } else {
         next();
       }
@@ -119,14 +108,14 @@ app.get('/blog*', function (req, res, next) {
 
 // plugins route
 app.get('/plugins*', function (req, res) {
-  res.sendfile('build/plugins.html');
+  res.sendFile('build/plugins.html', { root: __dirname });
 });
 
 // rss atom feed
 app.get('/rss', function (req, res) {
   res.setHeader('Content-Type', 'application/xml');
   res.setHeader('Charset', 'utf-8');
-  res.sendfile('build/atom.xml');
+  res.sendFile('build/atom.xml', { root: __dirname });
 });
 
 // final route, if nothing else matched, this will match docs
@@ -141,10 +130,27 @@ app.get('*', function (req, res, next) {
 
   fs.exists(filePath, function (exists) {
     if (exists) {
-      res.sendfile(filePath);
+      res.sendFile(filePath, { root: __dirname });
     } else {
       next();
     }
   });
 
 });
+
+/**
+ * express app configuration after routes
+ */
+// use the static router
+app.use(express.static('build'));
+// if nothing matched, send 404
+app.use(function (req, res) {
+  res.status(404).render('404', {
+    page: 'notfound',
+      title: '404 Not Found'
+  });
+});
+app.use(errorHandler({
+  dumpExceptions:false,
+  showStack:false
+}));

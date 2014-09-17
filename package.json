@@ -18,7 +18,11 @@
   },
   "private": true,
   "dependencies": {
-    "express": "~3.4.8",
+    "express": "~4.9.1",
+    "body-parser": "~1.8.2",
+    "compression": "~1.1.0",
+    "errorhandler": "~1.2.0",
+    "method-override": "~2.2.0",
     "node-schedule": "~0.1.13",
     "grunt": "~0.4.2",
     "grunt-cli": "~0.1.x",
