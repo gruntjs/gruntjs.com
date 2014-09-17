@@ -18,34 +18,34 @@
   },
   "private": true,
   "dependencies": {
-    "express": "~4.9.1",
+    "async": "~0.2.10",
     "body-parser": "~1.8.2",
     "compression": "~1.1.0",
+    "date-utils": "~1.2.14",
+    "ent": "~0.1.0",
     "errorhandler": "~1.2.0",
-    "method-override": "~2.2.0",
-    "node-schedule": "~0.1.13",
+    "express": "~4.9.1",
     "grunt": "~0.4.2",
     "grunt-cli": "~0.1.x",
-    "async": "~0.2.10",
-    "grunt-docs": "git://github.com/gruntjs/grunt-docs",
-    "matchdep": "~0.3.0",
     "grunt-contrib-clean": "~0.5.0",
-    "grunt-contrib-uglify": "~0.3.3",
     "grunt-contrib-copy": "~0.4.1",
     "grunt-contrib-less": "~0.5.2",
-    "marked": "https://github.com/vladikoff/marked/tarball/master",
+    "grunt-contrib-uglify": "~0.3.3",
+    "grunt-docs": "^0.2.0",
     "highlight.js": "~7.3.0",
-    "lodash": "~1.0.1",
-    "request": "~2.27.0",
     "jade": "~0.35.0",
-    "date-utils": "~1.2.14",
-    "ent": "~0.1.0"
+    "lodash": "~1.0.1",
+    "marked": "https://github.com/vladikoff/marked/tarball/master",
+    "matchdep": "~0.3.0",
+    "method-override": "~2.2.0",
+    "node-schedule": "~0.1.13",
+    "request": "~2.27.0"
   },
   "devDependencies": {
+    "grunt-concurrent": "~0.5.0",
     "grunt-contrib-watch": "~0.6.1",
     "grunt-contrib-jshint": "~0.10.0",
     "grunt-open": "~0.2.3",
-    "grunt-nodemon": "~0.3.0",
-    "grunt-concurrent": "~0.5.0"
+    "grunt-nodemon": "~0.3.0"
   }
 }
