@@ -25,7 +25,7 @@ var pluginFile = 'build/plugin-list.json';
 
 function getPlugin(item, callback) {
   var name = item.key[1];
-  var url = 'http://isaacs.iriscouch.com/registry/' + name;
+  var url = 'https://skimdb.npmjs.com/registry/' + name;
   request({url: url, json: true}, function handlePlugin(error, response, body) {
     if (!error && response.statusCode == 200) {
       callback(null, condensePlugin(body));
@@ -82,7 +82,7 @@ function getPlugins(opts, callback) {
     // download plugin names based on the keyword
     function(callback) {
       var keyword = 'gruntplugin';
-      var url = 'http://isaacs.iriscouch.com/registry/_design/app/_view/byKeyword?startkey=[%22' +
+      var url = 'https://skimdb.npmjs.com/registry/_design/app/_view/byKeyword?startkey=[%22' +
         keyword + '%22]&endkey=[%22' + keyword + '%22,{}]&group_level=3';
       request({url: url, json: true}, function handlePluginList(error, response, body) {
         if (!error && response.statusCode == 200) {
