@@ -31,7 +31,7 @@
     "grunt-contrib-copy": "~0.4.1",
     "grunt-contrib-less": "~0.5.2",
     "grunt-contrib-uglify": "~0.3.3",
-    "grunt-docs": "^0.2.0",
+    "grunt-docs": "https://github.com/gruntjs/grunt-docs/tarball/master",
     "highlight.js": "~7.3.0",
     "jade": "~0.35.0",
     "lodash": "~1.0.1",
