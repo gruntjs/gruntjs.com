@@ -15,6 +15,7 @@ var bannedPlugins = [
   'grunt-contrib-jst-2', // Reason: unofficial contrib plugin
   'loadnpmtasks',  // Reason: not a plugin
   'dp-grunt-contrib-copy',
+  'grunt-contrib-yohtml', // Reason: unofficial contrib plugin
   'grunt-test',
   'grunt-testingoscar123',
   'assemble-less-variables',
