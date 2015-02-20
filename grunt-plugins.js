@@ -16,6 +16,12 @@ var bannedPlugins = [
   'loadnpmtasks',  // Reason: not a plugin
   'dp-grunt-contrib-copy',
   'grunt-contrib-yohtml', // Reason: unofficial contrib plugin
+  'grunt-contrib-quickstart', // Reason: unofficial contrib plugin
+  'grunt-contrib-coffeeify', // Reason: unofficial contrib plugin
+  'grunt-contrib-nodefy', // Reason: unofficial contrib plugin
+  'grunt-contrib-handlebars-rhengles', // Reason: unofficial contrib plugin
+  'grunt-contrib-juicepress', // Reason: unofficial contrib plugin
+  'grunt-contrib-build-crx', // Reason: unofficial contrib plugin
   'grunt-test',
   'grunt-testingoscar123',
   'assemble-less-variables',
