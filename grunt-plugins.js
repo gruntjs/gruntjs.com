@@ -22,10 +22,30 @@ var bannedPlugins = [
   'grunt-contrib-handlebars-rhengles', // Reason: unofficial contrib plugin
   'grunt-contrib-juicepress', // Reason: unofficial contrib plugin
   'grunt-contrib-build-crx', // Reason: unofficial contrib plugin
-  'grunt-test',
-  'grunt-testingoscar123',
+  'grunt-test', // Reason: no real plugin
+  'grunt-testingoscar123', // Reason: no real plugin
   'assemble-less-variables',
-  'grunt-contrib-eslint'
+  'grunt-contrib-eslint', // Reason: unofficial contrib plugin
+  'grunt-contrib-htmlone', // Reason: unofficial contrib plugin
+  'grunt-contrib-coffeeify', // Reason: unofficial contrib plugin
+  'grunt-contrib-compass-sourcemap', // Reason: unofficial contrib plugin
+  'grunt-contrib-spritify', // Reason: unofficial contrib plugin
+  'grunt-contrib-include', // Reason: unofficial contrib plugin
+  'grunt-contrib-juicepress', // Reason: unofficial contrib plugin
+  'grunt-contrib-hogan', // Reason: unofficial contrib plugin
+  'grunt-contrib-stylus2tss', // Reason: unofficial contrib plugin, no documentation
+  'grunt-contrib-smartdoc', // Reason: unofficial contrib plugin
+  'grunt-contrib-cjsc', // Reason: unofficial contrib plugin
+  'grunt-contrib-compressor', // Reason: unofficial contrib plugin
+  'grunt-contrib-license-report', // Reason: unofficial contrib plugin
+  'grunt-contrib-tishadow', // Reason: unofficial contrib plugin
+  'grunt-contrib-smartsprites', // Reason: unofficial contrib plugin, no documentation
+  'grunt-contrib-rubylint', // Reason: unofficial contrib plugin
+  'grunt-contrib-lualint', // Reason: unofficial contrib plugin
+  'grunt-contrib-levin-usemin', // Reason: unofficial contrib plugin
+  'grunt-contrib-quickstart', // Reason: unofficial contrib plugin
+  'grunt-contrib-i18next', // Reason: unofficial contrib plugin
+  'grunt-contrib-ftpush',  // Reason: unofficial contrib plugin
 ];
 
 var pluginFile = 'build/plugin-list.json';
