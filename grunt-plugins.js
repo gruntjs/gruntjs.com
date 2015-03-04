@@ -22,10 +22,54 @@ var bannedPlugins = [
   'grunt-contrib-handlebars-rhengles', // Reason: unofficial contrib plugin
   'grunt-contrib-juicepress', // Reason: unofficial contrib plugin
   'grunt-contrib-build-crx', // Reason: unofficial contrib plugin
-  'grunt-test',
-  'grunt-testingoscar123',
+  'grunt-test', // Reason: no real plugin
+  'grunt-testingoscar123', // Reason: no real plugin
   'assemble-less-variables',
-  'grunt-contrib-eslint'
+  'grunt-contrib-eslint', // Reason: unofficial contrib plugin
+  'grunt-contrib-htmlone', // Reason: unofficial contrib plugin
+  'grunt-contrib-coffeeify', // Reason: unofficial contrib plugin
+  'grunt-contrib-compass-sourcemap', // Reason: unofficial contrib plugin
+  'grunt-contrib-spritify', // Reason: unofficial contrib plugin
+  'grunt-contrib-include', // Reason: unofficial contrib plugin
+  'grunt-contrib-juicepress', // Reason: unofficial contrib plugin
+  'grunt-contrib-hogan', // Reason: unofficial contrib plugin
+  'grunt-contrib-stylus2tss', // Reason: unofficial contrib plugin, no documentation
+  'grunt-contrib-smartdoc', // Reason: unofficial contrib plugin
+  'grunt-contrib-cjsc', // Reason: unofficial contrib plugin
+  'grunt-contrib-compressor', // Reason: unofficial contrib plugin
+  'grunt-contrib-license-report', // Reason: unofficial contrib plugin
+  'grunt-contrib-tishadow', // Reason: unofficial contrib plugin
+  'grunt-contrib-smartsprites', // Reason: unofficial contrib plugin, no documentation
+  'grunt-contrib-rubylint', // Reason: unofficial contrib plugin
+  'grunt-contrib-lualint', // Reason: unofficial contrib plugin
+  'grunt-contrib-levin-usemin', // Reason: unofficial contrib plugin
+  'grunt-contrib-quickstart', // Reason: unofficial contrib plugin
+  'grunt-contrib-i18next', // Reason: unofficial contrib plugin
+  'grunt-contrib-ftpush',  // Reason: unofficial contrib plugin
+  'grunt-mindirect', // Reason: duplicate of contrib-uglify
+  'private-grunt-contrib-uglify', // Reason: duplicate of contrib-uglify
+  'grunt-handlebars-static', // Reason: duplicate of compile-handlebars
+  'grunt-contrib-jshint-reporter-tweaks', // Reason: unofficial contrib plugin
+  'grunt-ftp-deploy', // Reason: duplicate of grunt-ftp
+  'grunt-sass-fork', // Reason: duplicate of grunt-contrib-sass
+  'grunt-gh-deploy', // Reason: duplicate of grunt-gh-pages
+  'grunt-github-pages', // Reason: duplicate of grunt-gh-pages
+  'grunt-contrib-cssmin-pre-2.1.0', // Reason: unofficial contrib plugin
+  'private-grunt-contrib-cssmin', // Reason: unofficial contrib plugin
+  'private-grunt-contrib-stylus', // Reason: unofficial contrib plugin
+  'grunt-contrib-zopfli', // Reason: unofficial contrib plugin, duplicate of grunt-zopfli
+  'grunt-htmlmin', // Reason: duplicate of contrib-htmlmin
+  'grunt-symbolic-link', // Reason: duplicate of contrib-symlink
+  'grunt-symlink', // Reason: duplicate of contrib-symlink
+  'grunt-symlinks', // Reason: duplicate of contrib-symlink
+  'grunt-coffee', // Reason: duplicate of contrib-coffee
+  'grunt-coffee-lint', // Reason: duplicate of grunt-coffeelint, missing documentation
+  'grunt-less', // Reason: duplicate of grunt-contrib-less
+  'grunt-scsslint', // Reason: duplicate of grunt-scss-lint
+  'grunt-css', // Reason: deprecated
+  'ngbp-contrib-lintcss', // Reason: missing documentation, duplicate of grunt-contrib-csslint
+  'ngbp-contrib-mincss', // Reason: missing documentation, duplicate of grunt-contrib-cssmin
+  'grunt-init-test' // Reason: missing documentation, does nothing
 ];
 
 var pluginFile = 'build/plugin-list.json';
