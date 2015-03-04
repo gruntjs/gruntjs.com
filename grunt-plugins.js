@@ -50,7 +50,6 @@ var bannedPlugins = [
   'private-grunt-contrib-uglify', // Reason: duplicate of contrib-uglify
   'grunt-handlebars-static', // Reason: duplicate of compile-handlebars
   'grunt-contrib-jshint-reporter-tweaks', // Reason: unofficial contrib plugin
-  'grunt-ftp-deploy', // Reason: duplicate of grunt-ftp
   'grunt-sass-fork', // Reason: duplicate of grunt-contrib-sass
   'grunt-gh-deploy', // Reason: duplicate of grunt-gh-pages
   'grunt-github-pages', // Reason: duplicate of grunt-gh-pages
