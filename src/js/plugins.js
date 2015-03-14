@@ -38,7 +38,7 @@
           var author = (full.a && full.a.length > 0) ? ('by ' + full.a) : '';
 
           var tmpl = '';
-          tmpl += '<a class="plugin ' + (isContrib ? 'contrib' : '') + '" href="https://npmjs.org/package/' + data + '">';
+          tmpl += '<a class="plugin ' + (isContrib ? 'contrib' : '') + '" href="https://www.npmjs.com/package/' + data + '">';
           tmpl += '<span class="name-description">';
           tmpl += '<span class="title">' + name + '</span>';
           tmpl += '<span class="author">' + author + '</span>';
