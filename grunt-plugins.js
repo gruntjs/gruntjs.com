@@ -68,7 +68,12 @@ var bannedPlugins = [
   'grunt-css', // Reason: deprecated
   'ngbp-contrib-lintcss', // Reason: missing documentation, duplicate of grunt-contrib-csslint
   'ngbp-contrib-mincss', // Reason: missing documentation, duplicate of grunt-contrib-cssmin
-  'grunt-init-test' // Reason: missing documentation, does nothing
+  'grunt-init-test', // Reason: missing documentation, does nothing
+  'grunt-contrib-githooks', // Reason: unofficial contrib plugin
+  'grunt-contrib-stylus-map', // Reason: unofficial contrib plugin
+  'grunt-contrib-dox', // Reason: unofficial contrib plugin
+  'grunt-contrib-requiregrep', // Reason: unofficial contrib plugin
+  'grunt-contrib-litchi' // Reason: unofficial contrib plugin
 ];
 
 var pluginFile = 'build/plugin-list.json';
