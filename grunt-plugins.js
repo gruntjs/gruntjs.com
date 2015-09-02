@@ -76,7 +76,8 @@ var bannedPlugins = [
   'grunt-contrib-litchi', // Reason: unofficial contrib plugin
   'grunt-contrib-remotecordova', // Reason: unofficial contrib plugin
   'grunt-contrib-environment', // Reason: unofficial contrib plugin
-  'grunt-contrib-lessify' // Reason: unofficial contrib plugin
+  'grunt-contrib-lessify', // Reason: unofficial contrib plugin
+  'grunt-contrib-appbuilder' // Reason: unofficial contrib plugin
 ];
 
 var pluginFile = 'build/plugin-list.json';
