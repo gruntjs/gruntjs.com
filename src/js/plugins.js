@@ -26,7 +26,7 @@
     'bLengthChange': false,
     'iDisplayLength': 100,
     'aaSorting': [
-      [3, 'desc']
+      [1, 'desc']
     ],
     'columns': [
       { 'data': 'name',
@@ -48,24 +48,6 @@
 
           return tmpl
         }
-      },
-      { 'data': 'm',
-        'bSearchable': false,
-        'sType': 'dateString',
-        'sDefaultContent': '',
-        'mRender': function (data, type, full) {
-          var tmpl = '';
-          tmpl += '<span title="' + data + '"> ' + $.timeago(data) + '</span>';
-
-          return tmpl
-        },
-        'asSorting': [ "desc" ]
-      },
-      { 'data': 'v',
-        'sClass': 'v',
-        'bSearchable': false,
-        'sDefaultContent': '',
-        'asSorting': [ ]
       },
       { 'data': 'dl',
         'sClass': 'dl',
