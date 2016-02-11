@@ -31,7 +31,7 @@
     "grunt-contrib-copy": "~0.4.1",
     "grunt-contrib-less": "~0.5.2",
     "grunt-contrib-uglify": "~0.3.3",
-    "grunt-docs": "git://github.com/gruntjs/grunt-docs#dede869cf3068b5afa8e192e2b1ea2c4481366e9",
+    "grunt-docs": "git://github.com/gruntjs/grunt-docs#64ec06a4a3b1908b3af3a61cacfad15b43d8ea2d",
     "highlight.js": "~7.3.0",
     "jade": "~0.35.0",
     "lodash": "~1.0.1",
