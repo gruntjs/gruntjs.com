@@ -35,7 +35,7 @@ module.exports = function(grunt) {
       },
       tmpl: {
         files: 'src/tmpl/**/*.jade',
-        tasks: ['jade', 'default']
+        tasks: ['default']
       },
       js: {
         files: 'src/js/**',
