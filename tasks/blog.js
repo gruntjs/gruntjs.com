@@ -36,7 +36,7 @@ module.exports = function (grunt) {
     var names;
     var shortList = [];
     var articleList = [];
-    var base = 'node_modules/grunt-docs/';
+    var base = 'node_modules/grunt-docs/blog/';
     var files = grunt.file.expand({cwd:base}, ['Blog-*.md']);
 
     names = files.map(function (name) {
