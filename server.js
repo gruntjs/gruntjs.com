@@ -1,3 +1,5 @@
+'use strict';
+
 var express = require('express');
 var compression = require('compression');
 var bodyParser = require('body-parser');
@@ -8,10 +10,10 @@ var fs = require('fs');
 var path = require('path');
 var schedule = require('node-schedule');
 
-schedule.scheduleJob('0 0 * * *', function(){
+schedule.scheduleJob('0 0 * * *', function() {
   console.log('Running plugin updater...');
   try {
-  require('./grunt-plugins').download();
+    require('./grunt-plugins').download();
   } catch (e) {
     console.log(e);
   }
@@ -60,7 +62,7 @@ app.get('/', function (req, res, next) {
 
   fs.exists(filePath, function (exists) {
     if (exists) {
-      res.sendFile(filePath, { root: __dirname });
+      res.sendFile(filePath, {root: __dirname});
     } else {
       next();
     }
@@ -80,7 +82,7 @@ app.get('/api*', function (req, res, next) {
 
   fs.exists(filePath, function (exists) {
     if (exists) {
-      res.sendFile(filePath, { root: __dirname });
+      res.sendFile(filePath, {root: __dirname});
     } else {
       next();
     }
@@ -93,12 +95,12 @@ app.get('/blog*', function (req, res, next) {
   var filePath = 'build' + cleanUrl + '.html';
 
   if (cleanUrl === '/blog') {
-    res.sendFile('build/blog.html', { root: __dirname });
+    res.sendFile('build/blog.html', {root: __dirname});
   } else {
 
     fs.exists(filePath, function (exists) {
       if (exists) {
-        res.sendFile(filePath, { root: __dirname });
+        res.sendFile(filePath, {root: __dirname});
       } else {
         next();
       }
@@ -108,14 +110,14 @@ app.get('/blog*', function (req, res, next) {
 
 // plugins route
 app.get('/plugins*', function (req, res) {
-  res.sendFile('build/plugins.html', { root: __dirname });
+  res.sendFile('build/plugins.html', {root: __dirname});
 });
 
 // rss atom feed
 app.get('/rss', function (req, res) {
   res.setHeader('Content-Type', 'application/xml');
   res.setHeader('Charset', 'utf-8');
-  res.sendFile('build/atom.xml', { root: __dirname });
+  res.sendFile('build/atom.xml', {root: __dirname});
 });
 
 // final route, if nothing else matched, this will match docs
@@ -130,7 +132,7 @@ app.get('*', function (req, res, next) {
 
   fs.exists(filePath, function (exists) {
     if (exists) {
-      res.sendFile(filePath, { root: __dirname });
+      res.sendFile(filePath, {root: __dirname});
     } else {
       next();
     }
@@ -147,10 +149,10 @@ app.use(express.static('build'));
 app.use(function (req, res) {
   res.status(404).render('404', {
     page: 'notfound',
-      title: '404 Not Found'
+    title: '404 Not Found'
   });
 });
 app.use(errorHandler({
-  dumpExceptions:false,
-  showStack:false
+  dumpExceptions: false,
+  showStack: false
 }));

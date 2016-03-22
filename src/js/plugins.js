@@ -1,5 +1,6 @@
-/*global jQuery */
-(function (win, $) {
+/* jshint browser:true, jquery:true, node:false */
+
+(function ($) {
   'use strict';
 
   $.fn.dataTableExt.sErrMode = 'throw';
@@ -16,47 +17,47 @@
     // save search with a cookie
     'bStateSave': true,
     // search features
-    'oSearch': {"sSearch": initSearch},
+    'oSearch': {'sSearch': initSearch},
     'bAutoWidth': false,
-    "sDom": '<"top"ilfp<"clear">>',
-    "sPaginationType": "bootstrap",
-    "oLanguage": {
-      "sLengthMenu": "_MENU_ records per page"
+    'sDom': '<"top"ilfp<"clear">>',
+    'sPaginationType': 'bootstrap',
+    'oLanguage': {
+      'sLengthMenu': '_MENU_ records per page'
     },
     'bLengthChange': false,
     'iDisplayLength': 100,
     'aaSorting': [
       [1, 'desc']
     ],
-    'columns': [
-      { 'data': 'name',
-        'bSearchable': true,
-        'sDefaultContent': '',
-        'mRender': function (data, type, full) {
-          var name = data.replace('grunt-', '');
-          var isContrib = full.a === 'Grunt Team' && data.indexOf('grunt-contrib-') === 0;
-          var author = (full.a && full.a.length > 0) ? ('by ' + full.a) : '';
+    'columns': [{
+      'data': 'name',
+      'bSearchable': true,
+      'sDefaultContent': '',
+      'mRender': function (data, type, full) {
+        var name = data.replace('grunt-', '');
+        var isContrib = full.a === 'Grunt Team' && data.indexOf('grunt-contrib-') === 0;
+        var author = (full.a && full.a.length > 0) ? ('by ' + full.a) : '';
 
-          var tmpl = '';
-          tmpl += '<a class="plugin ' + (isContrib ? 'contrib' : '') + '" href="https://www.npmjs.com/package/' + data + '">';
-          tmpl += '<span class="name-description">';
-          tmpl += '<span class="title">' + name + '</span>';
-          tmpl += '<span class="author">' + author + '</span>';
-          tmpl += '<span class="desc">' + full.ds + '</span>';
-          tmpl += '</span>';
-          tmpl += '</a>';
+        var tmpl = '';
+        tmpl += '<a class="plugin ' + (isContrib ? 'contrib' : '') + '" href="https://www.npmjs.com/package/' + data + '">';
+        tmpl += '<span class="name-description">';
+        tmpl += '<span class="title">' + name + '</span>';
+        tmpl += '<span class="author">' + author + '</span>';
+        tmpl += '<span class="desc">' + full.ds + '</span>';
+        tmpl += '</span>';
+        tmpl += '</a>';
 
-          return tmpl
-        }
-      },
-      { 'data': 'dl',
-        'sClass': 'dl',
-        'sType': 'numeric',
-        'bSearchable': false,
-        'sDefaultContent': '',
-        'asSorting': [ "desc" ]
+        return tmpl;
       }
-    ]
+    },
+    {
+      'data': 'dl',
+      'sClass': 'dl',
+      'sType': 'numeric',
+      'bSearchable': false,
+      'sDefaultContent': '',
+      'asSorting': [ 'desc' ]
+    }]
   });
 
-})(window, jQuery);
+})(jQuery);
