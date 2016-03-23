@@ -123,5 +123,6 @@ module.exports = function(grunt) {
 
   grunt.registerTask('build', 'Build the site', ['copy', 'docs', 'blog', 'plugins', 'uglify']);
   grunt.registerTask('default', 'Build the site, download plugins, production ready', ['build', 'downloadPlugins', 'less:production']);
+  grunt.registerTask('test', ['build', 'jshint']);
   grunt.registerTask('dev', 'Development Mode', ['build', 'less:development', 'jshint', 'concurrent']);
 };

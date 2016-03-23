@@ -8,8 +8,6 @@ node_js:
   - "iojs"
 before_install:
   - if [ "$TRAVIS_NODE_VERSION" = "0.10" ]; then npm install -g npm@2; fi
-script:
-  - grunt
 matrix:
   fast_finish: true
 cache:

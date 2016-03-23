@@ -14,7 +14,8 @@
   },
   "scripts": {
     "start": "node server.js",
-    "postinstall": "grunt"
+    "postinstall": "grunt",
+    "test": "grunt test"
   },
   "private": true,
   "dependencies": {
