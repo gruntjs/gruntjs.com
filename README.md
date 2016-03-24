@@ -1,5 +1,4 @@
-Grunt Website
-==========================
+# Grunt Website [![Build Status: Linux](https://travis-ci.org/gruntjs/gruntjs.com.svg?branch=master)](https://travis-ci.org/gruntjs/gruntjs.com)
 
 ## Setup Development
 
@@ -26,7 +25,6 @@ ssh-keygen -t rsa -C "YOUR_HEROKU_EMAIL" -f  ~/.ssh/id_rsa_heroku
 ssh-add ~/.ssh/id_rsa_heroku
 
 heroku keys:add ~/.ssh/id_rsa_heroku.pub
-
 ```
 
 Push
