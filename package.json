@@ -45,6 +45,7 @@
     "grunt-concurrent": "~2.3.0",
     "grunt-contrib-jshint": "~1.0.0",
     "grunt-contrib-watch": "~1.0.0",
+    "grunt-html": "~8.0.2",
     "grunt-nodemon": "~0.4.1",
     "grunt-open": "~0.2.3"
   }

@@ -110,7 +110,19 @@ module.exports = function(grunt) {
       options: {
         logConcurrentOutput: true
       }
+    },
+
+    htmllint: {
+      options: {
+        ignore: [
+          // These should be fixed eventually
+          //'The "border" attribute is obsolete. Consider specifying "img { border: 0; }" in CSS instead.',
+          //'The "name" attribute is obsolete. Consider putting an "id" attribute on the nearest container instead.'
+        ]
+      },
+      src: 'build//**/*.html'
     }
+
   });
 
   grunt.loadTasks('tasks'); // getWiki, docs tasks
@@ -118,6 +130,6 @@ module.exports = function(grunt) {
 
   grunt.registerTask('build', 'Build the site', ['copy', 'docs', 'blog', 'plugins', 'uglify']);
   grunt.registerTask('default', 'Build the site, download plugins, production ready', ['build', 'downloadPlugins', 'less:production']);
-  grunt.registerTask('test', ['build', 'jshint']);
+  grunt.registerTask('test', ['build', 'jshint', 'htmllint']);
   grunt.registerTask('dev', 'Development Mode', ['build', 'less:development', 'jshint', 'concurrent']);
 };
