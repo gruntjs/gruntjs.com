@@ -20,7 +20,12 @@ module.exports = function(grunt) {
       production: {
         options: {
           paths: ['src/less'],
-          yuicompress: true
+          plugins: [
+            new (require('less-plugin-clean-css'))({
+              compatibility: 'ie9',
+              keepSpecialComments: 0
+            })
+          ]
         },
         files: {
           'build/css/main.css': 'src/less/main.less'

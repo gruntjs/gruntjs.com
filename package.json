@@ -34,6 +34,7 @@
     "grunt-docs": "git://github.com/gruntjs/grunt-docs.git#c64430e7a08175b529518c0bc453598cdb03850a",
     "highlight.js": "~9.5.0",
     "jade": "~1.11.0",
+    "less-plugin-clean-css": "~1.5.1",
     "lodash": "~4.13.1",
     "marked": "https://github.com/vladikoff/marked/tarball/master",
     "matchdep": "~1.0.1",
