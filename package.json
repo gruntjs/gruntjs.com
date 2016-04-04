@@ -1,6 +1,6 @@
 {
   "name": "gruntjs.com",
-  "version": "1.0.5",
+  "version": "1.0.7",
   "engines": {
     "node": "0.10.x",
     "npm": "~2.4.x"
@@ -32,7 +32,7 @@
     "grunt-contrib-copy": "~0.4.1",
     "grunt-contrib-less": "~0.5.2",
     "grunt-contrib-uglify": "~0.3.3",
-    "grunt-docs": "git://github.com/gruntjs/grunt-docs#5262d69f7ac5a0304c011dace6225afe5a344935",
+    "grunt-docs": "git://github.com/gruntjs/grunt-docs#5cd8a90e7227a2d0096ffc2800a036ae96088582",
     "highlight.js": "~7.3.0",
     "jade": "~0.35.0",
     "lodash": "~1.0.1",
