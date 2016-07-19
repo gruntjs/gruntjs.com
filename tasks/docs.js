@@ -87,7 +87,7 @@ module.exports = function (grunt) {
 
         // API Docs
         var sidebars = [];
-        var names = grunt.file.expand({cwd: base}, ['*', '!blog/**', '!grunt*.md', '!*.js']);
+        var names = grunt.file.expand({cwd: base}, ['*.md', '!grunt*.md', '!README.md']);
 
         sidebars[0] = getSidebarSection('## Documentation', 'icon-document-alt-stroke');
         sidebars[1] = getSidebarSection('### Advanced');
