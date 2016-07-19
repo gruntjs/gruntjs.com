@@ -137,7 +137,7 @@ module.exports = function(grunt) {
 
   grunt.loadTasks('tasks'); // getWiki, docs tasks
   require('matchdep')
-    .filterAll(['grunt-*', '!grunt-cli', '!grunt-docs'])
+    .filterAll(['grunt-*', '!grunt-docs'])
     .forEach(grunt.loadNpmTasks);
 
   grunt.registerTask('build', 'Build the site', [
