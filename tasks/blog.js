@@ -27,7 +27,7 @@ module.exports = function (grunt) {
       anchors: true,
       base: '/',
       pedantic: false,
-      sanitize: true,
+      sanitize: false,
       // callback for code highlighter
       highlight: function (code) {
         return highlighter.highlight('javascript', code).value;
