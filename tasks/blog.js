@@ -92,6 +92,15 @@ module.exports = function (grunt) {
      * Generate the blog page with a list of posts
      */
     grunt.log.ok('Generating blog front page..');
+    // remove anchors from blog.html page
+    marked.setOptions({
+      anchors: false
+    });
+    // generate the blog items with different 'marked' settings
+    shortList.forEach(function (item) {
+      //console.log('>>> item:', item);
+      item.content = marked(item.rawSrc);
+    });
     var blogTpl = 'src/tmpl/blog.jade';
     var blogOut = jade.compile(grunt.file.read(blogTpl), {filename: blogTpl})({
       page: 'blog',
