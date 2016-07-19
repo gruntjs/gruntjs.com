@@ -99,6 +99,12 @@ module.exports = function (grunt) {
         sidebars[0] = getSidebarSection('## API', 'icon-cog');
         sidebars[1] = getSidebarSection('### Other');
 
+        sidebars[1].push({
+          name: 'GitHub',
+          url: 'https://github.com/gruntjs/',
+          external: true
+        });
+
         names.forEach(function (name) {
           var src = base + name + '.md',
             dest = 'build/api/' + name.toLowerCase() + '.html';

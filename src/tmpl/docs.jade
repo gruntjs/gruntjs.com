@@ -17,12 +17,15 @@ block content
               ul.nav.nav-list
                 each link in sidebar
                   if link.url
-                    if locals.rootSidebar
-                      li
-                        a(href='/' + link.url, class=locals.pageSegment == link.url && 'active')= link.name
+                    - var linkHref
+                    if link.external
+                      - linkHref = link.url
+                    else if locals.rootSidebar
+                      - linkHref = '/' + link.url
                     else
-                      li
-                        a(href='/' + page + '/' + link.url, class=locals.pageSegment == link.url && 'active')= link.name
+                      - linkHref = '/' + page + '/' + link.url
+                    li
+                      a(href=linkHref, class=locals.pageSegment == link.url && 'active')= link.name
                   else
                     li.nav-header
                       if link.icon
