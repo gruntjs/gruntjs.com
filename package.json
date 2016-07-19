@@ -33,6 +33,7 @@
     "grunt-contrib-less": "~1.4.0",
     "grunt-contrib-uglify": "~2.0.0",
     "grunt-docs": "git://github.com/gruntjs/grunt-docs.git#5c1edec563163d770a4a12e7c169f6cade683ea9",
+    "grunt-sitemap": "~1.2.1",
     "highlight.js": "~9.9.0",
     "less-plugin-clean-css": "~1.5.1",
     "lodash": "~4.17.4",
