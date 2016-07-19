@@ -93,8 +93,7 @@ module.exports = function(grunt) {
           src: [
             'img/**',
             'cdn/**',
-            'fonts/**',
-            'js/vendor/lib/modernizr.min.js'
+            'fonts/**'
           ],
           dest: 'build/'
         }]
