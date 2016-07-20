@@ -89,7 +89,7 @@ module.exports = function (grunt) {
         var sidebars = [];
         var names = grunt.file.expand({cwd: base}, ['*.md', '!grunt*.md', '!README.md']);
 
-        sidebars[0] = getSidebarSection('## Documentation', 'icon-document-alt-stroke');
+        sidebars[0] = getSidebarSection('## Documentation', 'icon-file-text');
         sidebars[1] = getSidebarSection('### Advanced');
         sidebars[2] = getSidebarSection('### Community');
         sidebars[3] = getSidebarSection('### Migration guides');
