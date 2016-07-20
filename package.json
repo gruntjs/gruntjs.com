@@ -1,16 +1,16 @@
 {
   "name": "gruntjs.com",
+  "description": "The source code for gruntjs.com",
   "version": "1.0.7",
+  "author": {
+    "name": "Grunt Team",
+    "url": "http://gruntjs.com/"
+  },
+  "repository": "gruntjs/gruntjs.com",
+  "license": "MIT",
   "engines": {
-    "node": "0.10.x",
-    "npm": "~2.4.x"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/gruntjs/gruntjs.com.git"
-  },
-  "bugs": {
-    "url": "https://github.com/gruntjs/gruntjs.com/issues"
+    "node": ">=4.0",
+    "npm": ">=2.15"
   },
   "scripts": {
     "start": "node server.js",
@@ -19,34 +19,35 @@
   },
   "private": true,
   "dependencies": {
-    "async": "~0.2.10",
-    "body-parser": "~1.8.2",
-    "compression": "~1.1.0",
-    "date-utils": "~1.2.14",
-    "ent": "~0.1.0",
-    "errorhandler": "~1.2.0",
-    "express": "~4.9.1",
-    "grunt": "~0.4.2",
-    "grunt-cli": "~0.1.x",
-    "grunt-contrib-clean": "~0.5.0",
-    "grunt-contrib-copy": "~0.4.1",
-    "grunt-contrib-less": "~0.5.2",
-    "grunt-contrib-uglify": "~0.3.3",
-    "grunt-docs": "git://github.com/gruntjs/grunt-docs#a9b78876082155691fc2728b6ed28b60bc534a5c",
-    "highlight.js": "~7.3.0",
-    "jade": "~0.35.0",
-    "lodash": "~1.0.1",
+    "async": "~2.0.0",
+    "body-parser": "~1.15.0",
+    "compression": "~1.6.1",
+    "date-utils": "~1.2.19",
+    "ent": "~2.2.0",
+    "errorhandler": "~1.4.3",
+    "express": "~4.14.0",
+    "grunt": "~1.0.1",
+    "grunt-contrib-clean": "~1.0.0",
+    "grunt-contrib-copy": "~1.0.0",
+    "grunt-contrib-less": "~1.3.0",
+    "grunt-contrib-uglify": "~2.0.0",
+    "grunt-docs": "git://github.com/gruntjs/grunt-docs.git#c64430e7a08175b529518c0bc453598cdb03850a",
+    "highlight.js": "~9.5.0",
+    "jade": "~1.11.0",
+    "less-plugin-clean-css": "~1.5.1",
+    "lodash": "~4.13.1",
     "marked": "https://github.com/vladikoff/marked/tarball/master",
-    "matchdep": "~0.3.0",
-    "method-override": "~2.2.0",
-    "node-schedule": "~0.1.13",
-    "request": "~2.27.0"
+    "matchdep": "~1.0.1",
+    "method-override": "~2.3.5",
+    "node-schedule": "~1.1.0",
+    "request": "~2.73.0"
   },
   "devDependencies": {
-    "grunt-concurrent": "~0.5.0",
-    "grunt-contrib-watch": "~0.6.1",
-    "grunt-contrib-jshint": "~0.10.0",
-    "grunt-open": "~0.2.3",
-    "grunt-nodemon": "~0.3.0"
+    "grunt-concurrent": "~2.3.0",
+    "grunt-contrib-jshint": "~1.0.0",
+    "grunt-contrib-watch": "~1.0.0",
+    "grunt-html": "~8.0.2",
+    "grunt-nodemon": "~0.4.1",
+    "grunt-open": "~0.2.3"
   }
 }

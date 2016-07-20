@@ -6,13 +6,15 @@
  * Licensed under the MIT license.
  */
 
-module.exports = function (grunt) {
-  'use strict';
+'use strict';
 
-  var fs = require('fs'),
-    jade = require('jade'),
-    highlighter = require('highlight.js'),
-    docs = require('./lib/docs').init(grunt);
+module.exports = function (grunt) {
+
+  var fs = require('fs');
+  var jade = require('jade');
+  var highlighter = require('highlight.js');
+  var docs = require('./lib/docs').init(grunt);
+  var marked = require('marked');
 
   /**
    * Custom task to generate grunt documentation
@@ -31,6 +33,53 @@ module.exports = function (grunt) {
        */
 
       /**
+       * Get sidebar list for section from Home.md
+       */
+      function getSidebarSection(section, iconClass) {
+        var rMode = false;
+        var l;
+        var items = [];
+
+        // read the Home.md of the wiki, extract the section links
+        var lines = fs.readFileSync(base + 'Home.md').toString().split(/\r?\n/);
+        for (l in lines) {
+          var line = lines[l];
+
+          // choose a section of the file
+          if (line === section) {
+            rMode = true;
+          } else if (line.substring(0, 2) === '##') {   // end of section
+            rMode = false;
+          }
+
+          if (rMode && line.length > 0) {
+            var item = line.replace(/#/g, '').replace(']]', '').replace('* [[', '');
+            var url = item;
+
+            if (item[0] === ' ') {
+              // TODO: clean this up...
+              if (iconClass) {
+                items.push({
+                  name: item.substring(1, item.length),
+                  icon: iconClass
+                });
+              } else {
+                items.push({
+                  name: item.substring(1, item.length)
+                });
+              }
+            } else {
+              items.push({
+                name: item,
+                url: url.replace(/ /g, '-').toLowerCase()
+              });
+            }
+          }
+        }
+        return items;
+      }
+
+      /**
        * Generate grunt guides documentation
        */
       function generateGuides() {
@@ -38,7 +87,7 @@ module.exports = function (grunt) {
 
         // API Docs
         var sidebars = [];
-        var names = grunt.file.expand({cwd:base}, ['*', '!blog/**', '!grunt*.md', '!*.js']);
+        var names = grunt.file.expand({cwd: base}, ['*.md', '!grunt*.md', '!README.md']);
 
         sidebars[0] = getSidebarSection('## Documentation', 'icon-document-alt-stroke');
         sidebars[1] = getSidebarSection('### Advanced');
@@ -47,24 +96,24 @@ module.exports = function (grunt) {
 
         names.forEach(function (name) {
 
-          var title = name.replace(/-/g,' ').replace('.md', ''),
-            segment = name.replace(/ /g,'-').replace('.md', '').toLowerCase(),
-            src = base + name,
-            dest = 'build/docs/' + name.replace('.md', '').toLowerCase() + '.html';
+          var title = name.replace(/-/g, ' ').replace('.md', '');
+          var segment = name.replace(/ /g, '-').replace('.md', '').toLowerCase();
+          var src = base + name;
+          var dest = 'build/docs/' + name.replace('.md', '').toLowerCase() + '.html';
 
           grunt.file.copy(src, dest, {
-            process:function (src) {
+            process: function (src) {
               try {
-                var file = 'src/tmpl/docs.jade',
-                  templateData = {
-                    page:'docs',
-                    rootSidebar: true,
-                    pageSegment: segment,
-                    title:title,
-                    content: docs.anchorFilter( marked( docs.wikiAnchors(src) ) ),
-                    sidebars: sidebars
-                  };
-                return jade.compile(grunt.file.read(file), {filename:file})(templateData);
+                var file = 'src/tmpl/docs.jade';
+                var templateData = {
+                  page: 'docs',
+                  rootSidebar: true,
+                  pageSegment: segment,
+                  title: title,
+                  content: docs.anchorFilter(marked(docs.wikiAnchors(src))),
+                  sidebars: sidebars
+                };
+                return jade.compile(grunt.file.read(file), {filename: file})(templateData);
               } catch (e) {
                 grunt.log.error(e);
                 grunt.fail.warn('Jade failed to compile.');
@@ -83,7 +132,7 @@ module.exports = function (grunt) {
         grunt.log.ok('Generating API Docs...');
         // API Docs
         var sidebars = [];
-        var names = grunt.file.expand({cwd:base}, ['grunt.*.md', '!*utils*']);
+        var names = grunt.file.expand({cwd: base}, ['grunt.*.md', '!*utils*']);
 
         names = names.map(function (name) {
           return name.substring(0, name.length - 3);
@@ -100,21 +149,21 @@ module.exports = function (grunt) {
         sidebars[1] = getSidebarSection('### Other');
 
         names.forEach(function (name) {
-          var src = base + name + '.md',
-            dest = 'build/api/' + name.toLowerCase() + '.html';
+          var src = base + name + '.md';
+          var dest = 'build/api/' + name.toLowerCase() + '.html';
           grunt.file.copy(src, dest, {
-            process:function (src) {
+            process: function (src) {
               try {
-                var file = 'src/tmpl/docs.jade',
-                  templateData = {
-                    page:'api',
-                    pageSegment: name.toLowerCase(),
-                    title:name.replace(/-/g,' '),
-                    content: docs.anchorFilter( marked( docs.wikiAnchors(src) ) ),
-                    sidebars: sidebars
-                  };
+                var file = 'src/tmpl/docs.jade';
+                var templateData = {
+                  page: 'api',
+                  pageSegment: name.toLowerCase(),
+                  title: name.replace(/-/g, ' '),
+                  content: docs.anchorFilter(marked(docs.wikiAnchors(src))),
+                  sidebars: sidebars
+                };
 
-                return jade.compile(grunt.file.read(file), {filename:file})(templateData);
+                return jade.compile(grunt.file.read(file), {filename: file})(templateData);
               } catch (e) {
                 grunt.log.error(e);
                 grunt.fail.warn('Jade failed to compile.');
@@ -125,66 +174,31 @@ module.exports = function (grunt) {
         grunt.log.ok('Created ' + names.length + ' files.');
       }
 
-      /**
-       * Get sidebar list for section from Home.md
-       */
-      function getSidebarSection(section, iconClass) {
-        var rMode = false,
-          l,
-          items = [];
-
-        // read the Home.md of the wiki, extract the section links
-        var lines = fs.readFileSync(base + 'Home.md').toString().split(/\r?\n/);
-        for(l in lines) {
-          var line = lines[l];
-
-          // choose a section of the file
-          if (line === section) { rMode = true; }
-          // end of section
-          else if (line.substring(0,2) === '##') { rMode = false; }
-
-          if (rMode && line.length > 0) {
-            var item = line.replace(/#/g,'').replace(']]', '').replace('* [[', ''),
-              url = item;
-
-            if (item[0] === ' ') {
-              // TODO: clean this up...
-              if (iconClass) {
-                items.push({name: item.substring(1,item.length), icon: iconClass});
-              } else {
-                items.push({name: item.substring(1,item.length)});
-              }
-            } else {
-              items.push({name: item, url: url.replace(/ /g,'-').toLowerCase()});
-            }
-          }
-        }
-        return items;
-      }
-
-      // marked markdown parser
-      var marked = require('marked');
       // Set default marked options
       marked.setOptions({
-        gfm:true,
+        gfm: true,
         anchors: true,
         base: '/',
-        pedantic:false,
-        sanitize:true,
+        pedantic: false,
+        sanitize: false,
         // callback for code highlighter
         highlight: function(code, lang) {
           // No language specified, no syntax highlighting.
-          if (!lang) { return code; }
+          if (!lang) {
+            return code;
+          }
           // Handle common abbreviations.
           var langMap = {
             js: 'javascript',
             shell: 'bash',
-            html: 'xml',
+            html: 'xml'
           };
-          if (lang in langMap) { lang = langMap[lang]; }
+          if (lang in langMap) {
+            lang = langMap[lang];
+          }
           try {
             return highlighter.highlight(lang, code).value;
-          } catch(error) {
+          } catch (error) {
             grunt.log.error('[lang: %s] %s', lang, error.message);
             return 'ERROR';
           }

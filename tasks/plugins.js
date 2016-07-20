@@ -6,29 +6,30 @@
  * Licensed under the MIT license.
  */
 
-module.exports = function (grunt) {
-  'use strict';
+'use strict';
 
-  var jade = require('jade'),
-    marked = require('marked');
+module.exports = function (grunt) {
+
+  var jade = require('jade');
+  var marked = require('marked');
+  var plugins = require('../grunt-plugins');
 
   /**
    * Custom task to generate the plugins page
    */
   grunt.registerTask('plugins', 'Compile Grunt Plugins Page', function () {
     var pluginTpl = 'src/tmpl/plugins.jade';
-
     var base = 'node_modules/grunt-docs/';
 
     // Set default marked options
     marked.setOptions({
-      gfm:true,
-      base:'/',
-      sanitize:false
+      gfm: true,
+      base: '/',
+      sanitize: false
     });
 
     grunt.log.ok('Generating plugins page...');
-    var output = jade.compile(grunt.file.read(pluginTpl), {filename:pluginTpl})({
+    var output = jade.compile(grunt.file.read(pluginTpl), {filename: pluginTpl})({
       page: 'plugins',
       title: 'Plugins',
       content: marked(grunt.file.read(base + 'Grunt-Plugins.md'))
@@ -37,12 +38,10 @@ module.exports = function (grunt) {
   });
 
   grunt.registerTask('downloadPlugins', 'Download Plugin Information', function () {
-      var done = this.async();
-      var cache = true;
+    var done = this.async();
 
-      var plugins = require('../grunt-plugins');
-      plugins.download({ cache: cache }, function() {
-        done();
-      });
+    plugins.download({cache: true}, function() {
+      done();
+    });
   });
 };

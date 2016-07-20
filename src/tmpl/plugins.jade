@@ -9,7 +9,7 @@ block content
             h1 Plugins
             != content
             include blocks/advertisements
-          section.main
+          div.main
             .plugin-list#plugins-contrib
             table.plugin-list#plugins-all.display
               thead
@@ -20,5 +20,3 @@ block content
                   th.colDown
                     | Downloads
                     span.legend last 30 days
-
-  script(src='/js/plugins.js')

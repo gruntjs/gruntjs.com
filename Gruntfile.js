@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 module.exports = function(grunt) {
 
@@ -20,7 +20,12 @@ module.exports = function(grunt) {
       production: {
         options: {
           paths: ['src/less'],
-          yuicompress: true
+          plugins: [
+            new (require('less-plugin-clean-css'))({
+              compatibility: 'ie9',
+              keepSpecialComments: 0
+            })
+          ]
         },
         files: {
           'build/css/main.css': 'src/less/main.less'
@@ -68,33 +73,39 @@ module.exports = function(grunt) {
     },
 
     jshint: {
-      all: ['Gruntfile.js', 'tasks/*.js'],
+      all: [
+        'Gruntfile.js',
+        'grunt-plugins.js',
+        'server.js',
+        'src/js/*.js',
+        'tasks/**/*.js'
+      ],
       options: {
-        curly: true,
-        eqeqeq: true,
-        immed: true,
-        latedef: true,
-        newcap: true,
-        noarg: true,
-        sub: true,
-        undef: true,
-        unused: true,
-        boss: true,
-        eqnull: true,
-        node: true
+        jshintrc: '.jshintrc'
       }
     },
 
     copy: {
       assets: {
-        files: [
-          {expand: true, cwd: 'src/', src: ['img/**', 'cdn/**', 'fonts/**', 'js/vendor/lib/modernizr.min.js'], dest: 'build/'}
-        ]
+        files: [{
+          expand: true,
+          cwd: 'src/',
+          src: [
+            'img/**',
+            'cdn/**',
+            'fonts/**'
+          ],
+          dest: 'build/'
+        }]
       },
       root: {
-        files: [
-          {expand: true, cwd: 'src/', src: ['*'], dest: 'build/', filter: 'isFile'}
-        ]
+        files: [{
+          expand: true,
+          cwd: 'src/',
+          src: ['*'],
+          dest: 'build/',
+          filter: 'isFile'
+        }]
       }
     },
 
@@ -115,14 +126,40 @@ module.exports = function(grunt) {
       options: {
         logConcurrentOutput: true
       }
+    },
+
+    htmllint: {
+      src: 'build//**/*.html'
     }
+
   });
 
   grunt.loadTasks('tasks'); // getWiki, docs tasks
-  require('matchdep').filterAll(['grunt-*', '!grunt-cli', '!grunt-docs']).forEach(grunt.loadNpmTasks);
+  require('matchdep')
+    .filterAll(['grunt-*', '!grunt-docs'])
+    .forEach(grunt.loadNpmTasks);
 
-  grunt.registerTask('build', 'Build the site', ['copy', 'docs', 'blog', 'plugins', 'uglify']);
-  grunt.registerTask('default', 'Build the site, download plugins, production ready', ['build', 'downloadPlugins', 'less:production']);
-  grunt.registerTask('test', ['build', 'jshint']);
-  grunt.registerTask('dev', 'Development Mode', ['build', 'less:development', 'jshint', 'concurrent']);
+  grunt.registerTask('build', 'Build the site', [
+    'copy',
+    'docs',
+    'blog',
+    'plugins',
+    'uglify'
+  ]);
+  grunt.registerTask('default', 'Build the site, download plugins, production ready', [
+    'build',
+    'downloadPlugins',
+    'less:production'
+  ]);
+  grunt.registerTask('test', [
+    'build',
+    'jshint',
+    'htmllint'
+  ]);
+  grunt.registerTask('dev', 'Development Mode', [
+    'build',
+    'less:development',
+    'jshint',
+    'concurrent'
+  ]);
 };
