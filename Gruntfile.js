@@ -9,6 +9,10 @@ module.exports = function(grunt) {
     },
 
     less: {
+      options: {
+        sourceMap: true,
+        outputSourceFiles: true
+      },
       development: {
         options: {
           paths: ['src/less']
@@ -61,6 +65,10 @@ module.exports = function(grunt) {
     },
 
     uglify: {
+      options: {
+        sourceMap: true,
+        sourceMapIncludeSources: true
+      },
       plugins: {
         src: [
           'src/js/vendor/lib/jquery.js',
@@ -129,7 +137,7 @@ module.exports = function(grunt) {
     },
 
     htmllint: {
-      src: 'build//**/*.html'
+      src: 'build/**/*.html'
     }
 
   });
