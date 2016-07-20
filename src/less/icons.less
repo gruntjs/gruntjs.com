@@ -1,80 +1,57 @@
 @font-face {
   font-family: 'icomoon';
-  src: url('../fonts/icomoon.eot');
-  src: url('../fonts/icomoon.eot') format('embedded-opentype'), url('../fonts/icomoon.svg#icomoon') format('svg'), url('../fonts/icomoon.woff') format('woff'), url('../fonts/icomoon.ttf') format('truetype');
+  src: url('../fonts/icomoon.ttf') format('truetype'),
+       url('../fonts/icomoon.woff') format('woff'),
+       url('../fonts/icomoon.svg#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
 
-/* Use the following CSS code if you want to have a class per icon */
-/*
-Instead of a list of all class selectors,
-you can use the generic selector below, but it's slower:
-[class*="icon-"]:before {
-*/
-.icon-document-alt-stroke:before,
-.icon-power-cord:before,
-.icon-search:before,
-.icon-star:before,
-.icon-cog:before,
-.icon-fork:before,
-.icon-arrow-right:before,
-.anchor:before,
-.icon-github:before,
-.icon-twitter:before,
-.icon-feed:before,
-.icon-newspaper:before {
-  font-family: 'icomoon';
+.anchor,
+[class^="icon-"],
+[class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
   speak: none;
   font-style: normal;
   font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
   line-height: 1;
+
+  /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-star:before {
-  content: "\e000";
-}
-
-.icon-search:before {
-  content: "\e001";
-}
-
-.icon-power-cord:before {
-  content: "\e002";
-}
-
-.icon-document-alt-stroke:before {
-  content: "\e003";
-}
-
-.icon-cog:before {
-  content: "\e004";
-}
-
-.icon-fork:before {
-  content: "\e005";
-}
-
-.icon-arrow-right:before {
-  content: "\e006";
-}
-
-.anchor:before {
-  content: "\e007";
-}
-
-.icon-github:before {
-  content: "\e008";
-}
-
-.icon-twitter:before {
-  content: "\e009";
-}
-
-.icon-feed:before {
-  content: "\e00a";
-}
 .icon-newspaper:before {
-  content: "\e00b";
+  content: "\e904";
+}
+.icon-file-text:before {
+  content: "\e922";
+}
+.icon-cog:before {
+  content: "\e994";
+}
+.icon-power-cord:before {
+  content: "\e9b7";
+}
+/*.icon-link:before {*/
+.anchor:before {
+  content: "\e9cb";
+}
+.icon-star-full:before {
+  content: "\e9d9";
+}
+.icon-arrow-right:before {
+  content: "\ea34";
+}
+.icon-twitter:before {
+  content: "\ea96";
+}
+.icon-rss:before {
+  content: "\ea9b";
+}
+.icon-github:before {
+  content: "\eab0";
 }
