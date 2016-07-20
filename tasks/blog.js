@@ -96,9 +96,8 @@ module.exports = function (grunt) {
     marked.setOptions({
       anchors: false
     });
-    // generate the blog items with different 'marked' settings
+    // generate blog.html with different 'marked' settings
     shortList.forEach(function (item) {
-      //console.log('>>> item:', item);
       item.content = marked(item.rawSrc);
     });
     var blogTpl = 'src/tmpl/blog.jade';
