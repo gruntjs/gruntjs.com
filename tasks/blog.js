@@ -10,7 +10,7 @@
 
 module.exports = function (grunt) {
 
-  var jade = require('jade');
+  var pug = require('pug');
   var highlighter = require('highlight.js');
   var marked = require('marked');
   var blog = require('./lib/blog').init(grunt);
@@ -69,7 +69,7 @@ module.exports = function (grunt) {
 
       grunt.file.copy(src, dest, {
         process: function (src) {
-          var file = 'src/tmpl/blog.jade';
+          var file = 'src/tmpl/blog.pug';
           var templateData = {
             page: 'news',
             singlePost: true,
@@ -83,7 +83,7 @@ module.exports = function (grunt) {
           };
           shortList.push(templateData);
 
-          return jade.compile(grunt.file.read(file), {filename: file})(templateData);
+          return pug.compile(grunt.file.read(file), {filename: file})(templateData);
         }
       });
     });
@@ -100,8 +100,8 @@ module.exports = function (grunt) {
     shortList.forEach(function (item) {
       item.content = marked(item.rawSrc);
     });
-    var blogTpl = 'src/tmpl/blog.jade';
-    var blogOut = jade.compile(grunt.file.read(blogTpl), {filename: blogTpl})({
+    var blogTpl = 'src/tmpl/blog.pug';
+    var blogOut = pug.compile(grunt.file.read(blogTpl), {filename: blogTpl})({
       page: 'blog',
       title: 'The Grunt Blog',
       content: shortList,
@@ -122,8 +122,8 @@ module.exports = function (grunt) {
       item.rssSrc = marked(item.rawSrc);
       item.atomId = blog.atomIDnTimeStampChurner(item.url, item.postRawDate);
     });
-    var rssTpl = 'src/tmpl/rss.jade';
-    var rssOut = jade.compile(grunt.file.read(rssTpl), {filename: rssTpl})({
+    var rssTpl = 'src/tmpl/rss.pug';
+    var rssOut = pug.compile(grunt.file.read(rssTpl), {filename: rssTpl})({
       page: 'rss',
       posts: shortList
     });
@@ -133,8 +133,8 @@ module.exports = function (grunt) {
      * Generate the front page
      */
     grunt.log.ok('Generating the front page...');
-    var indexTpl = 'src/tmpl/index.jade';
-    var indexOut = jade.compile(grunt.file.read(indexTpl), {filename: indexTpl})({
+    var indexTpl = 'src/tmpl/index.pug';
+    var indexOut = pug.compile(grunt.file.read(indexTpl), {filename: indexTpl})({
       page: 'index',
       news: shortList.splice(0, 5)
     });

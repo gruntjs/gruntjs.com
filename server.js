@@ -33,7 +33,7 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 app.set('views', path.join(__dirname, 'src', 'tmpl'));
-app.set('view engine', 'jade');
+app.set('view engine', 'pug');
 
 // strip slashes
 app.use(function (req, res, next) {

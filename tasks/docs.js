@@ -11,7 +11,7 @@
 module.exports = function (grunt) {
 
   var fs = require('fs');
-  var jade = require('jade');
+  var pug = require('pug');
   var highlighter = require('highlight.js');
   var docs = require('./lib/docs').init(grunt);
   var marked = require('marked');
@@ -104,7 +104,7 @@ module.exports = function (grunt) {
           grunt.file.copy(src, dest, {
             process: function (src) {
               try {
-                var file = 'src/tmpl/docs.jade';
+                var file = 'src/tmpl/docs.pug';
                 var templateData = {
                   page: 'docs',
                   rootSidebar: true,
@@ -113,10 +113,10 @@ module.exports = function (grunt) {
                   content: docs.anchorFilter(marked(docs.wikiAnchors(src))),
                   sidebars: sidebars
                 };
-                return jade.compile(grunt.file.read(file), {filename: file})(templateData);
+                return pug.compile(grunt.file.read(file), {filename: file})(templateData);
               } catch (e) {
                 grunt.log.error(e);
-                grunt.fail.warn('Jade failed to compile.');
+                grunt.fail.warn('Pug failed to compile.');
               }
             }
           });
@@ -154,7 +154,7 @@ module.exports = function (grunt) {
           grunt.file.copy(src, dest, {
             process: function (src) {
               try {
-                var file = 'src/tmpl/docs.jade';
+                var file = 'src/tmpl/docs.pug';
                 var templateData = {
                   page: 'api',
                   pageSegment: name.toLowerCase(),
@@ -163,10 +163,10 @@ module.exports = function (grunt) {
                   sidebars: sidebars
                 };
 
-                return jade.compile(grunt.file.read(file), {filename: file})(templateData);
+                return pug.compile(grunt.file.read(file), {filename: file})(templateData);
               } catch (e) {
                 grunt.log.error(e);
-                grunt.fail.warn('Jade failed to compile.');
+                grunt.fail.warn('Pug failed to compile.');
               }
             }
           });
