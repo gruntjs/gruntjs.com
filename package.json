@@ -29,18 +29,18 @@
     "grunt": "~1.0.1",
     "grunt-contrib-clean": "~1.0.0",
     "grunt-contrib-copy": "~1.0.0",
-    "grunt-contrib-less": "~1.3.0",
+    "grunt-contrib-less": "~1.4.0",
     "grunt-contrib-uglify": "~2.0.0",
-    "grunt-docs": "git://github.com/gruntjs/grunt-docs.git#5dc64837101b72cbc23615d009f9d32226bdcfe0",
+    "grunt-docs": "git://github.com/gruntjs/grunt-docs.git#371f7172dd3a14a50e0ae859e63826ad4ee46b38",
     "highlight.js": "~9.5.0",
     "jade": "~1.11.0",
     "less-plugin-clean-css": "~1.5.1",
-    "lodash": "~4.13.1",
+    "lodash": "~4.14.2",
     "marked": "https://github.com/vladikoff/marked/tarball/master",
     "matchdep": "~1.0.1",
     "method-override": "~2.3.5",
     "node-schedule": "~1.1.0",
-    "request": "~2.73.0"
+    "request": "~2.74.0"
   },
   "devDependencies": {
     "grunt-concurrent": "~2.3.0",
