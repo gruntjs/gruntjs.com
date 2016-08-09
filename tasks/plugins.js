@@ -10,7 +10,7 @@
 
 module.exports = function (grunt) {
 
-  var jade = require('jade');
+  var pug = require('pug');
   var marked = require('marked');
   var plugins = require('../grunt-plugins');
 
@@ -18,7 +18,7 @@ module.exports = function (grunt) {
    * Custom task to generate the plugins page
    */
   grunt.registerTask('plugins', 'Compile Grunt Plugins Page', function () {
-    var pluginTpl = 'src/tmpl/plugins.jade';
+    var pluginTpl = 'src/tmpl/plugins.pug';
     var base = 'node_modules/grunt-docs/';
 
     // Set default marked options
@@ -29,7 +29,7 @@ module.exports = function (grunt) {
     });
 
     grunt.log.ok('Generating plugins page...');
-    var output = jade.compile(grunt.file.read(pluginTpl), {filename: pluginTpl})({
+    var output = pug.compile(grunt.file.read(pluginTpl), {filename: pluginTpl})({
       page: 'plugins',
       title: 'Plugins',
       content: marked(grunt.file.read(base + 'Grunt-Plugins.md'))
