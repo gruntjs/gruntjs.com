@@ -9,8 +9,8 @@
   "repository": "gruntjs/gruntjs.com",
   "license": "MIT",
   "engines": {
-    "node": ">=4.0",
-    "npm": ">=2.15"
+    "node": ">=6",
+    "npm": ">=3"
   },
   "scripts": {
     "start": "node server.js",
@@ -19,12 +19,12 @@
   },
   "private": true,
   "dependencies": {
-    "async": "~2.0.0",
+    "async": "~2.1.4",
     "body-parser": "~1.15.0",
     "compression": "~1.6.1",
     "date-utils": "~1.2.19",
     "ent": "~2.2.0",
-    "errorhandler": "~1.4.3",
+    "errorhandler": "~1.5.0",
     "express": "~4.14.0",
     "grunt": "~1.0.1",
     "grunt-contrib-clean": "~1.0.0",
@@ -32,21 +32,21 @@
     "grunt-contrib-less": "~1.4.0",
     "grunt-contrib-uglify": "~2.0.0",
     "grunt-docs": "git://github.com/gruntjs/grunt-docs.git#371f7172dd3a14a50e0ae859e63826ad4ee46b38",
-    "highlight.js": "~9.5.0",
+    "highlight.js": "~9.9.0",
     "less-plugin-clean-css": "~1.5.1",
-    "lodash": "~4.14.2",
+    "lodash": "~4.17.4",
     "marked": "https://github.com/vladikoff/marked/tarball/master",
     "matchdep": "~1.0.1",
     "method-override": "~2.3.5",
-    "node-schedule": "~1.1.0",
+    "node-schedule": "~1.2.0",
     "pug": "~2.0.0-beta4",
-    "request": "~2.74.0"
+    "request": "~2.79.0"
   },
   "devDependencies": {
     "grunt-concurrent": "~2.3.0",
-    "grunt-contrib-jshint": "~1.0.0",
+    "grunt-contrib-jshint": "~1.1.0",
     "grunt-contrib-watch": "~1.0.0",
-    "grunt-html": "~8.0.2",
+    "grunt-html": "~8.2.0",
     "grunt-nodemon": "~0.4.1",
     "grunt-open": "~0.2.3"
   }
