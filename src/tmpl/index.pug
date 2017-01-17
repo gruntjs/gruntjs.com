@@ -1,6 +1,6 @@
 extends layout
 
-block gettingStarted
+mixin gettingStarted
   p Read the <a href="/getting-started">Getting Started</a> guide for instructions on using Grunt in your projects. Once you've done that, check out a <a href="/sample-gruntfile">Sample Gruntfile</a> and learn more about <a href="/configuring-tasks">Configuring Tasks</a>.
 
 block content
@@ -117,7 +117,7 @@ block content
 
           .how-get-started
             h2 How do I get started?
-            block gettingStarted
+            +gettingStarted
 
       .span3
         .well.sidebar-nav
@@ -147,7 +147,7 @@ block content
 
           .getting-started
             h3 Getting Started
-            block gettingStarted
+            +gettingStarted
 
           .social
             a.github(href='https://github.com/gruntjs/', title='Grunt on GitHub')

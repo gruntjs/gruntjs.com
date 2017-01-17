@@ -222,6 +222,7 @@ function download(opts, callback) {
 
     } else {
       console.log('File already cached. Manually delete to redownload...');
+      callback();
     }
   });
 }
