@@ -136,6 +136,15 @@ module.exports = function(grunt) {
       }
     },
 
+    puglint: {
+      all: {
+        options: {
+          extends: '.pug-lintrc.json'
+        },
+        src: 'src/tmpl/**/*.pug'
+      }
+    },
+
     htmllint: {
       src: 'build/**/*.html'
     }
@@ -162,6 +171,7 @@ module.exports = function(grunt) {
   grunt.registerTask('test', [
     'build',
     'jshint',
+    'puglint',
     'htmllint'
   ]);
   grunt.registerTask('dev', 'Development Mode', [
