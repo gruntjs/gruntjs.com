@@ -37,10 +37,27 @@ module.exports = function(grunt) {
       }
     },
 
+    autoprefixer: {
+      options: {
+        browsers: [
+          'last 2 version',
+          '> 1%',
+          'Edge >= 12',
+          'Explorer >= 9',
+          'Firefox ESR',
+          'Opera 12.1'
+        ]
+      },
+      main: {
+        src: 'build/css/main.css',
+        dest: 'build/css/main.css'
+      }
+    },
+
     watch: {
       less: {
         files: 'src/less/**/*.less',
-        tasks: ['less:development']
+        tasks: ['less:development', 'autoprefixer']
       },
       tmpl: {
         files: 'src/tmpl/**/*.pug',
@@ -166,7 +183,8 @@ module.exports = function(grunt) {
   grunt.registerTask('default', 'Build the site, download plugins, production ready', [
     'build',
     'downloadPlugins',
-    'less:production'
+    'less:production',
+    'autoprefixer'
   ]);
   grunt.registerTask('test', [
     'build',
@@ -177,6 +195,7 @@ module.exports = function(grunt) {
   grunt.registerTask('dev', 'Development Mode', [
     'build',
     'less:development',
+    'autoprefixer',
     'jshint',
     'concurrent'
   ]);
