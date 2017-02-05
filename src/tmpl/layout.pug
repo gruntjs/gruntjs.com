@@ -4,16 +4,9 @@ html(lang='en')
     meta(charset='utf-8')
     meta(http-equiv='X-UA-Compatible', content='IE=edge')
     title= (locals.title ? locals.title + ' - ' : '') + 'Grunt: The JavaScript Task Runner'
-    link(rel='stylesheet', href='/css/main.css')
     link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Lato:400,700')
-    link(rel='apple-touch-icon', sizes='180x180', href='/img/favicons/apple-touch-icon.png')
-    link(rel='icon', type='image/png', href='/img/favicons/favicon-32x32.png', sizes='32x32')
-    link(rel='icon', type='image/png', href='/img/favicons/favicon-16x16.png', sizes='16x16')
-    link(rel='manifest', href='/img/favicons/manifest.json')
-    link(rel='mask-icon', href='/img/favicons/safari-pinned-tab.svg', color='#e48632')
-    link(rel='shortcut icon', href='/img/favicons/favicon.ico', type='image/x-icon')
-    meta(name='msapplication-config', content='/img/favicons/browserconfig.xml')
-    meta(name='theme-color', content='#e48632')
+    link(rel='stylesheet', href='/css/main.css')
+    include includes/favicons
     link(href='/rss', rel='alternate', title='Grunt Blog Feed', type='application/atom+xml')
   body(class=locals.page ? 'page-' + locals.page + (locals.page === 'index' ? '' : ' page-secondary') : '')
     include blocks/header
