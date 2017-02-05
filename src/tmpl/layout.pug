@@ -1,12 +1,15 @@
 doctype html
-html(lang='en')
+html(lang='en', prefix='og: http://ogp.me/ns#', itemscope, itemtype='http://schema.org/WebPage')
   head
     meta(charset='utf-8')
     meta(http-equiv='X-UA-Compatible', content='IE=edge')
-    title= (locals.title ? locals.title + ' - ' : '') + 'Grunt: The JavaScript Task Runner'
+
+    - var pageTitle = (locals.title ? locals.title + ' - ' : '') + 'Grunt: The JavaScript Task Runner';
+    title= pageTitle
     link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Lato:400,700')
     link(rel='stylesheet', href='/css/main.css')
     include includes/favicons
+    include includes/social
     link(href='/rss', rel='alternate', title='Grunt Blog Feed', type='application/atom+xml')
   body(class=locals.page ? 'page-' + locals.page + (locals.page === 'index' ? '' : ' page-secondary') : '')
     include blocks/header
