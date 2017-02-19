@@ -1,6 +1,6 @@
 /*
  * grunt plugins page
- * http://gruntjs.com/
+ * https://gruntjs.com/
  *
  * Copyright (c) 2013 grunt contributors
  * Licensed under the MIT license.

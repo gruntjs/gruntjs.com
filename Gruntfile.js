@@ -140,7 +140,7 @@ module.exports = function(grunt) {
           required: false,
           trailingSlash: false
         },
-        homepage: 'http://gruntjs.com/',
+        homepage: 'https://gruntjs.com/',
         pattern: ['build/**/*.html'],
         siteRoot: './build'
       }
