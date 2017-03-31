@@ -19,7 +19,7 @@
   },
   "private": true,
   "dependencies": {
-    "async": "~2.1.4",
+    "async": "~2.2.0",
     "body-parser": "~1.17.1",
     "compression": "~1.6.1",
     "date-utils": "~1.2.19",
@@ -48,7 +48,7 @@
     "grunt-concurrent": "~2.3.0",
     "grunt-contrib-jshint": "~1.1.0",
     "grunt-contrib-watch": "~1.0.0",
-    "grunt-html": "~8.3.1",
+    "grunt-html": "~8.4.0",
     "grunt-nodemon": "~0.4.1",
     "grunt-open": "~0.2.3",
     "grunt-puglint": "~1.0.0"
