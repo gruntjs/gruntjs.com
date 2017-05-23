@@ -83,8 +83,14 @@ module.exports = function(grunt) {
 
     uglify: {
       options: {
-        sourceMap: true,
-        sourceMapIncludeSources: true
+        compress: true,
+        mangle: true,
+        output: {
+          comments: false
+        },
+        sourceMap: {
+          includeSources: true
+        }
       },
       plugins: {
         src: [
