@@ -19,7 +19,7 @@
     // search features
     'oSearch': {'sSearch': initSearch},
     'bAutoWidth': false,
-    'sDom': '<"top"ilfp<"clear">>',
+    'sDom': '<"top"ilpf<"clear">"top"<"clear">>',
     'sPaginationType': 'bootstrap',
     'oLanguage': {
       'sLengthMenu': '_MENU_ records per page'
