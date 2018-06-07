@@ -97,9 +97,18 @@ module.exports = function(grunt) {
           'src/js/vendor/lib/jquery.js',
           'src/js/vendor/lib/jquery.dataTables.js',
           'src/js/vendor/*.js',
-          'src/js/*.js'
+          'src/js/*.js',
+          '!src/js/vendor/clipboard.js',
+          '!src/js/clipboard-init.js'
         ],
         dest: 'build/js/plugins.js'
+      },
+      clipboard: {
+        src: [
+          'src/js/vendor/clipboard.js',
+          'src/js/clipboard-init.js'
+        ],
+        dest: 'build/js/clipboard.min.js'
       }
     },
 
