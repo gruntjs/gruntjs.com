@@ -91,7 +91,7 @@ module.exports = function (grunt) {
     /**
      * Generate the blog page with a list of posts
      */
-    grunt.log.ok('Generating blog front page..');
+    grunt.log.ok('Generating blog front page...');
     // remove anchors from blog.html page
     marked.setOptions({
       anchors: false
