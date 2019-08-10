@@ -32,7 +32,7 @@
     "grunt-contrib-copy": "~1.0.0",
     "grunt-contrib-less": "~2.0.0",
     "grunt-contrib-uglify": "~4.0.0",
-    "grunt-docs": "git://github.com/gruntjs/grunt-docs.git#2d7c8e6c6e0e758a4bfb74b8fc89bf688888ba97",
+    "grunt-docs": "git://github.com/gruntjs/grunt-docs.git#1e9a37ee62b5feb5fe016bc30f34b263b71ad779",
     "grunt-sitemap": "~1.2.1",
     "highlight.js": "~9.12.0",
     "less-plugin-clean-css": "~1.5.1",
