@@ -36,7 +36,7 @@
     "grunt-sitemap": "~1.2.1",
     "highlight.js": "~9.12.0",
     "less-plugin-clean-css": "~1.5.1",
-    "lodash": "~4.17.10",
+    "lodash": "~4.17.13",
     "marked": "https://github.com/vladikoff/marked/tarball/master",
     "matchdep": "~2.0.0",
     "method-override": "~3.0.0",
