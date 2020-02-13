@@ -141,68 +141,37 @@ function getDownloads(item, callback) {
   });
 }
 
+function requestIndex(url, callback) {
+  setTimeout(function() {
+    request({
+      url: url,
+      json: true
+    }, function handlePluginList(error, response, body) {
+      if (!error && response.statusCode === 200) {
+        return callback(null, body.objects);
+      } else {
+        console.error(error);
+        return callback(new Error(error), null);
+      }
+    });
+  }, Math.random()* 10000);
+
+}
+
+
 function getPlugins(opts, callback) {
-  console.log('Downloading plugin list, this will take 40 or more seconds...');
+  console.log('Downloading plugin list, this will take some time...');
 
-  async.waterfall([
-    // download plugin names based on the keyword
-    function(callback) {
-      var keyword = 'gruntplugin';
-      var url = 'https://skimdb.npmjs.com/registry/_design/app/_view/byKeyword?startkey=[%22' +
-        keyword + '%22]&endkey=[%22' + keyword + '%22,{}]&group_level=3';
-      request({
-        url: url,
-        json: true
-      }, function handlePluginList(error, response, body) {
-        if (!error && response.statusCode === 200) {
-          callback(null, body.rows);
-        } else {
-          callback(null, new Error(error));
-        }
-      });
-    },
-    function(results, callback) {
-      console.log('Downloading npm data for each plugin...');
+  const query = []
+  for(let i = 0; i < 25; i++) {
+    var url = 'http://registry.npmjs.com/-/v1/search?text=keywords:gruntplugin&size=250&popularity=1.0&quality=1.0&from=' + i * 250;
+    query.push(url)
+  }
 
-      var filtered = _.filter(results, function (el) {
-        return _.indexOf(bannedPlugins, el.key[1]) === -1;
-      });
-
-      async.mapLimit(filtered, 200, getPlugin, function(err, results) {
-        // registry can be out of sync with deleted plugins
-        var res = _.reject(results, function(plugin) {
-          return plugin === null;
-        });
-        callback(err, res);
-      });
-    },
-    function(results, callback) {
-      console.log('Fetching download information...');
-
-      async.mapLimit(results, 200, getDownloads, function(err, results) {
-        callback(err, results);
-      });
-    }
-  ], function (err, pluginList) {
-    if (err) {
-      console.log(err);
-    } else {
-      //console.log('Downloading GitHub data for each plugin...');
-      console.log('Saving to file...');
-
-      var pluginData = JSON.stringify({'aaData': pluginList});
-
-      fs.writeFile(pluginFile, pluginData, function (err) {
-        if (err) {
-          throw err;
-        }
-        console.log('Saved!');
-        if (callback) {
-          callback(err, true);
-        }
-      });
-    }
-  });
+  async.concat(query, requestIndex, function(err, results) {
+    console.log("Got " + results.length + " plugins")
+    callback(results, err);
+  })
 }
 
 function download(opts, callback) {
@@ -218,7 +187,21 @@ function download(opts, callback) {
       if (err) {
         console.log('File missing...');
       }
-      getPlugins(opts, callback);
+      getPlugins(opts, function (results, err) {
+        console.log('Saving to file...');
+
+        var pluginData = JSON.stringify({'aaData': results});
+
+        fs.writeFile(pluginFile, pluginData, function (err) {
+          if (err) {
+            throw err;
+          }
+          console.log('Saved!');
+          if (callback) {
+            callback(err, true);
+          }
+        });
+      });
 
     } else {
       console.log('File already cached. Manually delete to redownload...');

@@ -34,16 +34,15 @@
       'bSearchable': true,
       'sDefaultContent': '',
       'mRender': function (data, type, full) {
-        var name = data.replace('grunt-', '');
-        var isContrib = full.a === 'Grunt Team' && data.indexOf('grunt-contrib-') === 0;
-        var author = (full.a && full.a.length > 0) ? ('by ' + full.a) : '';
-
+        var pkg = full.package;
+        var isContrib = pkg.name.indexOf('grunt-contrib-') === 0;
+        var author = pkg.author ? 'by ' + pkg.author.name : '';
         var tmpl = '';
-        tmpl += '<a class="plugin ' + (isContrib ? 'contrib' : '') + '" href="https://www.npmjs.com/package/' + data + '">';
+        tmpl += '<a class="plugin ' + (isContrib ? 'contrib' : '') + '" href="' + pkg.links.npm + '">';
         tmpl += '<span class="name-description">';
-        tmpl += '<span class="title">' + name + '</span>';
+        tmpl += '<span class="title">' + pkg.name + '</span>';
         tmpl += '<span class="author">' + author + '</span>';
-        tmpl += '<span class="desc">' + full.ds + '</span>';
+        tmpl += '<span class="desc">' + pkg.description + '</span>';
         tmpl += '</span>';
         tmpl += '</a>';
 
@@ -51,12 +50,14 @@
       }
     },
     {
-      'data': 'dl',
-      'sClass': 'dl',
-      'sType': 'numeric',
-      'bSearchable': false,
+      'data': 'name',
+      'bSearchable': true,
       'sDefaultContent': '',
-      'asSorting': [ 'desc' ]
+      'mRender': function (data, type, full) {
+        var score = full.score;
+        var tmpl = '<span class="score">' + Math.round(score.detail.popularity * 100, 2) + '</span>';
+        return tmpl;
+      }
     }]
   });
 
