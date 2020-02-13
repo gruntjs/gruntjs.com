@@ -11,7 +11,7 @@ var fs = require('fs');
 
 require('date-utils');
 
-var pluginFile = 'build/plugin-list.json';
+var pluginFile = 'src/plugin-list.json';
 
 function requestIndex(url, callback) {
   setTimeout(function() {
@@ -68,6 +68,7 @@ function download(opts, callback) {
             package: {
               name: result.package.name,
               author: result.package.author,
+              description: result.package.description,
               links: {
                 npm: result.package.npm
               }
