@@ -70,7 +70,7 @@ function download(opts, callback) {
               author: result.package.author,
               description: result.package.description,
               links: {
-                npm: result.package.npm
+                npm: result.package.links.npm
               }
             },
             score: {
