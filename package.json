@@ -1,7 +1,7 @@
 {
   "name": "gruntjs.com",
   "description": "The source code for gruntjs.com",
-  "version": "1.0.26",
+  "version": "1.0.27",
   "author": {
     "name": "Grunt Team",
     "url": "https://gruntjs.com/"
@@ -32,7 +32,7 @@
     "grunt-contrib-copy": "~1.0.0",
     "grunt-contrib-less": "~2.0.0",
     "grunt-contrib-uglify": "~4.0.0",
-    "grunt-docs": "git://github.com/gruntjs/grunt-docs.git#1e9a37ee62b5feb5fe016bc30f34b263b71ad779",
+    "grunt-docs": "git://github.com/gruntjs/grunt-docs.git#9eefb85659110ee4702cebab4a83d5033d0843c0",
     "grunt-sitemap": "~1.2.1",
     "highlight.js": "~9.12.0",
     "less-plugin-clean-css": "~1.5.1",
