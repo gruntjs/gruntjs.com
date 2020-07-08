@@ -182,6 +182,19 @@ module.exports = function(grunt) {
 
     htmllint: {
       src: 'build/**/*.html'
+    },
+
+    pug: {
+      compile: {
+        options: {
+          data: {
+            debug: false
+          }
+        },
+        files: {
+          'build/blm.html': ['src/tmpl/blm.pug']
+        }
+      }
     }
 
   });
@@ -195,6 +208,7 @@ module.exports = function(grunt) {
     'copy',
     'docs',
     'blog',
+    'pug',
     'plugins',
     'uglify',
     'sitemap'

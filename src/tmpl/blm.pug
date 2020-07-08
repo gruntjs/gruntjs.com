@@ -1,0 +1,46 @@
+doctype html
+html(lang='en', prefix='og: http://ogp.me/ns#', itemscope, itemtype='http://schema.org/WebPage')
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+
+    - var pageTitle = (locals.title ? locals.title + ' - ' : '') + 'Grunt: The JavaScript Task Runner';
+    title= pageTitle
+    link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Lato:400,700')
+    link(rel='stylesheet', href='/css/main.css')
+    include includes/favicons
+    include includes/social
+    link(href='/rss', rel='alternate', title='Grunt Blog Feed', type='application/atom+xml')
+  body(class=locals.page ? 'page-' + locals.page + (locals.page === 'index' ? '' : ' page-secondary') : '')
+    .navbar.navbar-inverse
+      .navbar-inner
+        .container
+          .nav-collapse.collapse.blm
+            a.home(href='/')
+              span.logo
+              span.brand GRUNT
+            ul.nav
+              li
+                a(href='/getting-started')
+                  i.icon-arrow-right
+                  span Getting Started
+              li
+                a(href='/configuring-tasks')
+                  i.icon-cog
+                  span Configuring Tasks
+              li
+                a(href='/plugins')
+                  i.icon-power-cord
+                  span Plugins
+              li
+                a(href='/getting-started')
+                  i.icon-file-text
+                  span Documentation
+            form.navbar-search.pull-right
+              input.search-query(type='text', placeholder='Search')
+    .blm-container
+      .blm-statement
+        h1  George Floyd
+        p Tony McDade, Yassin Mohamed, Finan H. Berhe, Sean Reed, Steven Demarco Taylor, Breonna Taylor, Ariane McCree, Terrance Franklin, Miles Hall, Darius Tarver, William Green, Samuel David Mallard, Kwame Jones, Christopher Whitfield, Anthony Hill, De’Von Bailey, Eric Logan, Jamarion Robinson, Gregory Hill Jr, JaQuavion Slaton, Ryan Twyman, Brandon Webber, Jimmy Atchison, Willie McCoy, Emantic Fitzgerald Bradford Jr, D’ettrick Griffin, Jemel Roberson, DeAndre Ballard, Botham Shem Jean, Robert Lawrence White, Anthony Lamar Smith, Ramarley Graham, Manuel Loggins Jr, Trayvon Martin, Wendell Allen, Kendrec McDade, Larry Jackson Jr, Jonathan Ferrell, Jordan Baker, Victor White III, Dontre Hamilton, Eric Garner, John Crawford III, Michael Brown, Ezell Ford, Dante Parker, Kajieme Powell, Laquan McDonald, Akai Gurley, Tamir Rice, Rumain Brisbon, Jerame Reid, Charly Keunang, Tony Robinson, Walter Scott, Freddie Gray, Brendon Glenn, Samuel DuBose, Christian Taylor, Jamar Clark, Mario Woods, Quintonio LeGrier, Gregory Gunn, Akiel Denkins, Alton Sterling, Philando Castile, Terrence Sterling, Terence Crutcher, Keith Lamont Scott, Alfred Olango, Jordan Edwards, Stephon Clark, Danny Ray Thomas, DeJuan Guillory, Patrick Harmon, Jonathan Hart, Maurice Granton, Julius Johnson, Jamee Johnson, Michael Dean, and too many more to list here...
+        p Organizations that could use your financial support include <a href="https://blacklivesmatter.com/">Black Lives Matter</a>, <a href="https://www.naacpldf.org/">The NAACP Legal Defense and Educational Fund</a>, <a href="https://eji.org/">The Equal Justice Initiative</a>, <a href="https://www.wetheprotesters.org/">We The Protesters</a>, and the <a href="https://www.gofundme.com/f/georgefloyd">George Floyd Memorial Fund</a>.
+    include blocks/footer

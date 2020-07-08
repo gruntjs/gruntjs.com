@@ -113,6 +113,11 @@ app.get('/plugins*', function (req, res) {
   res.sendFile('build/plugins.html', {root: __dirname});
 });
 
+// blm route
+app.get('/blm*', function (req, res) {
+  res.sendFile('build/blm.html', {root: __dirname});
+});
+
 // rss atom feed
 app.get('/rss', function (req, res) {
   res.setHeader('Content-Type', 'application/xml');
