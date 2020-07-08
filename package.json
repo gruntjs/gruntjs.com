@@ -26,7 +26,7 @@
     "ent": "~2.2.0",
     "errorhandler": "~1.5.0",
     "express": "~4.16.3",
-    "grunt": "~1.0.3",
+    "grunt": "^1.2.1",
     "grunt-autoprefixer": "~3.0.4",
     "grunt-contrib-clean": "~1.1.0",
     "grunt-contrib-copy": "~1.0.0",
@@ -47,10 +47,11 @@
   "devDependencies": {
     "grunt-concurrent": "~2.3.1",
     "grunt-contrib-jshint": "~1.1.0",
+    "grunt-contrib-pug": "^2.0.0",
     "grunt-contrib-watch": "~1.1.0",
     "grunt-html": "~9.3.0",
     "grunt-nodemon": "~0.4.2",
-    "grunt-open": "~0.2.3",
+    "grunt-open": "^0.2.4",
     "grunt-puglint": "~1.0.0"
   }
 }
