@@ -10,7 +10,7 @@ var fs = require('fs');
 var path = require('path');
 var schedule = require('node-schedule');
 
-schedule.scheduleJob('0 0 * * *', function() {
+schedule.scheduleJob('12 2 * * *', function() {
   console.log('Running plugin updater...');
   try {
     require('./grunt-plugins').download();
