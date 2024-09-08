@@ -1,42 +1,27 @@
-# Grunt Website [![Build Status: Linux](https://travis-ci.org/gruntjs/gruntjs.com.svg?branch=master)](https://travis-ci.org/gruntjs/gruntjs.com)
+[![Build Status](https://github.com/gruntjs/gruntjs.com/actions/workflows/CI.yaml/badge.svg)](https://github.com/gruntjs/gruntjs.com/actions/workflows/CI.yaml)
 
-## Setup Development
+# Grunt Website
 
-1. `npm install`
-2. `grunt`
+## Local Development
 
-## Tasks
+1. Download dependencies:
+   ```shell
+   npm install
+   ```
+2. Create production site:
+   ```shell
+   npm run build
+   ```
+3. Start web server:
+   ```shell
+   npm start
+   ```
 
-* `grunt build` - Manually Rebuild
-* `grunt dev` - Development Mode
+Local address is: http://localhost:5678/
 
-## Manually Run Server
-
-```shell
-npm start
-```
-
-Server port is: `5678`.
-
-## Deploy to Heroku
-
-Set Heroku keys (if needed) with
-
-```shell
-ssh-keygen -t rsa -C "YOUR_HEROKU_EMAIL" -f  ~/.ssh/id_rsa_heroku
-ssh-add ~/.ssh/id_rsa_heroku
-heroku keys:add ~/.ssh/id_rsa_heroku.pub
-```
-
-Push
+To automatically rebuild and restart the server after any file changes,
+use the development mode instead:
 
 ```shell
-git push git@heroku.com:grunt.git master:master
-```
-
-If you need to regenerate the Heroku site, use empty commits:
-
-```shell
-git commit --allow-empty -m "empty commit"
-git push git@heroku.com:grunt.git master:master
+npm run dev
 ```

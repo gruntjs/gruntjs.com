@@ -13,9 +13,11 @@
     "npm": ">=3"
   },
   "scripts": {
+    "postinstall": "grunt build",
+    "build": "grunt build",
     "start": "node server.js",
-    "postinstall": "grunt",
-    "test": "grunt test"
+    "test": "grunt test",
+    "dev": "grunt dev"
   },
   "private": true,
   "dependencies": {

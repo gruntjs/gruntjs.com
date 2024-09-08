@@ -1,0 +1,14 @@
+name: CI
+on:
+  - push
+  - pull_request
+
+jobs:
+  test:
+    # Includes Firefox, Node.js LTS, and Java.
+    # https://github.com/actions/runner-images/blob/releases/ubuntu22/20240804/images/ubuntu/Ubuntu2204-Readme.md
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - run: npm install
+      - run: npm test

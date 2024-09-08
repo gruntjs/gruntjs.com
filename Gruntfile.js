@@ -13,14 +13,6 @@ module.exports = function(grunt) {
         sourceMap: true,
         outputSourceFiles: true
       },
-      development: {
-        options: {
-          paths: ['src/less']
-        },
-        files: {
-          'build/css/main.css': 'src/less/main.less'
-        }
-      },
       production: {
         options: {
           paths: ['src/less'],
@@ -57,11 +49,11 @@ module.exports = function(grunt) {
     watch: {
       less: {
         files: 'src/less/**/*.less',
-        tasks: ['less:development', 'autoprefixer']
+        tasks: ['less', 'autoprefixer']
       },
       tmpl: {
         files: 'src/tmpl/**/*.pug',
-        tasks: ['default']
+        tasks: ['build']
       },
       js: {
         files: 'src/js/**',
@@ -69,15 +61,15 @@ module.exports = function(grunt) {
       },
       other: {
         files: 'src/img/**',
-        tasks: ['default']
+        tasks: ['build']
       },
       gruntfile: {
         files: 'Gruntfile.js',
-        tasks: ['default']
+        tasks: ['build']
       },
       docs: {
         files: 'node_modules/grunt-docs/**',
-        tasks: ['default']
+        tasks: ['build']
       }
     },
 
@@ -219,32 +211,28 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-puglint');
   }
 
-  grunt.registerTask('build', 'Build the site', [
+  grunt.registerTask('build', 'Build the site for production', [
     'copy',
     'docs',
     'blog',
     'pug',
     'plugins',
     'uglify',
-    'sitemap'
-  ]);
-  grunt.registerTask('default', 'Build the site, download plugins, production ready', [
-    'build',
+    'sitemap',
     'downloadPlugins',
-    'less:production',
+    'less',
     'autoprefixer'
   ]);
+
   grunt.registerTask('test', [
     'build',
     'jshint',
     'puglint',
+    // Requires Java 8+
     'htmllint'
   ]);
   grunt.registerTask('dev', 'Development Mode', [
     'build',
-    'less:development',
-    'autoprefixer',
-    'jshint',
     'concurrent'
   ]);
 };
