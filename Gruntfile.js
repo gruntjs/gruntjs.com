@@ -200,9 +200,24 @@ module.exports = function(grunt) {
   });
 
   grunt.loadTasks('tasks'); // getWiki, docs tasks
-  require('matchdep')
-    .filterAll(['grunt-*', '!grunt-docs'])
-    .forEach(grunt.loadNpmTasks);
+
+  grunt.loadNpmTasks('grunt-autoprefixer');
+  grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-contrib-less');
+  grunt.loadNpmTasks('grunt-contrib-pug');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-sitemap');
+
+  if (process.env.NODE_ENV !== 'production') {
+    grunt.loadNpmTasks('grunt-concurrent');
+    grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-html');
+    grunt.loadNpmTasks('grunt-nodemon');
+    grunt.loadNpmTasks('grunt-open');
+    grunt.loadNpmTasks('grunt-puglint');
+  }
 
   grunt.registerTask('build', 'Build the site', [
     'copy',
