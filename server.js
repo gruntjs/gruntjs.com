@@ -130,7 +130,7 @@ app.get('*', function (req, res, next) {
   req.url = req.url.toLowerCase();
   var filePath = 'build/docs/' + req.url + '.html';
 
-  if (req.url.indexOf('/grunt') === 0) {
+  if (req.url.indexOf('/grunt.') === 0) {
     res.redirect(301, '/api' + req.url);
     return;
   }
