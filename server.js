@@ -35,9 +35,17 @@ app.use(bodyParser.json());
 app.set('views', path.join(__dirname, 'src', 'tmpl'));
 app.set('view engine', 'pug');
 
-// strip slashes
+/**
+ * Strip trailing slashes
+ *
+ * Redirect "/foo/" to "/foo". Browsers interpret absolute paths in Location
+ * as relative to the current origin.
+ *
+ * Avoid redirecting to a paths that browsers may interpret as URLs to other sites,
+ * such as "//foo" or "http://". https://github.com/gruntjs/gruntjs.com/issues/231
+ */
 app.use(function (req, res, next) {
-  if (req.url.substr(-1) === '/' && req.url.length > 1) {
+  if (req.url.startsWith('/') && !req.url.startsWith('//') && req.url.length >= 2 && req.url.slice(-1) === '/') {
     res.redirect(301, req.url.slice(0, -1));
   } else {
     next();
