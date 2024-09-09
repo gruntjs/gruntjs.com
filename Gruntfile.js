@@ -173,6 +173,11 @@ module.exports = function(grunt) {
     },
 
     htmllint: {
+      options: {
+        ignore: [
+          /Trailing slash on void elements has no effect/
+        ]
+      },
       src: 'build/**/*.html'
     },
 
