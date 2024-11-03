@@ -53,7 +53,7 @@ module.exports = function (grunt) {
           }
 
           if (rMode && line.length > 0) {
-            var item = line.replace(/#/g, '').replace(']]', '').replace('* [[', '');
+            var item = line.replace(/#/g, '').replace(']]', '').replace('- [[', '');
             var url = item;
 
             if (item[0] === ' ') {
