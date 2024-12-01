@@ -9,7 +9,6 @@ block content
           if locals.singlePost
             span.post-date= "Posted on " + postDate
             != content
-            include includes/disqus
           else
             each article in content
               h2
