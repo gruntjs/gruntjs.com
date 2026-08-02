@@ -83,11 +83,12 @@ console.log('Starting a server on port: ' + port);
  * express app router
  */
 app.get('/', function (req, res, next) {
+  var cleanUrl = req.url.split('?')[0];
   var filePath;
-  if (req.url === '/') {
+  if (cleanUrl === '/') {
     filePath = 'build/index.html';
   } else {
-    filePath = 'build' + req.url + '.html';
+    filePath = 'build' + cleanUrl + '.html';
   }
 
   fs.exists(filePath, function (exists) {
@@ -157,12 +158,12 @@ app.get('/rss', function (req, res) {
 
 // final route, if nothing else matched, this will match docs
 app.get('*', function (req, res, next) {
-  req.url = req.url.toLowerCase();
-  var filePath = 'build/docs/' + req.url + '.html';
+  var cleanUrl = req.url.toLowerCase().split('?')[0];
+  var filePath = 'build/docs/' + cleanUrl + '.html';
 
-  if (req.url.indexOf('/grunt.') === 0) {
+  if (cleanUrl.indexOf('/grunt.') === 0) {
     res.set('Cache-Control', 'public, max-age=86400, stale-while-revalidate=3600');
-    res.redirect(301, '/api' + req.url);
+    res.redirect(301, '/api' + cleanUrl);
     return;
   }
 
