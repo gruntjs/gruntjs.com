@@ -19,6 +19,13 @@ schedule.scheduleJob('12 2 * * *', function() {
   }
 });
 
+var defaultSendOpts = {
+  root: __dirname,
+  headers: {
+    'Cache-Control': 'public, max-age=300, stale-while-revalidate=3600'
+  }
+};
+
 // enable express strict routing, see http://expressjs.com/api.html#app-settings
 // for more info
 app.enable('strict routing');
@@ -58,6 +65,7 @@ app.use(function (req, res, next) {
   }
 
   if (req.url !== normalUrl && req.url !== '/' && normalUrl !== '/') {
+    res.set('Cache-Control', 'public, max-age=86400, stale-while-revalidate=3600');
     res.redirect(301, normalUrl);
   } else {
     next();
@@ -75,14 +83,16 @@ console.log('Starting a server on port: ' + port);
  * express app router
  */
 app.get('/', function (req, res, next) {
-  var filePath = 'build' + req.url + '.html';
+  var filePath;
   if (req.url === '/') {
     filePath = 'build/index.html';
+  } else {
+    filePath = 'build' + req.url + '.html';
   }
 
   fs.exists(filePath, function (exists) {
     if (exists) {
-      res.sendFile(filePath, {root: __dirname});
+      res.sendFile(filePath, defaultSendOpts);
     } else {
       next();
     }
@@ -96,13 +106,14 @@ app.get('/api*', function (req, res, next) {
 
   // redirect to the main api page, fix slashes and folder issues
   if (req.url === '/api') {
+    res.set('Cache-Control', 'public, max-age=86400, stale-while-revalidate=3600');
     res.redirect(301, '/api/grunt');
     return;
   }
 
   fs.exists(filePath, function (exists) {
     if (exists) {
-      res.sendFile(filePath, {root: __dirname});
+      res.sendFile(filePath, defaultSendOpts);
     } else {
       next();
     }
@@ -115,12 +126,12 @@ app.get('/blog*', function (req, res, next) {
   var filePath = 'build' + cleanUrl + '.html';
 
   if (cleanUrl === '/blog') {
-    res.sendFile('build/blog.html', {root: __dirname});
+    res.sendFile('build/blog.html', defaultSendOpts);
   } else {
 
     fs.exists(filePath, function (exists) {
       if (exists) {
-        res.sendFile(filePath, {root: __dirname});
+        res.sendFile(filePath, defaultSendOpts);
       } else {
         next();
       }
@@ -130,18 +141,18 @@ app.get('/blog*', function (req, res, next) {
 
 // plugins route
 app.get('/plugins*', function (req, res) {
-  res.sendFile('build/plugins.html', {root: __dirname});
+  res.sendFile('build/plugins.html', defaultSendOpts);
 });
 
 // blm route
 app.get('/blm*', function (req, res) {
-  res.sendFile('build/blm.html', {root: __dirname});
+  res.sendFile('build/blm.html', defaultSendOpts);
 });
 
 // rss atom feed
 app.get('/rss', function (req, res) {
   res.setHeader('Content-Type', 'application/xml; charset=UTF-8');
-  res.sendFile('build/atom.xml', {root: __dirname});
+  res.sendFile('build/atom.xml', defaultSendOpts);
 });
 
 // final route, if nothing else matched, this will match docs
@@ -150,13 +161,14 @@ app.get('*', function (req, res, next) {
   var filePath = 'build/docs/' + req.url + '.html';
 
   if (req.url.indexOf('/grunt.') === 0) {
+    res.set('Cache-Control', 'public, max-age=86400, stale-while-revalidate=3600');
     res.redirect(301, '/api' + req.url);
     return;
   }
 
   fs.exists(filePath, function (exists) {
     if (exists) {
-      res.sendFile(filePath, {root: __dirname});
+      res.sendFile(filePath, defaultSendOpts);
     } else {
       next();
     }
@@ -168,9 +180,14 @@ app.get('*', function (req, res, next) {
  * express app configuration after routes
  */
 // use the static router
-app.use(express.static('build'));
+app.use(express.static('build', {
+  setHeaders: function (res) {
+    res.setHeader('Cache-Control', 'public, max-age=300, stale-while-revalidate=3600');
+  }
+}));
 // if nothing matched, send 404
 app.use(function (req, res) {
+  res.set('Cache-Control', 'public, max-age=300, stale-while-revalidate=3600');
   res.status(404).render('404', {
     page: 'notfound',
     title: '404 Not Found'
