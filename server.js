@@ -128,8 +128,7 @@ app.get('/blm*', function (req, res) {
 
 // rss atom feed
 app.get('/rss', function (req, res) {
-  res.setHeader('Content-Type', 'application/xml');
-  res.setHeader('Charset', 'utf-8');
+  res.setHeader('Content-Type', 'application/xml; charset=UTF-8');
   res.sendFile('build/atom.xml', {root: __dirname});
 });
 
