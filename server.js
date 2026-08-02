@@ -43,10 +43,22 @@ app.set('view engine', 'pug');
  *
  * Avoid redirecting to a paths that browsers may interpret as URLs to other sites,
  * such as "//foo" or "http://". https://github.com/gruntjs/gruntjs.com/issues/231
+ *
+ * Keep later middleware simple and secure by rejecting path escapes. Test with
+ * `curl -v http://localhost:5678/ --request-target '/../../secret'`
  */
 app.use(function (req, res, next) {
-  if (req.url.startsWith('/') && !req.url.startsWith('//') && req.url.length >= 2 && req.url.slice(-1) === '/') {
-    res.redirect(301, req.url.slice(0, -1));
+  // Strip duplicate slashes "//foo/bar//quux//" => "/foo/bar/quux/"
+  //
+  // SECURITY: Remove (or resolve within the same URL) any path escape "/../foo/../bar" => "/bar"
+  var normalUrl = path.normalize(req.url);
+  // Strip trailing slash
+  if (normalUrl.endsWith('/')) {
+    normalUrl = normalUrl.slice(0, -1);
+  }
+
+  if (req.url !== normalUrl && req.url !== '/' && normalUrl !== '/') {
+    res.redirect(301, normalUrl);
   } else {
     next();
   }
